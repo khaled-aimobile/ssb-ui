@@ -1,0 +1,459 @@
+@import "./variable";
+
+body {
+    &[data-topbar=dark]{
+        #page-topbar{
+            background-color: $primary;
+        }
+    }
+    &[data-layout=horizontal] {
+        .page-content{
+            @include xl{
+                padding-top: 60px;
+            }
+        }
+    }
+}
+
+a{
+    &:hover{
+        color: $primary ;
+    }
+}
+//custom css
+.avatar-xs{
+    min-width: 2rem;
+}
+.avatar-sm{
+    min-width: 3rem;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.text-theme{
+    color: $primary;
+}
+.semi-bold{
+    font-weight: 700 !important;
+}
+.no-data{
+    padding: 20px;
+    background-color: #eff2f7;
+    position: relative;
+    height: 45px;
+    td {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+    }
+}
+.accordion-item{
+    &:first-of-type {
+        .accordion-button{
+            
+        }
+    }
+    &.dashboard-accordion{
+        border: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color) !important;
+        border-radius: 0.25rem;
+    }
+}
+.multiselect{
+    box-shadow: none !important;
+    &.is-active{
+        box-shadow: none !important;
+    }
+    .multiselect-tag{
+        background-color: $primary;
+        font-weight: 500;
+        font-size: 12px;
+    }
+    .multiselect-option{
+        font-size: 14px;
+    }
+}
+.radius-50{
+    border-radius: 50%;
+}
+.bg-success{
+    background-color: $primary !important;
+}
+.btn-success{
+    background-color: $primary;
+    border-color: $primary;
+    &:hover{
+        background-color: rgba($primary, 0.7);
+        border-color: rgba($primary, 0.7);
+    }
+}
+.h-36{
+    height: 36px;
+}
+.w-36{
+    width: 36px;
+}
+
+//navbar
+.megamenu-list{
+    li{
+        a{
+            &:hover{
+                color: $primary;
+            }       
+        }
+    }
+}
+.topnav {
+    .navbar-nav {
+        .nav-item{
+            &:first-of-type{
+                @include xl{
+                    .nav-link{
+                        padding-left: 1rem;
+                    }
+                }
+            }
+        }
+        .nav-link{
+            &:focus,
+            &:hover{
+                color: $primary !important;
+            }
+            @include xxl{
+                padding-right: 0;
+                padding-left: 12px;
+            }
+        }
+    }
+}
+.dropdown,
+.dropdown-menu{
+    .dropdown-item{
+        &:hover,
+        &.active{
+            color: $primary !important;
+            background-color: rgba($primary, 0.05);
+        }
+        &.text-danger{
+            &:hover,
+            &.active{
+                color: $danger !important;
+                background-color: rgba($danger, 0.05);
+            } 
+        }
+    }
+    &.active {
+        > a{
+            color: $primary !important;
+        }
+    }
+}
+#modal-search{
+    .modal-dialog{
+        max-width: calc(100% - 40px);
+        .modal-content{
+            border: 0;
+        
+        .modal-header{
+            background-color: $primary;
+            .modal-title{
+                color: $white;
+            }
+            .btn-close{
+                color: $white;
+                filter: brightness(0) invert(1);
+                opacity: 1;
+            }
+        }
+        .app-search{
+            .form-control{
+                background-color: rgba($primary, 0.2);
+                color: $primary;
+                min-height: 46px;
+                &::placeholder{
+                    color: $primary;
+                }
+            }
+            span{
+                color: $primary;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                height: 36px;
+                font-size: 22px;
+            }
+        }
+        .expand-btn{
+            font-weight: bold;
+            width: auto;
+            margin-right: 20px;
+            margin-left: auto;
+            display: inherit;
+            margin-bottom: 15px;
+        }
+        .accordion{
+            display: flex;
+            flex-wrap: wrap;
+            .accordion-item{
+                border: 0;
+                width: calc(25% - 8px);
+                margin-bottom: 18px;
+                .accordion-button{
+                    background-color: transparent;
+                    box-shadow: none;
+                    padding-bottom: 0;
+                    color: $black;
+                    font-weight: 600;
+                    &::after{
+                        
+                    }
+                }
+                .accordion-body{
+                    padding-top: 8px;
+                    ul{
+                        padding: 0;
+                        margin-bottom: 25px;
+                        li{
+                            list-style: none;
+                            margin-bottom: 2px;
+                            a{
+                                color: $grey;
+                                &:hover{
+                                    color: $primary;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+}
+.navbar-brand-box{
+    .logo-lg{
+        display: flex;
+        align-items: center;
+        img{
+            margin-right: 8px;
+            height: 40px;
+        }
+        span{
+            color: $white;
+            font-size: 18px;
+        }
+    }
+}
+
+//dashboard
+.dashboard-main{
+    .list-group{
+        &.dashboard-list{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+            gap:8px;
+            .list-group-item{
+                display: inline-block;
+                width: calc(25% - 6px);
+                padding: 2px 15px;
+                .router-link-active{
+                    width: 100%;
+                    display: flex;
+                    align-items: baseline;
+                    color: $primary;
+                    i{
+                        margin-right: 5px;
+                    }
+                }
+                @include xl {
+                    width: calc(33.33% - 4px);
+                }
+                @include md {
+                    width: calc(50% - 3px);
+                }
+                @include sm {
+                    width: 100%;
+                }
+            }
+            @include xl {
+                gap: 6px;
+            }
+        }
+    }
+    .accordion-item .accordion-button{
+        color: $primary !important;
+            background-color: rgba($primary, 0.05);
+    }
+    .dashboard-content{
+        .bitcoin-row{
+            .card{
+                height: calc(100% - 24px);
+                .card-title{
+                    background-color: $primary;
+                    color: $white;
+                    margin-bottom: 0;
+                    padding: 10px;
+                    border-radius: 0.25rem 0.25rem 0 0 ;
+                }
+                h5{
+                    font-size: 28px;
+    text-align: center;
+                }
+                .charts{
+                    display: none;
+                }
+            }
+        }
+        .chart-row{
+            .card-body{
+                padding: 0;
+                .card-body{
+                    padding: 20px;
+                }
+                .chart-padding{
+                    padding: 20px;
+                }
+            }
+            .card-title{
+                background-color: $primary;
+                color: $white;
+                margin-bottom: 0;
+                padding: 15px;
+                border-radius: 0.25rem 0.25rem 0 0 ;
+            }
+        }
+    }
+}
+
+//custom layout
+.custom-layout{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    position: relative;
+    .card{
+        height: calc(100% - 24px);
+    }
+    .filter-content{
+        min-width: 250px;
+        display: none;
+        // @include lg{
+        //     position: absolute;
+        //     left: 0;
+        //     max-width: 200px;
+        //     height: 100%;
+        // }
+    }
+    .table-content{
+        width: 100%;
+        display: block;
+        overflow: auto;
+    }
+    .info-box{
+        min-width: 200px;
+        display: none;
+    }
+    > *.active{
+        display: block;
+    }
+    @include lg{
+        flex-direction: column;
+        gap: 0;
+    }
+}
+.search-box{
+    width: 200px;
+    .form-control{
+        padding-right: 40px;
+        padding-left: 10px;
+    }
+    .btn{
+        min-width: 36px;
+        min-height: 36px;
+        border-radius: 50%;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        position: absolute;
+        right: 8px;
+        .bx{
+            margin: 0 !important;
+        }
+    }
+    @include lg{
+        width: 100%;
+    }
+}
+.modal{
+    &.green-header{
+        .modal-content{
+            border: 0;
+        .modal-header{
+            background-color: $primary;
+            .modal-title{
+                color: $white;
+            }
+            .btn-close{
+                color: $white;
+                filter: brightness(0) invert(1);
+                opacity: 1;
+            }
+        }
+        }
+    }
+    &.delete-modal{
+        .modal-content{
+            border: 0;
+            p{
+                font-size: 16px;
+            }
+            .btn-danger{
+                background-color: $danger;
+            }
+        }
+        .modal-header{
+            background-color: $danger;
+            .modal-title{
+                color: $white;
+            }
+            .btn-close{
+                color: $white;
+                filter: brightness(0) invert(1);
+                opacity: 1;
+            }
+        }
+    }
+}
+.table-green{
+    &.table{
+        th{
+            background-color: $primary;
+            color: $white;
+        }
+    }
+}
+
+//charts of account
+.filter-btns{
+    .btn{
+        margin-right: 5px;
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}
+
+.export{
+    margin-bottom: 15px;
+    margin-top: 0 !important;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    margin-right: 172px;
+}
+.export-btn{
+    float: left;
+}
