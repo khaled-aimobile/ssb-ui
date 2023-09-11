@@ -45,7 +45,6 @@ export default {
 <template>
     <Layout>
         <div class="page-filters">
-
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <a class="navbar-brand" href="#">{{ title }}</a>
             </nav>
@@ -59,6 +58,5 @@ export default {
                     </div>
                 </div>
             </div>
-            
         </div>
 </Layout></template>

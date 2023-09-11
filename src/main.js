@@ -16,6 +16,7 @@ import BootstrapVueNext from 'bootstrap-vue-next'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
 import JsonExcel from "vue-json-excel3";
+import Paginate from "vuejs-paginate-next";
 
 const firebaseConfig = {
   apiKey: process.env.VUE_APP_APIKEY,
@@ -40,7 +41,7 @@ import '@vueform/slider/themes/default.css';
 import store from "./state/store";
 
 import "../src/design/app.scss";
-
+import VueHtml2pdf from 'vue3-html2pdf'
 
 createApp(App)
   .use(store)
@@ -51,6 +52,8 @@ createApp(App)
   .use(vClickOutside)
   .use(i18n)
   .use(JsonExcel)
+  .use(Paginate)
   .use(registerScrollSpy)
   .use(Maska)
+  .use(VueHtml2pdf)
   .mount('#app')

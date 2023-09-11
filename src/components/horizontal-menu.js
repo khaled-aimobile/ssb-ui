@@ -8,7 +8,8 @@ export const menuItems = [
             {
                 id: 222,
                 label: 'Charts of Accounts',
-                link: '/charts-of-accounts',
+                //link: '/charts-of-accounts',
+                link: '/',
                 parentId: 221
             },
             {
@@ -20,37 +21,43 @@ export const menuItems = [
             {
                 id: 224,
                 label: 'Purchase Orders',
-                link: '/purchase-orders',
+                //link: '/purchase-orders',
+                link: '/',
                 parentId: 221
             },
             {
                 id: 225,
                 label: 'Budgets',
-                link: '/budgets',
+                //link: '/budgets',
+                link: '/',
                 parentId: 221
             },
             {
                 id: 226,
                 label: 'Bank Accounts',
-                link: '/bank-accounts',
+                //link: '/bank-accounts',
+                link: '/',
                 parentId: 221
             },
             {
                 id: 227,
                 label: 'GST Statements',
-                link: '/gst-statements',
+                //link: '/gst-statements',
+                link: '/',
                 parentId: 221
             },
             {
                 id: 228,
                 label: 'Items',
-                link: '/items',
+                //link: '/items',
+                link: '/',
                 parentId: 221
             },
             {
                 id: 229,
                 label: 'Customers',
-                link: '/customers',
+                //link: '/customers',
+                link: '/',
                 parentId: 221
             },
             {
@@ -62,25 +69,29 @@ export const menuItems = [
             {
                 id: 231,
                 label: 'Reminders',
-                link: '/reminders',
+                //link: '/reminders',
+                link: '/',
                 parentId: 221
             },
             {
                 id: 232,
                 label: 'Finance Charge Memos',
-                link: '/finance-charge-memos',
+                //link: '/finance-charge-memos',
+                link: '/',
                 parentId: 221
             },
             {
                 id: 233,
                 label: 'Incoming Documents',
-                link: '/incoming-documents',
+                //link: '/incoming-documents',
+                link: '/',
                 parentId: 221
             },
             {
                 id: 234,
                 label: 'EC Sales List',
-                link: '/ec-sales-list',
+                //link: '/ec-sales-list',
+                link: '/',
                 parentId: 221
             },
             {

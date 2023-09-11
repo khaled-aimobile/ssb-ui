@@ -85,6 +85,13 @@ export default [
     meta: { authRequired: true},
     component: () => import("./views/home/ecSalesList.vue"),
   },
+  //reports
+  {
+    path: "/gl-budget",
+    name: "glBudget",
+    meta: { authRequired: true},
+    component: () => import("./views/reports/glBudget.vue"),
+  },
   {
     path: "/login",
     name: "login",
