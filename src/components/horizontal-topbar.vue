@@ -358,7 +358,7 @@ export default {
           </template>
 
           <b-dropdown-item>Chart of Accounts </b-dropdown-item>
-          <b-dropdown-item>G/L Budgets</b-dropdown-item>
+          <b-dropdown-item><router-link to="/gl-budget" class="router-link-active">G/L Budgets</router-link></b-dropdown-item>
           <b-dropdown-item>Account Schedules </b-dropdown-item>
           <b-dropdown-item>Analysis by Dimensions</b-dropdown-item>
           <b-dropdown-item>GST (3)</b-dropdown-item>

@@ -7,6 +7,14 @@ body {
         }
     }
     &[data-layout=horizontal] {
+        #page-topbar{
+            .navbar-header{
+                max-width: calc(100% - 30px);
+            }
+        }
+        .container-fluid{
+            max-width: calc(100% - 30px);
+        }
         .page-content{
             @include xl{
                 padding-top: 60px;
@@ -70,6 +78,9 @@ a{
     }
     .multiselect-option{
         font-size: 14px;
+    }
+    .multiselect-dropdown{
+        overflow: auto;
     }
 }
 .radius-50{
@@ -166,6 +177,8 @@ a{
             }
         }
         .app-search{
+            max-width: 1000px;
+            margin: auto;
             .form-control{
                 background-color: rgba($primary, 0.2);
                 color: $primary;
@@ -244,7 +257,15 @@ a{
         }
     }
 }
-
+.router-link-active{
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+    color: $primary;
+    i{
+        margin-right: 5px;
+    }
+}
 //dashboard
 .dashboard-main{
     .list-group{
@@ -452,8 +473,62 @@ a{
     position: absolute;
     top: 20px;
     right: 0;
-    margin-right: 172px;
+    margin-right: 110px;
 }
 .export-btn{
+    //float: left;
+    margin-bottom: 10px;
+}
+.search-table{
+    max-width: 250px;
+    margin-right: auto;
     float: left;
+}
+.action-buttons{
+    float: right;
+}
+.pagination{
+    .page-item{
+        &.active-page{
+            .page-link{
+                background-color: $primary;
+                color: $white;
+            }
+        }
+        &.disabled{
+            .page-link{
+            background-color: rgba($primary, 0.5) !important;
+            border-color: rgba($primary, 0.5) !important;
+        }
+        }
+        .page-link{
+            border: 1px solid $primary;
+            outline: none;
+            box-shadow: none;
+        }
+        &:first-child,
+        &:last-child{
+            .page-link{
+                background-color: $primary;
+                color: $white;
+            }
+        }
+    }
+}
+.filters{
+    margin-bottom: 50px;
+}
+.add-item{
+    display: flex;
+    align-items: flex-end;
+    gap: 10px 5px;
+    //overflow: auto;
+    margin-bottom: 15px;
+    //@include custom_scroll();
+    .form-control{
+        //min-width: 125px;
+    }
+}
+.add-item-footer{
+    text-align: right;
 }
