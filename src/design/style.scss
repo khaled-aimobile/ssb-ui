@@ -41,9 +41,32 @@ a{
 .text-theme{
     color: $primary;
 }
+
 .semi-bold{
     font-weight: 700 !important;
 }
+.page-heading{
+    &.page-filters{
+        .navbar-brand{
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
+}
+.custom-pagination{
+    .pagination{
+        padding-left: 0;
+    }
+}
+.form-check {
+    .form-check-input{
+        &.report-switch{
+            width: 3rem;
+            height: 1.5rem;
+        }
+    }
+}
+
 .no-data{
     padding: 20px;
     background-color: #eff2f7;
@@ -81,6 +104,24 @@ a{
     }
     .multiselect-dropdown{
         overflow: auto;
+        max-height: 134px;
+    }
+    &.multi-table{
+        .multiselect-tag{
+            padding: 0;
+            background-color: transparent;
+            color: $primary;
+            width: 100%;
+            table{
+                width: 100%;
+                td{
+                    text-transform: capitalize;
+                    &:first-child{
+                        color: $grey;
+                    }
+                }
+            }
+        }
     }
 }
 .radius-50{
@@ -490,6 +531,7 @@ a{
 .pagination{
     .page-item{
         &.active-page{
+            background-color: transparent !important;
             .page-link{
                 background-color: $primary;
                 color: $white;

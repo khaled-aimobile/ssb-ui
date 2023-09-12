@@ -42,7 +42,7 @@ export default {
 
 <template>
     <Layout>
-        <div class="page-filters">
+        <div class="page-filters page-heading">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <a class="navbar-brand" href="#">{{ title }}</a>
             </nav>

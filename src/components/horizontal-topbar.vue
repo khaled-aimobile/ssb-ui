@@ -19,7 +19,7 @@ export default {
     isOpen: false,
     items: [
       { text: 'Chart of Accounts', link: '' },
-      { text: 'G/L Budgets', link: '' },
+      { text: 'G/L Budgets', link: '/gl-budget' },
       { text: 'Account Schedules', link: '' },
       { text: 'Analysis by Dimensions', link: '' },
       { text: 'GST (3)', link: '' },
@@ -38,7 +38,7 @@ export default {
       { text: 'Bank Accounts', link: '' },
       { text: 'Receivables-Payables', link: '' },
       { text: 'Payment Registration', link: '' },
-      { text: 'Cash Flow (5)', link: '' },
+      { text: 'Cash Flow (5)', link: '/cash-flow-statement' },
       { text: 'Reconciliation (3)', link: '' },
       { text: 'Journals (3)', link: '' },
       { text: 'Ledger Entries (3)', link: '' },

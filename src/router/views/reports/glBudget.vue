@@ -42,7 +42,7 @@ export default {
 
 <template>
     <Layout>
-        <div class="page-filters">
+        <div class="page-filters page-heading">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <a class="navbar-brand" href="#">{{ title }}</a>
             </nav>
@@ -118,7 +118,6 @@ export default {
                 <b-button variant="success" class="me-2">Send to..</b-button>
                 <b-button variant="success" class="me-2">Preview</b-button>
                 <b-button variant="success" class="me-2">Print</b-button>
-                <b-button variant="secondary">Cancel</b-button>
             </div>
         </div>
     </Layout>
