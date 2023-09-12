@@ -14,138 +14,162 @@ export default {
     const isOpen = ref(false);
     const searchText = ref('');
     const accordionItems = [
-  {
-    title: 'General Ledger (11)',
-    isOpen: false,
-    items: [
-      { text: 'Chart of Accounts', link: '' },
-      { text: 'G/L Budgets', link: '/gl-budget' },
-      { text: 'Account Schedules', link: '' },
-      { text: 'Analysis by Dimensions', link: '' },
-      { text: 'GST (3)', link: '' },
-      { text: 'Intercompany (6)', link: '' },
-      { text: 'Consolidation (3)', link: '' },
-      { text: 'Journals (4)', link: '' },
-      { text: 'Register/Entries (8)', link: '' },
-      { text: 'Reports (4)', link: '' },
-      { text: 'Setup (6)', link: '' },
-    ],
-  },
-  {
-    title: 'Cash Management (9)',
-    isOpen: false,
-    items: [
-      { text: 'Bank Accounts', link: '' },
-      { text: 'Receivables-Payables', link: '' },
-      { text: 'Payment Registration', link: '' },
-      { text: 'Cash Flow (5)', link: '/cash-flow-statement' },
-      { text: 'Reconciliation (3)', link: '' },
-      { text: 'Journals (3)', link: '' },
-      { text: 'Ledger Entries (3)', link: '' },
-      { text: 'Reports (8)', link: '' },
-      { text: 'Setup (7)', link: '' },
-    ],
-  },
-  {
-    title: 'Cost Accounting (9)',
-    isOpen: false,
-    items: [
-      { text: 'Chart of Cost Centers', link: '' },
-      { text: 'Chart of Cost Objects', link: '' },
-      { text: 'Chart of Cost Types', link: '' },
-      { text: 'Cost Allocations', link: '' },
-      { text: 'Cost Budgets', link: '' },
-      { text: 'Cost Journals', link: '' },
-      { text: 'Registers (2)', link: '' },
-      { text: 'Reports (4)', link: '' },
-      { text: 'Setup (2)', link: '' },
-    ],
-  },
-  {
-    title: 'Receivables (13)',
-    isOpen: false,
-    items: [
-      { text: 'Customers', link: '' },
-      { text: 'Sales Invoices', link: '' },
-      { text: 'Sales Credit Memos', link: '' },
-      { text: 'Direct Debit Collections', link: '' },
-      { text: 'Create Recurring Sales Invoices', link: '' },
-      { text: 'Register Customer Payments', link: '' },
-      { text: 'Combine (2)', link: '' },
-      { text: 'Collection (4)', link: '' },
-      { text: 'Journals (2)', link: '' },
-      { text: 'Posted Documents (4)', link: '' },
-      { text: 'Registers/Entries (4)', link: '' },
-      { text: 'Reports (20)', link: '' },
-      { text: 'Setup (5)', link: '' },
-    ],
-  },
-  {
-    title: 'Payables (9)',
-    isOpen: false,
-    items: [
-      { text: 'Vendors', link: '' },
-      { text: 'Purchase Invoices', link: '' },
-      { text: 'Purchase Credit Memos', link: '' },
-      { text: 'Incoming Documents', link: '' },
-      { text: 'Journals (2)', link: '' },
-      { text: 'Posted Documents (4)', link: '' },
-      { text: 'Registers/Entries (5)', link: '' },
-      { text: 'Reports (16)', link: '' },
-      { text: 'Setup (1)', link: '' },
-    ],
-  },
-  {
-    title: 'Fixed Assets (9)',
-    isOpen: false,
-    items: [
-      { text: 'Fixed Assets', link: '' },
-      { text: 'Insurance', link: '' },
-      { text: 'Calculate Depreciation...', link: '' },
-      { text: 'Index Fixed Assets...', link: '' },
-      { text: 'Index Insurance...', link: '' },
-      { text: 'Journals (6)', link: '' },
-      { text: 'Reports (3)', link: '' },
-      { text: 'Registers/Entries (5)', link: '' },
-      { text: 'Setup (11)', link: '' },
-    ],
-  },
-  {
-    title: 'Setup (11)',
-    isOpen: false,
-    items: [
-      { text: 'General Posting Setup', link: '' },
-      { text: 'Incoming Documents Setup', link: '' },
-      { text: 'Accounting Periods', link: '' },
-      { text: 'Standard Text Codes', link: '' },
-      { text: 'No. Series', link: '' },
-      { text: 'GST (5)', link: '' },
-      { text: 'Intrastat (8)', link: '' },
-      { text: 'Intercompany (4)', link: '' },
-      { text: 'Dimensions (4)', link: '' },
-      { text: 'Trail Codes (3)', link: '' },
-      { text: 'Posting Groups (9)', link: '' },
-    ],
-  },
-];
+      {
+        title: 'General Ledger (11)',
+        isOpen: false,
+        items: [
+          { text: 'Chart of Accounts', link: '' },
+          {
+            text: 'G/L Budgets', link: '/gl-budget',
+            isOpen: false,
+            subItems: [
+              { text: 'Trial Balance', link: '/trial-balance' },
+              { text: 'Budget', link: '/budget' },
+              { text: 'Balance Sheet', link: '/balance-sheet' },
+              { text: 'Cash Flow Statement', link: '/cash-flow-statement' }
+            ]
+          },
+          { text: 'Account Schedules', link: '' },
+          { text: 'Analysis by Dimensions', link: '' },
+          { text: 'GST (3)', link: '' },
+          { text: 'Intercompany (6)', link: '' },
+          { text: 'Consolidation (3)', link: '' },
+          { text: 'Journals (4)', link: '' },
+          { text: 'Register/Entries (8)', link: '' },
+          { text: 'Reports (4)', link: '' },
+          { text: 'Setup (6)', link: '' },
+        ],
+      },
+      {
+        title: 'Cash Management (9)',
+        isOpen: false,
+        items: [
+          { text: 'Bank Accounts', link: '' },
+          { text: 'Receivables-Payables', link: '' },
+          { text: 'Payment Registration', link: '' },
+          { text: 'Cash Flow (5)', link: '/cash-flow-statement' },
+          { text: 'Reconciliation (3)', link: '' },
+          { text: 'Journals (3)', link: '' },
+          { text: 'Ledger Entries (3)', link: '' },
+          { text: 'Reports (8)', link: '' },
+          { text: 'Setup (7)', link: '' },
+        ],
+      },
+      {
+        title: 'Cost Accounting (9)',
+        isOpen: false,
+        items: [
+          { text: 'Chart of Cost Centers', link: '' },
+          { text: 'Chart of Cost Objects', link: '' },
+          { text: 'Chart of Cost Types', link: '' },
+          { text: 'Cost Allocations', link: '' },
+          { text: 'Cost Budgets', link: '' },
+          { text: 'Cost Journals', link: '' },
+          { text: 'Registers (2)', link: '' },
+          { text: 'Reports (4)', link: '' },
+          { text: 'Setup (2)', link: '' },
+        ],
+      },
+      {
+        title: 'Receivables (13)',
+        isOpen: false,
+        items: [
+          { text: 'Customers', link: '' },
+          { text: 'Sales Invoices', link: '' },
+          { text: 'Sales Credit Memos', link: '' },
+          { text: 'Direct Debit Collections', link: '' },
+          { text: 'Create Recurring Sales Invoices', link: '' },
+          { text: 'Register Customer Payments', link: '' },
+          { text: 'Combine (2)', link: '' },
+          { text: 'Collection (4)', link: '' },
+          { text: 'Journals (2)', link: '' },
+          { text: 'Posted Documents (4)', link: '' },
+          { text: 'Registers/Entries (4)', link: '' },
+          { text: 'Reports (20)', link: '' },
+          { text: 'Setup (5)', link: '' },
+        ],
+      },
+      {
+        title: 'Payables (9)',
+        isOpen: false,
+        items: [
+          { text: 'Vendors', link: '' },
+          { text: 'Purchase Invoices', link: '' },
+          { text: 'Purchase Credit Memos', link: '' },
+          { text: 'Incoming Documents', link: '' },
+          { text: 'Journals (2)', link: '' },
+          { text: 'Posted Documents (4)', link: '' },
+          { text: 'Registers/Entries (5)', link: '' },
+          { text: 'Reports (16)', link: '' },
+          { text: 'Setup (1)', link: '' },
+        ],
+      },
+      {
+        title: 'Fixed Assets (9)',
+        isOpen: false,
+        items: [
+          { text: 'Fixed Assets', link: '' },
+          { text: 'Insurance', link: '' },
+          { text: 'Calculate Depreciation...', link: '' },
+          { text: 'Index Fixed Assets...', link: '' },
+          { text: 'Index Insurance...', link: '' },
+          { text: 'Journals (6)', link: '' },
+          { text: 'Reports (3)', link: '' },
+          { text: 'Registers/Entries (5)', link: '' },
+          { text: 'Setup (11)', link: '' },
+        ],
+      },
+      {
+        title: 'Setup (11)',
+        isOpen: false,
+        items: [
+          { text: 'General Posting Setup', link: '' },
+          { text: 'Incoming Documents Setup', link: '' },
+          { text: 'Accounting Periods', link: '' },
+          { text: 'Standard Text Codes', link: '' },
+          { text: 'No. Series', link: '' },
+          { text: 'GST (5)', link: '' },
+          { text: 'Intrastat (8)', link: '' },
+          { text: 'Intercompany (4)', link: '' },
+          { text: 'Dimensions (4)', link: '' },
+          { text: 'Trail Codes (3)', link: '' },
+          { text: 'Posting Groups (9)', link: '' },
+        ],
+      },
+    ];
 
     const filteredAccordion = computed(() => {
       const normalizedSearchText = searchText.value.toLowerCase().trim();
       return accordionItems.map((item) => {
         const items = item.items.map((subItem) => {
           const isHighlighted = subItem.text.toLowerCase().includes(normalizedSearchText);
-          return { ...subItem, isHighlighted };
+          if (isHighlighted) {
+            return { ...subItem, isHighlighted };
+          } else if (subItem.subItems && subItem.subItems.length > 0) {
+            const subItems = subItem.subItems.map((innerSubItem) => {
+              const isInnerHighlighted = innerSubItem.text.toLowerCase().includes(normalizedSearchText);
+              return { ...innerSubItem, isHighlighted: isInnerHighlighted };
+            });
+            const isInnerHighlighted = subItems.some((innerSubItem) => innerSubItem.isHighlighted);
+            return { ...subItem, subItems, isOpen: true, isHighlighted: isInnerHighlighted }; // Set isOpen to true here
+          }
+          return subItem;
         });
         const isOpen = items.some((subItem) => subItem.isHighlighted);
         return { ...item, items, isOpen };
       });
     });
-    
+
+
 
     // Toggle accordion item
-    const toggleAccordionItem = (index) => {
-      accordionItems[index].isOpen = !accordionItems[index].isOpen;
-    };
+    const toggleAccordionItem = (index, subIndex = null) => {
+  if (subIndex !== null) {
+    accordionItems[index].items[subIndex].isOpen = !accordionItems[index].items[subIndex].isOpen;
+  } else {
+    accordionItems[index].isOpen = !accordionItems[index].isOpen;
+  }
+};
 
     // Filter accordion items based on search text
     const filterAccordion = () => {
@@ -358,7 +382,8 @@ export default {
           </template>
 
           <b-dropdown-item>Chart of Accounts </b-dropdown-item>
-          <b-dropdown-item><router-link to="/gl-budget" class="router-link-active">G/L Budgets</router-link></b-dropdown-item>
+          <b-dropdown-item><router-link to="/gl-budget" class="router-link-active">G/L
+              Budgets</router-link></b-dropdown-item>
           <b-dropdown-item>Account Schedules </b-dropdown-item>
           <b-dropdown-item>Analysis by Dimensions</b-dropdown-item>
           <b-dropdown-item>GST (3)</b-dropdown-item>
@@ -424,48 +449,71 @@ export default {
       </div>
 
       <div class="d-flex">
-        <button @click="isOpen = true" class="btn btn-black btn-md header-item noti-icon dropdown-toggle show" type="button">
-      <div class="btn-content"><i class="mdi mdi-magnify"></i></div>
-    </button>
-    <b-modal v-model="isOpen" id="modal-search" title-class="font-18" hide-footer title="Search">
-      <div>
-        <form class="app-search">
-          <div class="position-relative">
-            <input v-model="searchText" @input="filterAccordion" type="text" class="form-control" placeholder="Search..." />
-            <span class="bx bx-search-alt"></span>
-          </div>
-        </form>
-        <!-- Accordion -->
-        <div class="accordion" id="accordionPanelsStayOpenExample">
-          <div class="accordion-item" v-for="(item, index) in filteredAccordion" :key="index">
-            <h2 class="accordion-header" :id="'panelsStayOpen-heading-' + index">
-              <button
-                class="accordion-button"
-                type="button"
-                :class="{ 'collapsed': !item.isOpen }"
-                data-bs-toggle="collapse"
-                :data-bs-target="'#panelsStayOpen-collapse' + index"
-                :aria-expanded="item.isOpen"
-                :aria-controls="'panelsStayOpen-collapse' + index"
-                @click="toggleAccordionItem(index)"
-              >
-                {{ item.title }}
-              </button>
-            </h2>
-            <div :id="'panelsStayOpen-collapse' + index" class="accordion-collapse collapse" :class="{ 'show': item.isOpen }"
-              :aria-labelledby="'panelsStayOpen-heading-' + index">
-              <div class="accordion-body">
-                <ul>
-                  <li v-for="(subItem, subIndex) in item.items" :key="subIndex" :class="{ 'highlighted': searchText && subItem.isHighlighted }">
-    <router-link :to="subItem.link">{{ subItem.text }}</router-link>
-  </li>
-                </ul>
+        <button @click="isOpen = true" class="btn btn-black btn-md header-item noti-icon dropdown-toggle show"
+          type="button">
+          <div class="btn-content"><i class="mdi mdi-magnify"></i></div>
+        </button>
+        <b-modal v-model="isOpen" id="modal-search" title-class="font-18" hide-footer title="Search">
+          <div>
+            <form class="app-search">
+              <div class="position-relative">
+                <input v-model="searchText" @input="filterAccordion" type="text" class="form-control"
+                  placeholder="Search..." />
+                <span class="bx bx-search-alt"></span>
+              </div>
+            </form>
+            <!-- Accordion -->
+            <!-- Accordion -->
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+              <div class="accordion-item" v-for="(item, index) in filteredAccordion" :key="index">
+                <h2 class="accordion-header" :id="'panelsStayOpen-heading-' + index">
+                  <button class="accordion-button" type="button" :class="{ 'collapsed': !item.isOpen }"
+                    data-bs-toggle="collapse" :data-bs-target="'#panelsStayOpen-collapse' + index"
+                    :aria-expanded="item.isOpen" :aria-controls="'panelsStayOpen-collapse' + index"
+                    @click="toggleAccordionItem(index)">
+                    {{ item.title }}
+                  </button>
+                </h2>
+                <div :id="'panelsStayOpen-collapse' + index" class="accordion-collapse collapse"
+                  :class="{ 'show': item.isOpen }" :aria-labelledby="'panelsStayOpen-heading-' + index">
+                  <div class="accordion-body">
+                    <ul>
+                      <li v-for="(subItem, subIndex) in item.items" :key="subIndex"
+                        :class="{ 'highlighted': searchText && subItem.isHighlighted }">
+                        <template v-if="subItem.subItems && subItem.subItems.length > 0">
+                          <button class="accordion-button pt-0 ps-0" type="button"
+                            :class="{ 'collapsed': !subItem.isOpen }" data-bs-toggle="collapse"
+                            :data-bs-target="'#subitem-collapse-' + subIndex" :aria-expanded="subItem.isOpen"
+                            :aria-controls="'subitem-collapse-' + subIndex" @click="toggleAccordionItem(subIndex)">
+                            {{ subItem.text }}
+                          </button>
+                          <div :id="'subitem-collapse-' + subIndex" class="accordion-collapse collapse"
+                            :class="{ 'show': subItem.isOpen }" :aria-labelledby="'subitem-heading-' + subIndex"
+                            >
+                            <div class="accordion-body pb-2">
+                              <ul class="mb-0">
+                                <li v-for="(innerSubItem, innerSubIndex) in subItem.subItems"
+                                  :key="'innerSubItem-' + innerSubIndex"
+                                  :class="{ 'highlighted': searchText && innerSubItem.isHighlighted }">
+                                  <router-link :to="innerSubItem.link">{{ innerSubItem.text }}</router-link>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+
+                        </template>
+                        <template v-else>
+                          <router-link :to="subItem.link">{{ subItem.text }}</router-link>
+                        </template>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
+
           </div>
-        </div>
-      </div>
-    </b-modal>
+        </b-modal>
         <div class="dropdown d-inline-block d-none">
           <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">

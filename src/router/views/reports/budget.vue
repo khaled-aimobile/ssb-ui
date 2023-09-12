@@ -51,7 +51,7 @@ export default {
             </nav>
         </div>
         <div class="filters">
-            <h5>Print Settings</h5>
+            <!-- <h5>Print Settings</h5>
             <b-row class="mb-3">
                 <b-col sm="3">
                     Selected Printer:
@@ -101,7 +101,7 @@ export default {
                         </template>
                     </Multiselect>
                 </b-col>
-            </b-row>
+            </b-row> -->
             <h5>Options</h5>
             <b-row class="mb-2">
                 <b-col sm="3">

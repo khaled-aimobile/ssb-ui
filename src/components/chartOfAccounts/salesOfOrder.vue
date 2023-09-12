@@ -7,7 +7,7 @@
         </template>
         <b-dropdown-item><download-excel :data="data">
             Excel
-          </download-excel></b-dropdown-item>
+          </download-excel></b-dropdown-item> 
         <b-dropdown-item @click="generatePDF()">PDF</b-dropdown-item>
       </b-dropdown>
       <!-- <button @click="toggleForm" class="btn btn-success mb-2 me-2">Add Item</button> -->
@@ -22,7 +22,8 @@
         <Table :fields="fields" :tableData="data" />
       </template>
     </vue3-html2pdf>
-    <Table :fields="fields" :tableData="data" add-title="Add Item" add="Add Item" edit-title="Edit Item"
+    
+    <Table :fields="fields" :tableData="data" :showSearchPagination="true" add-title="Add Item" add="Add Item" edit-title="Edit Item"
       @delete-item="deleteItem" />
     <b-modal v-model="myInfo" id="modal-info" class="green-header" centered title-class="font-18" hide-footer
       title="Notes +">
@@ -49,10 +50,10 @@ export default {
     const myInfo = ref(false);
     const data = ref([
       { id: 1, no: "SM10/0001", customerno: "IPLB0007", name: 'KUNAK REFINERY SDN BHD (BSSB)', externaldoc: '17,895', documentdate: "16/06/2010", assign: "", locationcode: "", status: "Open", completeshipped: "", amountshipped: "0", amountshippednot: '0.00', amount: "0.00", amountgst: "0.00" },
-      { id: 2, no: "SM10/0002", customerno: "IPLB0007", name: 'KUNAK REFINERY SDN BHD (BSSB)', externaldoc: '7,895', documentdate: "16/06/2010", assign: "", locationcode: "", status: "Open", completeshipped: "", amountshipped: "0", amountshippednot: '0.00', amount: "0.00", amountgst: "0.00" },
-      { id: 3, no: "SM10/0003", customerno: "IPLB0007", name: 'KUNAK REFINERY SDN BHD (BSSB)', externaldoc: '19,895', documentdate: "16/06/2010", assign: "", locationcode: "", status: "Open", completeshipped: "", amountshipped: "0", amountshippednot: '0.00', amount: "0.00", amountgst: "0.00" },
-      { id: 4, no: "SM10/0004", customerno: "IPLB0007", name: 'KUNAK REFINERY SDN BHD (BSSB)', externaldoc: '17,895', documentdate: "16/06/2010", assign: "", locationcode: "", status: "Open", completeshipped: "", amountshipped: "0", amountshippednot: '0.00', amount: "0.00", amountgst: "0.00" },
-      { id: 5, no: "SM10/0005", customerno: "IPLB0007", name: 'NUNAK REFINERY SDN BHD (BSSB)', externaldoc: '7,895', documentdate: "16/06/2010", assign: "", locationcode: "", status: "Open", completeshipped: "", amountshipped: "0", amountshippednot: '0.00', amount: "0.00", amountgst: "0.00" }
+      { id: 2, no: "SM10/0002", customerno: "IPLB0008", name: 'KUNAK REFINERY SDN BHD (BSSB)', externaldoc: '7,895', documentdate: "16/06/2010", assign: "", locationcode: "", status: "Open", completeshipped: "", amountshipped: "0", amountshippednot: '0.00', amount: "0.00", amountgst: "0.00" },
+      { id: 3, no: "SM10/0003", customerno: "IPLB0009", name: 'KUNAK REFINERY SDN BHD (BSSB)', externaldoc: '19,895', documentdate: "16/06/2010", assign: "", locationcode: "", status: "Open", completeshipped: "", amountshipped: "0", amountshippednot: '0.00', amount: "0.00", amountgst: "0.00" },
+      { id: 4, no: "SM10/0004", customerno: "IPLB0010", name: 'KUNAK REFINERY SDN BHD (BSSB)', externaldoc: '17,895', documentdate: "16/06/2010", assign: "", locationcode: "", status: "Open", completeshipped: "", amountshipped: "0", amountshippednot: '0.00', amount: "0.00", amountgst: "0.00" },
+      { id: 5, no: "SM10/0005", customerno: "IPLB0011", name: 'NUNAK REFINERY SDN BHD (BSSB)', externaldoc: '7,895', documentdate: "16/06/2010", assign: "", locationcode: "", status: "Open", completeshipped: "", amountshipped: "0", amountshippednot: '0.00', amount: "0.00", amountgst: "0.00" }
     ]);
 
     const formData = ref({

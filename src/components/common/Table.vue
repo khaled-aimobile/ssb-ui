@@ -3,7 +3,9 @@
     <!-- Display Table or Edit/Add Form -->
     <div v-if="isTableView">
       <!-- Table -->
-      <b-form-input v-model="searchText" type="text" class="mb-2 mt-2 search-table" placeholder="Search here..."></b-form-input>
+      <div v-if="showSearchPagination">
+        <b-form-input v-model="searchText" type="text" class="mb-2 mt-2 search-table" placeholder="Search here..."></b-form-input>
+      </div>
       <button class="btn btn-success mb-2 export" @click="showAddForm" v-if="add">{{ add }}</button>
        <!-- <button class="btn btn-success mb-2 export">Add Item</button> -->
     <b-table id="my-table" striped hover :fields="fields" :items="paginatedData" :per-page="perPage" :current-page="currentPage"
@@ -26,7 +28,7 @@
         </template>
       </b-table>
       <!-- Table Pagination -->
-      <div class="custom-pagination">
+      <div class="custom-pagination" v-if="showSearchPagination">
     <pagination
       :pageCount="pageCount"
       @set-currentpage="setCurrentPage"
@@ -86,7 +88,8 @@ export default {
     fields: Array,
     addTitle: String,  
     editTitle: String,
-    add: String
+    add: String,
+    showSearchPagination: Boolean,
   },
   setup(props) {
 
@@ -108,13 +111,15 @@ export default {
 
   const showEditForm = () => {
     isAdding.value = false;
-    isEditing.value = true;
+    isEditing.value = true; 
   };
 
     const data = ref(props.tableData);
     const filteredData = computed(() => {
   return state.data.filter((item) =>
-    item.name.toLowerCase().includes(searchText.value.toLowerCase())
+    item.no.toLowerCase().includes(searchText.value.toLowerCase()) ||
+    item.name.toLowerCase().includes(searchText.value.toLowerCase()) ||
+    item.customerno.toLowerCase().includes(searchText.value.toLowerCase())
   );
 });
     const state = reactive({

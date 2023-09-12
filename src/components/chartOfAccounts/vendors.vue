@@ -22,7 +22,7 @@
         <Table :fields="fields" :tableData="data" />
     </template>
     </vue3-html2pdf>
-    <Table :fields="fields" :tableData="data" add-title="Add Item" add="Add Item"
+    <Table :fields="fields" :tableData="data" :showSearchPagination="true" add-title="Add Item" add="Add Item"
       edit-title="Edit Item" @delete-item="deleteItem" />
     <b-modal v-model="myInfo" id="modal-info" class="green-header" centered title-class="font-18" hide-footer
       title="Notes +">

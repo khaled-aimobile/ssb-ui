@@ -142,9 +142,9 @@ export default {
                     </Multiselect>
                 </b-col>
             </b-row>
-            <h5>Filter Purchase Invoice</h5>
             <b-row>
                 <b-col sm="3">
+                    <h5>Filter Purchase Invoice</h5>
                     No.
                     <Multiselect class="multi-table mb-3" v-model="value"  track-by="name" label="name"
                         :close-on-select="false" :searchable="true" :options="[
@@ -166,10 +166,8 @@ export default {
                         </template>
                     </Multiselect>
                 </b-col>
-            </b-row>
-            <h5>Filter totals by</h5>
-            <b-row>
                 <b-col sm="3">
+                    <h5>Filter totals by</h5>
                    Date Filter
                    <VueDatePicker v-model="date"></VueDatePicker>
                 </b-col>
