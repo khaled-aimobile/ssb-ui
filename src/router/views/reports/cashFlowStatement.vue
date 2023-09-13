@@ -163,7 +163,7 @@ export default {
                 pdf-content-width="800px" @progress="onProgress($event)" ref="html2Pdf">
                 <template v-slot:pdf-content>
                     <cash-flow-statement />
-                </template>
+                </template> 
             </vue3-html2pdf>
         </div>
     </Layout>
