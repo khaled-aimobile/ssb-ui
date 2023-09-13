@@ -8,6 +8,7 @@
       </div>
       <button class="btn btn-success mb-2 export" @click="showAddForm" v-if="add">{{ add }}</button>
        <!-- <button class="btn btn-success mb-2 export">Add Item</button> -->
+       <div class="custom-table">
     <b-table id="my-table" striped hover :fields="fields" :items="paginatedData" :per-page="perPage" :current-page="currentPage"
         class="table-green">
         <!-- Name Column -->
@@ -27,6 +28,7 @@
           <button @click="showDeleteConfirmation(data.item)" class="btn btn-sm btn-danger">Delete</button>
         </template>
       </b-table>
+    </div>
       <!-- Table Pagination -->
       <div class="custom-pagination" v-if="showSearchPagination">
     <pagination

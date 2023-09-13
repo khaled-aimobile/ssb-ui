@@ -574,3 +574,39 @@ a{
 .add-item-footer{
     text-align: right;
 }
+
+//custom-table
+.custom-table{
+    table{
+        width: 100%;
+    }
+    @include lg{
+        overflow-x: auto;
+    }
+}
+
+//report-table
+.report-table{
+    tr{
+        th,td{
+            padding: 5px 0;
+            &.border-bottom{
+                border-color: $grey !important;
+            }
+        }
+        td{
+            p{
+                margin-bottom: 0;
+            }
+        }
+    }
+    .balance-table{
+        max-width: 700px;
+        td, th{
+            vertical-align: top;
+            &:last-child{
+                text-align: right;
+            }
+        }
+    }
+}
