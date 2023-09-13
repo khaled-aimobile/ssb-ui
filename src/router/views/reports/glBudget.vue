@@ -52,15 +52,15 @@ export default {
             <b-row>
                 <b-col sm="3">
                     No.
-                    <Multiselect class="mb-3" v-model="value" :options="options" />
+                    <Multiselect  v-model="value" :options="options" />
                 </b-col>
                 <b-col sm="3">
                     Search Name
-                    <Multiselect class="mb-3" v-model="value" :options="options" />
+                    <Multiselect  v-model="value" :options="options" />
                 </b-col>
                 <b-col sm="3">
                     Income Balance
-                    <Multiselect class="mb-3" v-model="value" :options="options" />
+                    <Multiselect  v-model="value" :options="options" />
                 </b-col>
                 <b-col sm="3">
                     Debit/Credit
@@ -90,12 +90,12 @@ export default {
                 <b-col sm="3">
                     <h5>Filter Purchase Invoice</h5>
                     No.
-                    <Multiselect class="mb-3" v-model="value" :options="options" />
+                    <Multiselect  v-model="value" :options="options" />
                 </b-col>
                 <b-col sm="3">
                     <h5>Filter totals by</h5>
                     Date Filter
-                    <Multiselect class="mb-3" v-model="value" :options="options" />
+                    <Multiselect  v-model="value" :options="options" />
                 </b-col>
             </b-row>
             <div>

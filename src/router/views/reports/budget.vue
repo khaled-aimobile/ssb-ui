@@ -3,6 +3,8 @@ import Layout from "../../layouts/main";
 import appConfig from "@/app.config";
 import Multiselect from '@vueform/multiselect'
 import VueDatePicker from '@vuepic/vue-datepicker';
+import Vue3Html2pdf from "vue3-html2pdf";
+import Budget from '../../../components/report/view/budget.vue'
 
 export default {
     setup() {
@@ -23,7 +25,9 @@ export default {
     components: {
         Layout,
         Multiselect,
-        VueDatePicker
+        VueDatePicker,
+        Vue3Html2pdf,
+        Budget
     },
     data() {
         return {
@@ -38,7 +42,15 @@ export default {
         };
     },
     methods: {
-
+        onProgress(event) {
+            console.log(`Processed: ${event} / 100`);
+        },
+        hasGenerated() {
+            alert("PDF generated successfully!");
+        },
+        generatePDF() {
+            this.$refs.html2Pdf.generatePdf();
+        },
     }
 };
 </script>
@@ -52,7 +64,7 @@ export default {
         </div>
         <div class="filters">
             <!-- <h5>Print Settings</h5>
-            <b-row class="mb-3">
+            <b-row class="">
                 <b-col sm="3">
                     Selected Printer:
                     <Multiselect class="multi-table" v-model="value"  track-by="name" label="name"
@@ -78,7 +90,7 @@ export default {
             </b-row>
             <h5>Saved Settings</h5>
             <p class="mb-0">Change to the options and filters below will be saved only to: 'Last used options and filters'</p>
-            <b-row class="mb-3">
+            <b-row class="">
                 <b-col sm="3">
                     Use default values from:
                     <Multiselect class="multi-table" v-model="value"  track-by="name" label="name"
@@ -110,7 +122,7 @@ export default {
                 </b-col>
                 <b-col sm="3">
                    Period Length
-                   <Multiselect class="multi-table mb-3" v-model="value"  track-by="name" label="name"
+                   <Multiselect class="multi-table " v-model="value"  track-by="name" label="name"
                         :close-on-select="false" :searchable="true" :options="[
                             { value: '100', name: 'Year' },
                             { value: '101', name: 'Month' },
@@ -140,7 +152,7 @@ export default {
             <b-row class="mb-2">
                 <b-col sm="3">
                    No.
-                   <Multiselect class="multi-table mb-3" v-model="value"  track-by="name" label="name"
+                   <Multiselect class="multi-table " v-model="value"  track-by="name" label="name"
                         :close-on-select="false" :searchable="true" :options="[
                             { value: '101', name: '1' },
                             { value: '102', name: '2' },
@@ -162,7 +174,7 @@ export default {
                 </b-col>
                 <b-col sm="3">
                    Account Type
-                   <Multiselect class="multi-table mb-3" v-model="value"  track-by="name" label="name"
+                   <Multiselect class="multi-table " v-model="value"  track-by="name" label="name"
                         :close-on-select="false" :searchable="true" :options="[
                             { value: '101', name: 'Vendor' },
                             { value: '102', name: 'Customer' },
@@ -255,10 +267,21 @@ export default {
             </b-row>
             <div class="mt-3">
                 <b-button variant="success" class="me-2">Send to..</b-button>
-                <b-button variant="success" class="me-2">Preview</b-button>
+                <b-button variant="success" class="me-2" @click="generatePDF()">Preview</b-button>
                 <b-button variant="success" class="me-2">Print</b-button>
                 <!-- <b-button variant="secondary">Cancel</b-button> -->
             </div>
+        </div>
+        <div class="report-view">
+            <Budget />
+            <vue3-html2pdf :show-layout="false" :float-layout="true" :enable-download="true" :preview-modal="true"
+                :paginate-elements-by-height="1400" filename="nightprogrammerpdf" :pdf-quality="2"
+                :manual-pagination="false" pdf-format="a4" :pdf-margin="10" pdf-orientation="portrait"
+                pdf-content-width="800px" @progress="onProgress($event)" ref="html2Pdf">
+                <template v-slot:pdf-content>
+                    <Budget />
+                </template>
+            </vue3-html2pdf>
         </div>
     </Layout>
 </template>

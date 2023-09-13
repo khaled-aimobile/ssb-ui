@@ -55,7 +55,7 @@ export default {
             <b-row>
                 <b-col sm="3">
                    No.
-                   <Multiselect class="multi-table mb-3" v-model="value"  track-by="name" label="name"
+                   <Multiselect class="multi-table" v-model="value"  track-by="name" label="name"
                         :close-on-select="false" :searchable="true" :options="[
                             { value: '101', name: '1' },
                             { value: '102', name: '2' },
@@ -146,7 +146,7 @@ export default {
                 <b-col sm="3">
                     <h5>Filter Purchase Invoice</h5>
                     No.
-                    <Multiselect class="multi-table mb-3" v-model="value"  track-by="name" label="name"
+                    <Multiselect class="multi-table" v-model="value"  track-by="name" label="name"
                         :close-on-select="false" :searchable="true" :options="[
                             { value: '101', name: '1' },
                             { value: '102', name: '2' },

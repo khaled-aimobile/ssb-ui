@@ -43,14 +43,14 @@ export default {
     },
     methods: {
         onProgress(event) {
-      console.log(`Processed: ${event} / 100`);
-    },
-    hasGenerated() {
-      alert("PDF generated successfully!");
-    },
-    generatePDF() {
-      this.$refs.html2Pdf.generatePdf();
-    },
+            console.log(`Processed: ${event} / 100`);
+        },
+        hasGenerated() {
+            alert("PDF generated successfully!");
+        },
+        generatePDF() {
+            this.$refs.html2Pdf.generatePdf();
+        },
     }
 };
 </script>
@@ -150,7 +150,7 @@ export default {
             </b-row>
             <div class="mt-3">
                 <b-button variant="success" class="me-2">Send to..</b-button>
-                <b-button variant="success" class="me-2"  @click="generatePDF()">Preview</b-button>
+                <b-button variant="success" class="me-2" @click="generatePDF()">Preview</b-button>
                 <b-button variant="success" class="me-2">Print</b-button>
                 <!-- <b-button variant="secondary">Cancel</b-button> -->
             </div>
@@ -158,12 +158,12 @@ export default {
         <div class="report-view">
             <balance-sheet />
             <vue3-html2pdf :show-layout="false" :float-layout="true" :enable-download="true" :preview-modal="true"
-      :paginate-elements-by-height="1400" filename="nightprogrammerpdf" :pdf-quality="2" :manual-pagination="false"
-      pdf-format="a4" :pdf-margin="10" pdf-orientation="portrait" pdf-content-width="800px" @progress="onProgress($event)"
-      ref="html2Pdf">
-      <template v-slot:pdf-content>
-            <balance-sheet />
-        </template>
+                :paginate-elements-by-height="1400" filename="nightprogrammerpdf" :pdf-quality="2"
+                :manual-pagination="false" pdf-format="a4" :pdf-margin="10" pdf-orientation="portrait"
+                pdf-content-width="800px" @progress="onProgress($event)" ref="html2Pdf">
+                <template v-slot:pdf-content>
+                    <balance-sheet />
+                </template>
             </vue3-html2pdf>
         </div>
     </Layout>
