@@ -143,5 +143,8 @@ export default {
                 <!-- <b-button variant="secondary">Cancel</b-button> -->
             </div>
         </div>
+        <div class="report-view">
+            <balance-sheet />
+        </div>
     </Layout>
 </template>

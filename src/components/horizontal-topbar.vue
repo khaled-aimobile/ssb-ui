@@ -20,9 +20,10 @@ export default {
         items: [
           { text: 'Chart of Accounts', link: '' },
           {
-            text: 'G/L Budgets', link: '/gl-budget',
+            text: 'Budgets', link: '',
             isOpen: false,
             subItems: [
+              {text: 'G/L Budgets', link: '/gl-budget'},
               { text: 'Trial Balance', link: '/trial-balance' },
               { text: 'Budget', link: '/budget' },
               { text: 'Balance Sheet', link: '/balance-sheet' },
