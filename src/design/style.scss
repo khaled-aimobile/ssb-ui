@@ -781,6 +781,18 @@ a {
                 }
             }
         }
+        &.trial-table{
+            th{
+                padding-top: 15px;
+            }
+            td{
+                &.td-bg{
+                    text-align: center;
+                    background-color: rgba($grey, 0.1);
+                    font-weight: 700;
+                }
+            }
+        }
     }
 
 }

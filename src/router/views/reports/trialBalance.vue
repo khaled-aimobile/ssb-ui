@@ -3,6 +3,8 @@ import Layout from "../../layouts/main";
 import appConfig from "@/app.config";
 import Multiselect from '@vueform/multiselect'
 import VueDatePicker from '@vuepic/vue-datepicker';
+import Vue3Html2pdf from "vue3-html2pdf";
+import TrialBalance from '../../../components/report/view/trialBalance.vue'
 
 export default {
     setup() {
@@ -23,7 +25,9 @@ export default {
     components: {
         Layout,
         Multiselect,
-        VueDatePicker
+        VueDatePicker,
+        Vue3Html2pdf,
+        TrialBalance
     },
     data() {
         return {
@@ -38,7 +42,15 @@ export default {
         };
     },
     methods: {
-
+        onProgress(event) {
+            console.log(`Processed: ${event} / 100`);
+        },
+        hasGenerated() {
+            alert("PDF generated successfully!");
+        },
+        generatePDF() {
+            this.$refs.html2Pdf.generatePdf();
+        },
     }
 };
 </script>
@@ -174,9 +186,20 @@ export default {
             </b-row>
             <div class="mt-3">
                 <b-button variant="success" class="me-2">Send to..</b-button>
-                <b-button variant="success" class="me-2">Preview</b-button>
+                <b-button variant="success" class="me-2" @click="generatePDF()">Preview</b-button>
                 <b-button variant="success" class="me-2">Print</b-button>
             </div>
         </div>
-    </Layout>
+        <div class="report-view">
+            <trial-balance />
+            <vue3-html2pdf :show-layout="false" :float-layout="true" :enable-download="true" :preview-modal="true"
+                :paginate-elements-by-height="1400" filename="nightprogrammerpdf" :pdf-quality="2"
+                :manual-pagination="false" pdf-format="a4" :pdf-margin="10" pdf-orientation="portrait"
+                pdf-content-width="800px" @progress="onProgress($event)" ref="html2Pdf">
+                <template v-slot:pdf-content>
+                    <trial-balance />
+                </template>
+            </vue3-html2pdf>
+        </div>
+    </Layout> 
 </template>
