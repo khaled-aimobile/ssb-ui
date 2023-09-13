@@ -10,12 +10,14 @@ export const menuItems = [
                 label: 'Charts of Accounts',
                 //link: '/charts-of-accounts',
                 link: '/',
+                class: '',
                 parentId: 221
             },
             {
                 id: 223,
                 label: 'Vendors',
                 link: '/vendors',
+                class: 'green',
                 parentId: 221
             },
             {
@@ -23,6 +25,7 @@ export const menuItems = [
                 label: 'Purchase Orders',
                 //link: '/purchase-orders',
                 link: '/',
+                class: '',
                 parentId: 221
             },
             {
@@ -30,6 +33,7 @@ export const menuItems = [
                 label: 'Budgets',
                 //link: '/budgets',
                 link: '/',
+                class: '',
                 parentId: 221
             },
             {
@@ -37,6 +41,7 @@ export const menuItems = [
                 label: 'Bank Accounts',
                 //link: '/bank-accounts',
                 link: '/',
+                class: '',
                 parentId: 221
             },
             {
@@ -44,6 +49,7 @@ export const menuItems = [
                 label: 'GST Statements',
                 //link: '/gst-statements',
                 link: '/',
+                class: '',
                 parentId: 221
             },
             {
@@ -51,6 +57,7 @@ export const menuItems = [
                 label: 'Items',
                 //link: '/items',
                 link: '/',
+                class: '',
                 parentId: 221
             },
             {
@@ -58,12 +65,14 @@ export const menuItems = [
                 label: 'Customers',
                 //link: '/customers',
                 link: '/',
+                class: '',
                 parentId: 221
             },
             {
                 id: 230,
                 label: 'Sales Orders',
                 link: '/sales-orders',
+                class: 'green',
                 parentId: 221
             },
             {
@@ -71,6 +80,7 @@ export const menuItems = [
                 label: 'Reminders',
                 //link: '/reminders',
                 link: '/',
+                class: '',
                 parentId: 221
             },
             {
@@ -78,6 +88,7 @@ export const menuItems = [
                 label: 'Finance Charge Memos',
                 //link: '/finance-charge-memos',
                 link: '/',
+                class: '',
                 parentId: 221
             },
             {
@@ -85,6 +96,7 @@ export const menuItems = [
                 label: 'Incoming Documents',
                 //link: '/incoming-documents',
                 link: '/',
+                class: '',
                 parentId: 221
             },
             {
@@ -92,16 +104,19 @@ export const menuItems = [
                 label: 'EC Sales List',
                 //link: '/ec-sales-list',
                 link: '/',
+                class: '',
                 parentId: 221
             },
             {
                 id: 235,
                 label: '',
+                class: '',
                 parentId: 221
             },
             {
                 id: 235,
                 label: '',
+                class: '',
                 parentId: 221
             },
         ]
@@ -115,42 +130,49 @@ export const menuItems = [
                 id: 2,
                 label: 'Purchase Journals',
                 link: '',
+                class: '',
                 parentId: 1
             },
             {
                 id: 3,
                 label: 'Sales Journals',
                 link: '',
+                class: '',
                 parentId: 1
             },
             {
                 id: 4,
                 label: 'Cash Receipt Journals',
                 link: '',
+                class: '',
                 parentId: 1
             },
             {
                 id: 5,
                 label: 'Payment Journals',
                 link: '',
+                class: '',
                 parentId: 1
             },
             {
                 id: 6,
                 label: 'IC General Journals',
                 link: '',
+                class: '',
                 parentId: 1
             },
             {
                 id: 7,
                 label: 'General Journals',
                 link: '',
+                class: '',
                 parentId: 1
             },
             {
                 id: 8,
                 label: 'Intrastat Journals',
                 link: '',
+                class: '',
                 parentId: 1
             },
         ]
@@ -165,48 +187,56 @@ export const menuItems = [
                 id: 7,
                 label: 'Fixed Assets',
                 link: '',
+                class: '',
                 parentId: 6
             },
             {
                 id: 8,
                 label: 'Fixed Assets G/L Journals',
                 link: '',
+                class: '',
                 parentId: 6
             },
             {
                 id: 9,
                 label: 'Fixed Assets Reclass. Journals',
                 link: '',
+                class: '',
                 parentId: 6
             },
             {
                 id: 10,
                 label: 'Recurring General Journals',
                 link: '',
+                class: '',
                 parentId: 6
             },
             {
                 id: 11,
                 label: 'Insurance',
                 link: '',
+                class: '',
                 parentId: 6
             },
             {
                 id: 12,
                 label: 'Fixed Assets Journals',
                 link: '',
+                class: '',
                 parentId: 6
             },
             {
                 id: 13,
                 label: 'Insurance Journals',
                 link: '',
+                class: '',
                 parentId: 6
             },
             {
                 id: 14,
                 label: 'Recurring Fixed Assets Journals',
                 link: '',
+                class: '',
                 parentId: 6
             },
         ]
@@ -220,24 +250,28 @@ export const menuItems = [
                 id: 26,
                 label: 'Cash Flow Forecast',
                 link: '',
+                class: '',
                 parentId: 25
             },
             {
                 id: 27,
                 label: 'Chart of Cash Flow Accounts',
                 link: '',
+                class: '',
                 parentId: 25
             },
             {
                 id: 28,
                 label: "Cash Flow Manual Revenues",
                 link: "#",
+                class: '',
                 parentId: 25
             },
             {
                 id: 29,
                 label: 'Cash Flow Manual Expenses',
                 link: '',
+                class: '',
                 parentId: 25
             },
         ]
@@ -251,30 +285,35 @@ export const menuItems = [
                 id: 72,
                 label: 'Cost Types',
                 link: '',
+                class: '',
                 parentId: 70
             },
             {
                 id: 73,
                 label: 'Cost Centers',
                 link: '',
+                class: '',
                 parentId: 70
             },
             {
                 id: 74,
                 label: 'Cost Objects',
                 link: '',
+                class: '',
                 parentId: 70
             },
             {
                 id: 75,
                 label: 'Cost Allocations',
                 link: '',
+                class: '',
                 parentId: 70
             },
             {
                 id: 76,
                 label: 'Cost Budgets',
                 link: '',
+                class: '',
                 parentId: 70
             },
         ]
@@ -289,6 +328,7 @@ export const menuItems = [
                 label: 'Posted Sales Invoices',
                 link: '',
                 icon: 'bx-file',
+                class: '',
                 parentId: 97
             },
             {
@@ -296,6 +336,7 @@ export const menuItems = [
                 label: 'Posted Purchase Invoices',
                 link: '',
                 icon: 'bx-file',
+                class: '',
                 parentId: 97
             },
             {
@@ -303,6 +344,7 @@ export const menuItems = [
                 label: 'Issued Reminders',
                 link: '',
                 icon: 'bx-file',
+                class: '',
                 parentId: 97
             },
             {
@@ -310,6 +352,7 @@ export const menuItems = [
                 label: 'G/L Registers',
                 link: '',
                 icon: 'bx-file',
+                class: '',
                 parentId: 97
             },
             {
@@ -317,6 +360,7 @@ export const menuItems = [
                 label: 'Cost Accounting Budget Registers',
                 link: '',
                 icon: 'bx-file',
+                class: '',
                 parentId: 97
             },
             {
@@ -324,6 +368,7 @@ export const menuItems = [
                 label: 'Posted Sales Credit Memos',
                 link: '',
                 icon: 'bx-file',
+                class: '',
                 parentId: 97
             },
             {
@@ -331,6 +376,7 @@ export const menuItems = [
                 label: 'Posted Purchase Credit Memos',
                 link: '',
                 icon: 'bx-file',
+                class: '',
                 parentId: 97
             },
             {
@@ -338,6 +384,7 @@ export const menuItems = [
                 label: 'Issues Fin. Charge Memos',
                 link: '',
                 icon: 'bx-file',
+                class: '',
                 parentId: 97
             },
             {
@@ -345,6 +392,7 @@ export const menuItems = [
                 label: 'Cost Accounting Registers',
                 link: '',
                 icon: 'bx-file',
+                class: '',
                 parentId: 97
             },
         ]

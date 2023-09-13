@@ -165,6 +165,18 @@ a{
                     }
                 }
             }
+            &.active{
+                .dropdown-toggle{
+                    color: $primary !important;
+                }
+            }
+        }
+        .dropdown-item{
+            color: $secondary !important;
+            &.green{
+                background-color: $primary;
+                color: $white !important;
+            }
         }
         .nav-link{
             &:focus,
@@ -197,6 +209,11 @@ a{
     &.active {
         > a{
             color: $primary !important;
+        }
+        &.nav-item{
+            > a{
+                color: $secondary !important;
+            }
         }
     }
 }
@@ -273,6 +290,9 @@ a{
                             a{
                                 color: $grey;
                                 &:hover{
+                                    color: $primary;
+                                }
+                                &.green{
                                     color: $primary;
                                 }
                             }

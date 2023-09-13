@@ -123,14 +123,24 @@ export default {
                     <router-link
                       class="col dropdown-item side-nav-link-ref"
                       :key="index"
+                      :class="subitem.class"
                       v-if="item.subItems.length < 10 && !hasItems(subitem)"
                       :to="subitem.link"
                       >{{ $t(subitem.label) }}</router-link>
                     <div v-if="item.subItems.length > 10" :key="index">
                       <div v-if="index % 3 == 0" class="row">
-                        <div class="col-lg-4"><router-link class="dropdown-item side-nav-link-ref" :to="subitem.link">{{ $t(item.subItems[index].label)}}</router-link></div>
-                        <div class="col-lg-4" v-if="item.subItems[index + 1].link"><router-link class="dropdown-item side-nav-link-ref" :to="item.subItems[index + 1].link">{{ $t(item.subItems[index + 1].label) }}</router-link></div>
-                        <div class="col-lg-4" v-if="item.subItems[index + 2].link"><router-link class="dropdown-item side-nav-link-ref" :to="item.subItems[index + 2].link">{{ $t(item.subItems[index + 2].label) }}</router-link></div> 
+                        <div class="col-lg-4">
+                          <router-link class="dropdown-item side-nav-link-ref" :to="subitem.link" :class="item.subItems.class">{{ $t(item.subItems[index].label)}}
+                          </router-link>
+                        </div>
+                        <div class="col-lg-4" v-if="item.subItems[index + 1].link">
+                          <router-link class="dropdown-item side-nav-link-ref" :to="item.subItems[index + 1].link" :class="item.subItems[index + 1].class">{{ $t(item.subItems[index + 1].label) }}
+                          </router-link>
+                        </div>
+                        <div class="col-lg-4" v-if="item.subItems[index + 2].link">
+                          <router-link class="dropdown-item side-nav-link-ref" :to="item.subItems[index + 2].link" :class="item.subItems[index + 2].class">{{ $t(item.subItems[index + 2].label) }}
+                          </router-link>
+                        </div> 
                       </div>
                     </div>
 
