@@ -42,6 +42,8 @@ import store from "./state/store";
 
 import "../src/design/app.scss";
 import VueHtml2pdf from 'vue3-html2pdf'
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
 
 createApp(App)
   .use(store)
@@ -56,4 +58,5 @@ createApp(App)
   .use(registerScrollSpy)
   .use(Maska)
   .use(VueHtml2pdf)
+  .use(VueDatePicker)
   .mount('#app')

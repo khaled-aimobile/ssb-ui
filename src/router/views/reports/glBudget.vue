@@ -42,7 +42,7 @@ export default {
 
 <template>
     <Layout>
-        <div class="page-filters">
+        <div class="page-filters page-heading">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <a class="navbar-brand" href="#">{{ title }}</a>
             </nav>
@@ -51,7 +51,7 @@ export default {
             <h5>Filter G/L Account</h5>
             <b-row>
                 <b-col sm="3">
-                   No.
+                    No.
                     <Multiselect class="mb-3" v-model="value" :options="options" />
                 </b-col>
                 <b-col sm="3">
@@ -63,54 +63,38 @@ export default {
                     <Multiselect class="mb-3" v-model="value" :options="options" />
                 </b-col>
                 <b-col sm="3">
-                    Debit/Credit 
-                    <Multiselect
-    v-model="value"
-    mode="tags"
-    placeholder="Select employees"
-    track-by="name"
-    label="name"
-    :close-on-select="false"
-    :searchable="true"
-    :options="[
-      { value: 'judy', name: 'Judy' },
-      { value: 'jane', name: 'Jane' },
-      { value: 'john', name: 'John' },
-      { value: 'joe', name: 'Joe' }
-    ]"
-  >
-      <template v-slot:tag="{ option, handleTagRemove, disabled }">
-        <div
-          class="multiselect-tag is-user"
-          :class="{
-            'is-disabled': disabled
-          }"
-        >
-          <img :src="option.image">
-          {{ option.name }}
-          <span
-            v-if="!disabled"
-            class="multiselect-tag-remove"
-            @click="handleTagRemove(option, $event)"
-          >
-            <span class="multiselect-tag-remove-icon"></span>
-          </span>
-        </div>
-      </template>
-  </Multiselect>
+                    Debit/Credit
+                    <Multiselect v-model="value" mode="tags" placeholder="Select employees" track-by="name" label="name"
+                        :close-on-select="false" :searchable="true" :options="[
+                            { value: 'judy', name: 'Judy' },
+                            { value: 'jane', name: 'Jane' },
+                            { value: 'john', name: 'John' },
+                            { value: 'joe', name: 'Joe' }
+                        ]">
+                        <template v-slot:tag="{ option, handleTagRemove, disabled }">
+                            <div class="multiselect-tag is-user" :class="{
+                                'is-disabled': disabled
+                            }">
+                                <img :src="option.image">
+                                {{ option.name }}
+                                <span v-if="!disabled" class="multiselect-tag-remove"
+                                    @click="handleTagRemove(option, $event)">
+                                    <span class="multiselect-tag-remove-icon"></span>
+                                </span>
+                            </div>
+                        </template>
+                    </Multiselect>
                 </b-col>
             </b-row>
-            <h5>Filter Purchase Invoice</h5>
             <b-row>
                 <b-col sm="3">
+                    <h5>Filter Purchase Invoice</h5>
                     No.
                     <Multiselect class="mb-3" v-model="value" :options="options" />
                 </b-col>
-            </b-row>
-            <h5>Filter totals by</h5>
-            <b-row>
                 <b-col sm="3">
-                   Date Filter
+                    <h5>Filter totals by</h5>
+                    Date Filter
                     <Multiselect class="mb-3" v-model="value" :options="options" />
                 </b-col>
             </b-row>
@@ -118,7 +102,6 @@ export default {
                 <b-button variant="success" class="me-2">Send to..</b-button>
                 <b-button variant="success" class="me-2">Preview</b-button>
                 <b-button variant="success" class="me-2">Print</b-button>
-                <b-button variant="secondary">Cancel</b-button>
             </div>
         </div>
     </Layout>

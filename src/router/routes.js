@@ -93,6 +93,30 @@ export default [
     component: () => import("./views/reports/glBudget.vue"),
   },
   {
+    path: "/budget",
+    name: "Budget",
+    meta: { authRequired: true},
+    component: () => import("./views/reports/budget.vue"),
+  },
+  {
+    path: "/balance-sheet",
+    name: "balanceSheet",
+    meta: { authRequired: true},
+    component: () => import("./views/reports/balanceSheet.vue"),
+  },
+  {
+    path: "/cash-flow-statement",
+    name: "cashFlowStatement",
+    meta: { authRequired: true},
+    component: () => import("./views/reports/cashFlowStatement.vue"),
+  },
+  {
+    path: "/trial-balance",
+    name: "trialBalance",
+    meta: { authRequired: true},
+    component: () => import("./views/reports/trialBalance.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("./views/account/login"),
