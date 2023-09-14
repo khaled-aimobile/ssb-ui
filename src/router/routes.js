@@ -199,7 +199,7 @@ export default [
   },
   {
     path: "/general-ledger-journals-intercompany-general-journal",
-    name: "intercompanyGeneralJournal",
+    name: "journalsintercompanyGeneralJournal",
     meta: { authRequired: true},
     component: () => import("./views/generalLedger/journals/intercompanyGeneralJournal.vue"),
   },
