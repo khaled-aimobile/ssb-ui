@@ -148,6 +148,12 @@ export default [
     component: () => import("./views/generalLedger/interCompany/intercompanyGeneralJournal.vue"),
   },
   {
+    path: "/general-ledger-intercompany-inbox-transaction",
+    name: "intercompanyInboxTransaction",
+    meta: { authRequired: true},
+    component: () => import("./views/generalLedger/interCompany/intercompanyInboxTransaction.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("./views/account/login"),
