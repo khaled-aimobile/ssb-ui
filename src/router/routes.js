@@ -198,6 +198,12 @@ export default [
     component: () => import("./views/generalLedger/journals/intrastatJournal.vue"),
   },
   {
+    path: "/general-ledger-journals-intercompany-general-journal",
+    name: "intercompanyGeneralJournal",
+    meta: { authRequired: true},
+    component: () => import("./views/generalLedger/journals/intercompanyGeneralJournal.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("./views/account/login"),

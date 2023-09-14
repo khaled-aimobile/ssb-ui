@@ -46,7 +46,7 @@ export default {
               { text: 'General Journal', class: 'green', link: '/general-ledger-journals-general-journal' },
               { text: 'Recurring General Journal', class: 'green', link: '/general-ledger-journals-recurring-general-journal' },
               { text: 'Intrastat Journal', class: 'green', link: '/general-ledger-journals-intrastat-journal' },
-              { text: 'Intercompany General Journal', class: '', link: '' },
+              { text: 'Intercompany General Journal', class: 'green', link: '/general-ledger-journals-intercompany-general-journal' },
             ]
         },
           { text: 'Register/Entries (8)', class: '', link: '' },
