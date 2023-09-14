@@ -12,7 +12,7 @@ export default {
         };
     },
     page: {
-        title: "Charts Of Accounts",
+        title: "General Journal",
         meta: [
             {
                 name: "description",
@@ -26,7 +26,7 @@ export default {
     },
     data() {
         return {
-            title: "Charts Of Accounts",
+            title: "General Journal",
             value: null,
             options: [
                 'Batman',
