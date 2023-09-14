@@ -34,7 +34,16 @@ export default {
           { text: 'Account Schedules', class: 'green', link: '/general-ledger-account-schedule' },
           { text: 'Analysis by Dimensions', class: 'green', link: '/general-ledger-analysis-dimension' },
           { text: 'GST (3)', class: '', link: '' },
-          { text: 'Intercompany (6)', class: '', link: '' },
+          { text: 'Intercompany (6)', class: '', link: ''
+          ,
+            subItems: [
+              { text: 'General Journal', class: 'green', link: '/general-ledger-intercompany-general-journal' },
+              { text: 'Inbox Transactions', class: '', link: '' },
+              { text: 'Outbox Transactions', class: '', link: '' },
+              { text: 'Handled Intercompany Inbox Transactions', class: '', link: '' },
+              { text: 'Handled Intercompany Outbox Transactions', class: '', link: '' }
+            ]
+        },
           { text: 'Consolidation (3)', class: '', link: '' },
           { text: 'Journals (4)', class: '', link: '' },
           { text: 'Register/Entries (8)', class: '', link: '' },
@@ -383,7 +392,7 @@ export default {
             <i class="mdi mdi-chevron-down"></i>
           </template>
 
-          <b-dropdown-item class="green"><router-link to="/general-ledger-charts-of-account">Chart of Accounts</router-link> </b-dropdown-item>
+          <b-dropdown-item  class="green"><router-link to="/general-ledger-charts-of-account">Chart of Accounts</router-link> </b-dropdown-item>
           <b-dropdown-item class="green"><router-link to="/general-ledger-gl-budget" class="router-link-active">G/L
               Budgets</router-link></b-dropdown-item>
           <b-dropdown-item class="green"><router-link to="/general-ledger-account-schedule">Account Schedules</router-link> </b-dropdown-item>
