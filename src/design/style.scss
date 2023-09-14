@@ -386,6 +386,15 @@ a {
                             }
                         }
                     }
+                    @include lg{
+                        width: calc(33% - 8px);
+                    }
+                    @include md{
+                        width: calc(50% - 8px);
+                    }
+                    @include sm{
+                        width: 100%;
+                    }
                 }
             }
         }

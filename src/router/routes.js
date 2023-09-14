@@ -178,6 +178,13 @@ export default [
     meta: { authRequired: true},
     component: () => import("./views/generalLedger/consolidation/businessUnits.vue"),
   },
+  //Journals
+  {
+    path: "/general-ledger-journals-general-journal",
+    name: "generalJournal",
+    meta: { authRequired: true},
+    component: () => import("./views/generalLedger/journals/generalJournal.vue"),
+  },
   {
     path: "/login",
     name: "login",

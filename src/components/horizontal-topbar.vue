@@ -20,28 +20,16 @@ export default {
         items: [
           { text: 'Chart of Accounts', class: 'green', link: '/general-ledger-charts-of-account' },
           { text: 'G/L Budgets', class: 'green', link: '/general-ledger-gl-budget' },
-          {
-            text: 'Reports', class: '', link: '',
-            isOpen: false,
-            subItems: [
-              { text: 'G/L Budgets', class: 'green', link: '/gl-budget' },
-              { text: 'Trial Balance', class: 'green', link: '/trial-balance' },
-              { text: 'Budget', class: 'green', link: '/budget' },
-              { text: 'Balance Sheet', class: 'green', link: '/balance-sheet' },
-              { text: 'Cash Flow Statement', class: 'green', link: '/cash-flow-statement' }
-            ]
-          },
           { text: 'Account Schedules', class: 'green', link: '/general-ledger-account-schedule' },
           { text: 'Analysis by Dimensions', class: 'green', link: '/general-ledger-analysis-dimension' },
           { text: 'GST (3)', class: '', link: '' },
           { text: 'Intercompany (6)', class: '', link: '',
-          isOpen: false,
+          isOpen: true,
             subItems: [
               { text: 'General Journal', class: 'green', link: '/general-ledger-intercompany-general-journal' },
-              { text: 'Inbox Transactions', class: 'green', link: '/general-ledger-intercompany-inbox-transaction' },
-              { text: 'Outbox Transactions', class: 'green', link: '/general-ledger-intercompany-outbox-transaction' },
-              { text: 'Handled Intercompany Inbox Transactions', class: 'green', link: '/general-ledger-handled-intercompany-inbox-transaction' },
-              { text: 'Handled Intercompany Outbox Transactions', class: 'green', link: '/general-ledger-handled-intercompany-outbox-transaction' }
+              { text: 'Recurring General Journal', class: 'green', link: '/general-ledger-intercompany-inbox-transaction' },
+              { text: 'Intrastat Journal', class: 'green', link: '/general-ledger-intercompany-outbox-transaction' },
+              { text: 'Intercompany General Journal', class: 'green', link: '/general-ledger-handled-intercompany-inbox-transaction' },
             ]
         },
           { text: 'Consolidation (3)', class: 'green', link: '/general-ledger-consolidation-business-units',
@@ -50,7 +38,16 @@ export default {
           //     { text: 'Business Units', class: 'green', link: '/general-ledger-consolidation-business-units' },
           //   ]
         },
-          { text: 'Journals (4)', class: '', link: '' },
+        { text: 'Journals (4)', class: '', link: '',
+          isOpen: true,
+            subItems: [
+              { text: 'General Journal', class: 'green', link: '/general-ledger-intercompany-general-journal' },
+              { text: 'Inbox Transactions', class: 'green', link: '/general-ledger-intercompany-inbox-transaction' },
+              { text: 'Outbox Transactions', class: 'green', link: '/general-ledger-intercompany-outbox-transaction' },
+              { text: 'Handled Intercompany Inbox Transactions', class: 'green', link: '/general-ledger-handled-intercompany-inbox-transaction' },
+              { text: 'Handled Intercompany Outbox Transactions', class: 'green', link: '/general-ledger-handled-intercompany-outbox-transaction' }
+            ]
+        },
           { text: 'Register/Entries (8)', class: '', link: '' },
           { text: 'Reports (4)', class: '', link: '' },
           { text: 'Setup (6)', class: '', link: '' },
@@ -152,8 +149,18 @@ export default {
           { text: 'Posting Groups (9)', class: '', link: '' },
         ],
       },
+      {
+        title: 'Reports',
+        isOpen: false,
+        items: [
+        { text: 'G/L Budgets', class: 'green', link: '/gl-budget' },
+              { text: 'Trial Balance', class: 'green', link: '/trial-balance' },
+              { text: 'Budget', class: 'green', link: '/budget' },
+              { text: 'Balance Sheet', class: 'green', link: '/balance-sheet' },
+              { text: 'Cash Flow Statement', class: 'green', link: '/cash-flow-statement' }
+        ],
+      },
     ];
-
     const filteredAccordion = computed(() => {
       const normalizedSearchText = searchText.value.toLowerCase().trim();
       return accordionItems.map((item) => {
