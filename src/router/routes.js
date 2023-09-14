@@ -136,6 +136,12 @@ export default [
     component: () => import("./views/generalLedger/accountSchedule.vue"),
   },
   {
+    path: "/general-ledger-analysis-dimension",
+    name: "generalLedgerAnalysisDimension",
+    meta: { authRequired: true},
+    component: () => import("./views/generalLedger/analysisDimension.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("./views/account/login"),
