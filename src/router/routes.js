@@ -130,6 +130,12 @@ export default [
     component: () => import("./views/generalLedger/glBudget.vue"),
   },
   {
+    path: "/general-ledger-account-schedule",
+    name: "generalLedgerAccountSchedule",
+    meta: { authRequired: true},
+    component: () => import("./views/generalLedger/accountSchedule.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("./views/account/login"),

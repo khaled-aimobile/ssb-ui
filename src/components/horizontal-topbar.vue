@@ -18,7 +18,7 @@ export default {
         title: 'General Ledger (11)',
         isOpen: false,
         items: [
-          { text: 'Chart of Accounts', class: '', link: '' },
+          { text: 'Chart of Accounts', class: 'green', link: '/general-ledger-charts-of-account' },
           { text: 'G/L Budgets', class: 'green', link: '/general-ledger-gl-budget' },
           {
             text: 'Reports', class: '', link: '',
@@ -31,7 +31,7 @@ export default {
               { text: 'Cash Flow Statement', class: 'green', link: '/cash-flow-statement' }
             ]
           },
-          { text: 'Account Schedules', class: '', link: '' },
+          { text: 'Account Schedules', class: 'green', link: '/general-ledger-account-schedule' },
           { text: 'Analysis by Dimensions', class: '', link: '' },
           { text: 'GST (3)', class: '', link: '' },
           { text: 'Intercompany (6)', class: '', link: '' },
@@ -386,7 +386,7 @@ export default {
           <b-dropdown-item class="green"><router-link to="/general-ledger-charts-of-account">Chart of Accounts</router-link> </b-dropdown-item>
           <b-dropdown-item class="green"><router-link to="/general-ledger-gl-budget" class="router-link-active">G/L
               Budgets</router-link></b-dropdown-item>
-          <b-dropdown-item><router-link to="/general-ledger-account-schedule">Account Schedules</router-link> </b-dropdown-item>
+          <b-dropdown-item class="green"><router-link to="/general-ledger-account-schedule">Account Schedules</router-link> </b-dropdown-item>
           <b-dropdown-item>Analysis by Dimensions</b-dropdown-item>
           <b-dropdown-item>GST (3)</b-dropdown-item>
           <b-dropdown-item>Intercompany (6) </b-dropdown-item>
