@@ -229,6 +229,30 @@ a {
         }
     }
 }
+.dropdown-menu-top{
+    .dropdown-menu{
+        .dropdown-item{
+            a{
+                color: $dark;
+            }
+
+            &:hover{
+                a{
+                    color: $primary;
+                }
+            }
+        }
+        .green{
+            .dropdown-item{
+                background-color: $primary;
+                color: $white;
+                a{
+                    color: $white;
+                }
+            }
+        }
+    }
+}
 
 .dropdown,
 .dropdown-menu {
@@ -503,6 +527,7 @@ a {
 
     .card {
         height: calc(100% - 24px);
+        width: 100%;
     }
 
     .filter-content {

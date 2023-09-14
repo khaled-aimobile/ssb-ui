@@ -19,11 +19,12 @@ export default {
         isOpen: false,
         items: [
           { text: 'Chart of Accounts', class: '', link: '' },
+          { text: 'G/L Budgets', class: '', link: '' },
           {
-            text: 'Budgets', class: '', link: '',
+            text: 'Reports', class: '', link: '',
             isOpen: false,
             subItems: [
-              {text: 'G/L Budgets', class: 'green', link: '/gl-budget'},
+              { text: 'G/L Budgets', class: 'green', link: '/gl-budget' },
               { text: 'Trial Balance', class: 'green', link: '/trial-balance' },
               { text: 'Budget', class: 'green', link: '/budget' },
               { text: 'Balance Sheet', class: 'green', link: '/balance-sheet' },
@@ -165,12 +166,12 @@ export default {
 
     // Toggle accordion item
     const toggleAccordionItem = (index, subIndex = null) => {
-  if (subIndex !== null) {
-    accordionItems[index].items[subIndex].isOpen = !accordionItems[index].items[subIndex].isOpen;
-  } else {
-    accordionItems[index].isOpen = !accordionItems[index].isOpen;
-  }
-};
+      if (subIndex !== null) {
+        accordionItems[index].items[subIndex].isOpen = !accordionItems[index].items[subIndex].isOpen;
+      } else {
+        accordionItems[index].isOpen = !accordionItems[index].isOpen;
+      }
+    };
 
     // Filter accordion items based on search text
     const filterAccordion = () => {
@@ -376,16 +377,16 @@ export default {
           <i class="fa fa-fw fa-bars"></i>
         </button>
 
-        <b-dropdown variant="black" class="dropdown-menu-end d-xl-block d-none" toggle-class="header-item">
+        <b-dropdown variant="black" class="dropdown-menu-end d-xl-block d-none dropdown-menu-top" toggle-class="header-item">
           <template v-slot:button-content>
             General Ledger
             <i class="mdi mdi-chevron-down"></i>
           </template>
 
-          <b-dropdown-item>Chart of Accounts </b-dropdown-item>
-          <b-dropdown-item><router-link to="/gl-budget" class="router-link-active">G/L
+          <b-dropdown-item class="green"><router-link to="/general-ledger-charts-of-account">Chart of Accounts</router-link> </b-dropdown-item>
+          <b-dropdown-item><router-link to="/general-ledger-gl-budget" class="router-link-active">G/L
               Budgets</router-link></b-dropdown-item>
-          <b-dropdown-item>Account Schedules </b-dropdown-item>
+          <b-dropdown-item><router-link to="/general-ledger-account-schedule">Account Schedules</router-link> </b-dropdown-item>
           <b-dropdown-item>Analysis by Dimensions</b-dropdown-item>
           <b-dropdown-item>GST (3)</b-dropdown-item>
           <b-dropdown-item>Intercompany (6) </b-dropdown-item>
@@ -395,7 +396,7 @@ export default {
           <b-dropdown-item>Reports (4)</b-dropdown-item>
           <b-dropdown-item>Setup (6)</b-dropdown-item>
         </b-dropdown>
-        <b-dropdown variant="black" class="dropdown-menu-end d-xl-block d-none" toggle-class="header-item">
+        <b-dropdown variant="black" class="dropdown-menu-end d-xl-block d-none dropdown-menu-top" toggle-class="header-item">
           <template v-slot:button-content>
             Cash Management
             <i class="mdi mdi-chevron-down"></i>
@@ -411,7 +412,7 @@ export default {
           <b-dropdown-item>Setup (7)</b-dropdown-item>
 
         </b-dropdown>
-        <b-dropdown variant="black" class="dropdown-menu-end d-xl-block d-none" toggle-class="header-item">
+        <b-dropdown variant="black" class="dropdown-menu-end d-xl-block d-none dropdown-menu-top" toggle-class="header-item">
           <template v-slot:button-content>
             Cost Accounting
             <i class="mdi mdi-chevron-down"></i>
@@ -427,7 +428,7 @@ export default {
           <b-dropdown-item>Setup (2)</b-dropdown-item>
 
         </b-dropdown>
-        <b-dropdown variant="black" class="dropdown-menu-end d-xl-block d-none" toggle-class="header-item">
+        <b-dropdown variant="black" class="dropdown-menu-end d-xl-block d-none dropdown-menu-top" toggle-class="header-item">
           <template v-slot:button-content>
             Receivables
             <i class="mdi mdi-chevron-down"></i>
@@ -489,14 +490,14 @@ export default {
                             {{ subItem.text }}
                           </button>
                           <div :id="'subitem-collapse-' + subIndex" class="accordion-collapse collapse"
-                            :class="{ 'show': subItem.isOpen }" :aria-labelledby="'subitem-heading-' + subIndex"
-                            >
+                            :class="{ 'show': subItem.isOpen }" :aria-labelledby="'subitem-heading-' + subIndex">
                             <div class="accordion-body pb-2">
                               <ul class="mb-0">
                                 <li v-for="(innerSubItem, innerSubIndex) in subItem.subItems"
                                   :key="'innerSubItem-' + innerSubIndex"
                                   :class="{ 'highlighted': searchText && innerSubItem.isHighlighted }">
-                                  <router-link :class="innerSubItem.class" :to="innerSubItem.link">{{ innerSubItem.text }}</router-link>
+                                  <router-link :class="innerSubItem.class" :to="innerSubItem.link">{{ innerSubItem.text
+                                  }}</router-link>
                                 </li>
                               </ul>
                             </div>

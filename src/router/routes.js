@@ -116,6 +116,13 @@ export default [
     meta: { authRequired: true},
     component: () => import("./views/reports/trialBalance.vue"),
   },
+  //general-ledger
+  {
+    path: "/general-ledger-charts-of-account",
+    name: "generalLedgerChartsOfAccount",
+    meta: { authRequired: true},
+    component: () => import("./views/generalLedger/chartsOfAccount.vue"),
+  },
   {
     path: "/login",
     name: "login",

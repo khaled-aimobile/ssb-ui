@@ -8,8 +8,9 @@ export const menuItems = [
             {
                 id: 222,
                 label: 'Charts of Accounts',
-                link: '/charts-of-accounts',
-                class: 'green',
+                //link: '/charts-of-accounts',
+                link: '/',
+                class: '',
                 parentId: 221
             },
             {

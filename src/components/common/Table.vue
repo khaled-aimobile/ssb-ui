@@ -124,10 +124,12 @@ export default {
 
     const data = ref(props.tableData);
     const filteredData = computed(() => {
+  const searchTextValue = searchText.value ? searchText.value.toLowerCase() : '';
+
   return state.data.filter((item) =>
-    item.no.toLowerCase().includes(searchText.value.toLowerCase()) ||
-    item.name.toLowerCase().includes(searchText.value.toLowerCase()) ||
-    item.customerno.toLowerCase().includes(searchText.value.toLowerCase())
+    (item.no && item.no.toLowerCase().includes(searchTextValue)) ||
+    (item.name && item.name.toLowerCase().includes(searchTextValue)) ||
+    (item.customerno && item.customerno.toLowerCase().includes(searchTextValue))
   );
 });
     const state = reactive({

@@ -130,7 +130,7 @@ export default {
                     <div v-if="item.subItems.length > 10" :key="index">
                       <div v-if="index % 3 == 0" class="row">
                         <div class="col-lg-4">
-                          <router-link class="dropdown-item side-nav-link-ref" :to="subitem.link" :class="item.subItems.class">{{ $t(item.subItems[index].label)}}
+                          <router-link class="dropdown-item side-nav-link-ref" :to="subitem.link" :class="item.subItems[index].class">{{ $t(item.subItems[index].label)}}
                           </router-link>
                         </div>
                         <div class="col-lg-4" v-if="item.subItems[index + 1].link">

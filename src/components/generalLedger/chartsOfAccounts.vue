@@ -1,0 +1,113 @@
+<template>
+      <div class="action-buttons text-end">
+        <b-dropdown id="exportDropdown" variant="success" class="export-btn">
+          <template #button-content>
+            <i class="mdi mdi-file-export"></i> Export
+          </template>
+          <b-dropdown-item><download-excel :data="data">
+              Excel
+            </download-excel></b-dropdown-item>
+          <b-dropdown-item @click="generatePDF()">PDF</b-dropdown-item>
+        </b-dropdown>
+      </div>
+      <!-- Table Component -->
+      <vue3-html2pdf :show-layout="false" :float-layout="true" :enable-download="true" :preview-modal="true"
+        :paginate-elements-by-height="1400" filename="nightprogrammerpdf" :pdf-quality="2" :manual-pagination="false"
+        pdf-format="a3" :pdf-margin="10" pdf-orientation="portrait" pdf-content-width="800px" @progress="onProgress($event)"
+        ref="html2Pdf">
+        <template v-slot:pdf-content>
+          <Table :fields="fields" :tableData="data" />
+        </template>
+      </vue3-html2pdf>
+      <Table :fields="fields" :tableData="data" :showSearchPagination="true" add-title="Add Item" add="Add Item"
+        edit-title="Edit Item" @delete-item="deleteItem" />
+      <b-modal v-model="myInfo" id="modal-info" class="green-header" centered title-class="font-18" hide-footer
+        title="Notes +">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+          card's content.</p>
+      </b-modal>
+  </template>
+  
+  <script>
+  import { ref } from 'vue';
+  import Table from "../common/Table.vue";
+  import JsonExcel from "vue-json-excel3";
+  import Vue3Html2pdf from "vue3-html2pdf";
+  export default {
+    components: {
+      Table,
+      downloadExcel: JsonExcel,
+      Vue3Html2pdf,
+    },
+    setup() {
+      const isFormVisible = ref(false);
+      const myInfo = ref(false);
+      const data = ref([
+        {
+          id: 1,
+          no: "1",
+          no2: "",
+          name: 'Mark',
+          netchange: '17,895',
+          balance: '17,895',
+          incomebalance: 'Balance Sheet',
+          directchange: true,
+          account_subcategory: '',
+          account_type: '',
+          gst_register: '',
+          totaling: '',
+          product_cost: '',
+          gen_post_type: '',
+          gen_bus_post_grp: '',
+          gen_prob_post_grp: '',
+          debit_amt: '',
+          credit_amt: '',
+          cost_type_no: '',
+          default_deferral: '',
+          //actions: '',
+        },
+  
+      ]);
+  
+      return {
+        data,
+        isFormVisible,
+        myInfo,
+        fields: [
+          { key: 'no', label: 'No' },
+          { key: 'no2', label: 'No.2' },
+          { key: 'name', label: 'Name' },
+          { key: 'netchange', label: 'Net Change' },
+          { key: 'balance', label: 'Balance' },
+          { key: 'directchange', label: 'Allow Direct Change' },
+          { key: 'incomebalance', label: 'Income Balance' },
+          { key: 'account_subcategory', label: 'Account Subcategory' },
+          { key: 'account_type', label: 'Account Type' },
+          { key: 'gst_register', label: 'For GST Registration' },
+          { key: 'totaling', label: 'Totaling' },
+          { key: 'product_cost', label: 'Production Cost Code' },
+          { key: 'gen_post_type', label: 'Gen. Posting Type' },
+          { key: 'gen_bus_post_grp', label: 'Gen. Bus. Posting Group' },
+          { key: 'gen_prob_post_grp', label: 'Gen. Prob. Posting Group' },
+          { key: 'debit_amt', label: 'Debit Amount' },
+          { key: 'credit_amt', label: 'Credit Amount' },
+          { key: 'cost_type_no', label: 'Cost Type No.' },
+          { key: 'default_deferral', label: 'Default Deferral Template' },
+          //{ key: 'actions', label: 'Actions' },
+        ],
+      };
+    },
+    methods: {
+      onProgress(event) {
+        console.log(`Processed: ${event} / 100`);
+      },
+      hasGenerated() {
+        alert("PDF generated successfully!");
+      },
+      generatePDF() {
+        this.$refs.html2Pdf.generatePdf();
+      },
+    },
+  };
+  </script>
+  
