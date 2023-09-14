@@ -186,6 +186,12 @@ export default [
     component: () => import("./views/generalLedger/journals/generalJournal.vue"),
   },
   {
+    path: "/general-ledger-journals-recurring-general-journal",
+    name: "recurringGeneralJournal",
+    meta: { authRequired: true},
+    component: () => import("./views/generalLedger/journals/recurringGeneralJournal.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("./views/account/login"),

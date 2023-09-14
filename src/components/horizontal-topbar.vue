@@ -27,9 +27,11 @@ export default {
           isOpen: true,
             subItems: [
               { text: 'General Journal', class: 'green', link: '/general-ledger-intercompany-general-journal' },
-              { text: 'Recurring General Journal', class: 'green', link: '/general-ledger-intercompany-inbox-transaction' },
-              { text: 'Intrastat Journal', class: 'green', link: '/general-ledger-intercompany-outbox-transaction' },
-              { text: 'Intercompany General Journal', class: 'green', link: '/general-ledger-handled-intercompany-inbox-transaction' },
+              { text: 'Inbox Transactions', class: 'green', link: '/general-ledger-intercompany-inbox-transaction' },
+              { text: 'Outbox Transactions', class: 'green', link: '/general-ledger-intercompany-outbox-transaction' },
+              { text: 'Handled Intercompany Inbox Transactions', class: 'green', link: '/general-ledger-handled-intercompany-inbox-transaction' },
+              { text: 'Handled Intercompany Outbox Transactions', class: 'green', link: '/general-ledger-handled-intercompany-outbox-transaction' }
+              
             ]
         },
           { text: 'Consolidation (3)', class: 'green', link: '/general-ledger-consolidation-business-units',
@@ -41,11 +43,10 @@ export default {
         { text: 'Journals (4)', class: '', link: '',
           isOpen: true,
             subItems: [
-              { text: 'General Journal', class: 'green', link: '/general-ledger-intercompany-general-journal' },
-              { text: 'Inbox Transactions', class: 'green', link: '/general-ledger-intercompany-inbox-transaction' },
-              { text: 'Outbox Transactions', class: 'green', link: '/general-ledger-intercompany-outbox-transaction' },
-              { text: 'Handled Intercompany Inbox Transactions', class: 'green', link: '/general-ledger-handled-intercompany-inbox-transaction' },
-              { text: 'Handled Intercompany Outbox Transactions', class: 'green', link: '/general-ledger-handled-intercompany-outbox-transaction' }
+              { text: 'General Journal', class: 'green', link: '/general-ledger-journals-general-journal' },
+              { text: 'Recurring General Journal', class: 'green', link: '/general-ledger-journals-recurring-general-journal' },
+              { text: 'Intrastat Journal', class: '', link: '' },
+              { text: 'Intercompany General Journal', class: '', link: '' },
             ]
         },
           { text: 'Register/Entries (8)', class: '', link: '' },
