@@ -166,6 +166,12 @@ export default [
     component: () => import("./views/generalLedger/interCompany/handledIntercompanyInboxTransaction.vue"),
   },
   {
+    path: "/general-ledger-handled-intercompany-outbox-transaction",
+    name: "handleIntercompanyOutboxTransaction",
+    meta: { authRequired: true},
+    component: () => import("./views/generalLedger/interCompany/handledIntercompanyOutboxTransaction.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("./views/account/login"),

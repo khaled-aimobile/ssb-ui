@@ -41,7 +41,7 @@ export default {
               { text: 'Inbox Transactions', class: 'green', link: '/general-ledger-intercompany-inbox-transaction' },
               { text: 'Outbox Transactions', class: 'green', link: '/general-ledger-intercompany-outbox-transaction' },
               { text: 'Handled Intercompany Inbox Transactions', class: 'green', link: '/general-ledger-handled-intercompany-inbox-transaction' },
-              { text: 'Handled Intercompany Outbox Transactions', class: '', link: '' }
+              { text: 'Handled Intercompany Outbox Transactions', class: 'green', link: '/general-ledger-handled-intercompany-outbox-transaction' }
             ]
         },
           { text: 'Consolidation (3)', class: '', link: '' },
