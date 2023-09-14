@@ -203,6 +203,13 @@ export default [
     meta: { authRequired: true},
     component: () => import("./views/generalLedger/journals/intercompanyGeneralJournal.vue"),
   },
+  //Register
+  {
+    path: "/general-ledger-register-gl-register",
+    name: "registerGlRegister",
+    meta: { authRequired: true},
+    component: () => import("./views/generalLedger/register/glRegister.vue"),
+  },
   {
     path: "/login",
     name: "login",

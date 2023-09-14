@@ -49,7 +49,7 @@ export default {
               { text: 'Intercompany General Journal', class: 'green', link: '/general-ledger-journals-intercompany-general-journal' },
             ]
         },
-          { text: 'Register/Entries (8)', class: '', link: '' },
+          { text: 'Register/Entries (8)', class: 'green', link: '/general-ledger-register-gl-register' },
           { text: 'Reports (4)', class: '', link: '' },
           { text: 'Setup (6)', class: '', link: '' },
         ],
