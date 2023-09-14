@@ -34,8 +34,8 @@ export default {
           { text: 'Account Schedules', class: 'green', link: '/general-ledger-account-schedule' },
           { text: 'Analysis by Dimensions', class: 'green', link: '/general-ledger-analysis-dimension' },
           { text: 'GST (3)', class: '', link: '' },
-          { text: 'Intercompany (6)', class: '', link: ''
-          ,
+          { text: 'Intercompany (6)', class: '', link: '',
+          isOpen: false,
             subItems: [
               { text: 'General Journal', class: 'green', link: '/general-ledger-intercompany-general-journal' },
               { text: 'Inbox Transactions', class: 'green', link: '/general-ledger-intercompany-inbox-transaction' },
@@ -44,7 +44,12 @@ export default {
               { text: 'Handled Intercompany Outbox Transactions', class: 'green', link: '/general-ledger-handled-intercompany-outbox-transaction' }
             ]
         },
-          { text: 'Consolidation (3)', class: '', link: '' },
+          { text: 'Consolidation (3)', class: 'green', link: '/general-ledger-consolidation-business-units',
+          // isOpen: false,
+          // subItems: [
+          //     { text: 'Business Units', class: 'green', link: '/general-ledger-consolidation-business-units' },
+          //   ]
+        },
           { text: 'Journals (4)', class: '', link: '' },
           { text: 'Register/Entries (8)', class: '', link: '' },
           { text: 'Reports (4)', class: '', link: '' },

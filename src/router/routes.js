@@ -171,6 +171,13 @@ export default [
     meta: { authRequired: true},
     component: () => import("./views/generalLedger/interCompany/handledIntercompanyOutboxTransaction.vue"),
   },
+  //Consolidation
+  {
+    path: "/general-ledger-consolidation-business-units",
+    name: "businessUnits",
+    meta: { authRequired: true},
+    component: () => import("./views/generalLedger/consolidation/businessUnits.vue"),
+  },
   {
     path: "/login",
     name: "login",
