@@ -19,7 +19,7 @@ export default {
         isOpen: false,
         items: [
           { text: 'Chart of Accounts', class: '', link: '' },
-          { text: 'G/L Budgets', class: '', link: '' },
+          { text: 'G/L Budgets', class: 'green', link: '/general-ledger-gl-budget' },
           {
             text: 'Reports', class: '', link: '',
             isOpen: false,
@@ -384,7 +384,7 @@ export default {
           </template>
 
           <b-dropdown-item class="green"><router-link to="/general-ledger-charts-of-account">Chart of Accounts</router-link> </b-dropdown-item>
-          <b-dropdown-item><router-link to="/general-ledger-gl-budget" class="router-link-active">G/L
+          <b-dropdown-item class="green"><router-link to="/general-ledger-gl-budget" class="router-link-active">G/L
               Budgets</router-link></b-dropdown-item>
           <b-dropdown-item><router-link to="/general-ledger-account-schedule">Account Schedules</router-link> </b-dropdown-item>
           <b-dropdown-item>Analysis by Dimensions</b-dropdown-item>

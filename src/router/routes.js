@@ -124,6 +124,12 @@ export default [
     component: () => import("./views/generalLedger/chartsOfAccount.vue"),
   },
   {
+    path: "/general-ledger-gl-budget",
+    name: "generalLedgerGlBudget",
+    meta: { authRequired: true},
+    component: () => import("./views/generalLedger/glBudget.vue"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("./views/account/login"),
