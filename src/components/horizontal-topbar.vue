@@ -39,7 +39,7 @@ export default {
             subItems: [
               { text: 'General Journal', class: 'green', link: '/general-ledger-intercompany-general-journal' },
               { text: 'Inbox Transactions', class: 'green', link: '/general-ledger-intercompany-inbox-transaction' },
-              { text: 'Outbox Transactions', class: '', link: '' },
+              { text: 'Outbox Transactions', class: 'green', link: '/general-ledger-intercompany-outbox-transaction' },
               { text: 'Handled Intercompany Inbox Transactions', class: '', link: '' },
               { text: 'Handled Intercompany Outbox Transactions', class: '', link: '' }
             ]
