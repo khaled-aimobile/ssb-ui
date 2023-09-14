@@ -1,7 +1,7 @@
 <script>
 import Layout from "../../layouts/main";
 import appConfig from "@/app.config";
-import tableVue from '../../../components/chartOfAccounts/tableVue.vue';
+import tableVue from '../../../components/home/tableVue.vue';
 
 export default {
     setup() {

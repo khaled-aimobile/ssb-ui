@@ -58,7 +58,7 @@ export default {
 
 <template>
       <div class="row bitcoin-row">
-          <div class="col-sm-2">
+          <div class="col-sm-4 col-lg-3 col-xl-2 col-2">
             <div class="card bg-white">
               <div class="card-body">
                 <p class="text-theme mb-4">
@@ -90,7 +90,7 @@ export default {
               </div>
             </div>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-4 col-lg-3 col-xl-2 col-2">
             <div class="card bg-white">
               <div class="card-body">
                 <p class="text-theme mb-4">
@@ -122,7 +122,7 @@ export default {
               </div>
             </div>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-4 col-lg-3 col-xl-2 col-2">
             <div class="card bg-white">
               <div class="card-body">
                 <p class="text-theme mb-4">
@@ -154,7 +154,7 @@ export default {
               </div>
             </div>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-4 col-lg-3 col-xl-2 col-2">
             <div class="card bg-white">
               <div class="card-body">
                 <p class="text-theme mb-4">
@@ -186,7 +186,7 @@ export default {
               </div>
             </div>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-4 col-lg-3 col-xl-2 col-2">
             <div class="card bg-white">
               <div class="card-body">
                 <p class="text-theme mb-4">
@@ -218,7 +218,7 @@ export default {
               </div>
             </div>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-4 col-lg-3 col-xl-2 col-2">
             <div class="card bg-white">
               <div class="card-body">
                 <p class="text-theme mb-4">

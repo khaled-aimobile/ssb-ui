@@ -499,6 +499,7 @@ a {
     justify-content: space-between;
     gap: 15px;
     position: relative;
+    @include custom_scroll;
 
     .card {
         height: calc(100% - 24px);
@@ -716,12 +717,11 @@ a {
 
 //custom-table
 .custom-table {
+    overflow-x: auto;
+    width: 100%;
+    @include custom_scroll;
     table {
         width: 100%;
-    }
-
-    @include lg {
-        overflow-x: auto;
     }
 }
 

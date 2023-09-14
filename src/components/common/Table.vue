@@ -23,9 +23,11 @@
 
         <!-- Actions Column -->
         <template #cell(actions)="data">
-          <button @click="editItem(data.item)" class="btn btn-sm btn-primary me-2">Edit</button>
-          <!-- <button class="btn btn-sm btn-primary me-2">Edit</button> -->
-          <button @click="showDeleteConfirmation(data.item)" class="btn btn-sm btn-danger">Delete</button>
+          <div class="d-flex">
+            <button @click="editItem(data.item)" class="btn btn-sm btn-primary me-2">Edit</button>
+            <!-- <button class="btn btn-sm btn-primary me-2">Edit</button> -->
+            <button @click="showDeleteConfirmation(data.item)" class="btn btn-sm btn-danger">Delete</button>
+          </div>
         </template>
       </b-table>
     </div>
@@ -42,12 +44,16 @@
     <div v-if="isEditing">
       <h2>{{ editTitle }}</h2>
       <form @submit.prevent="saveItem">
+        <div class="add-item">
         <div v-for="field in fields" :key="field.key" class="mb-3">
           <label :for="`edit-${field.key}`" class="form-label">{{ field.label }}</label>
           <input :id="`edit-${field.key}`" class="form-control" v-model="editedItem[field.key]" :required="field.required" />
         </div>
+      </div>
+      <div class="add-item-footer">
         <button type="submit" class="btn btn-primary me-2" @click="cancelEdit">Save</button>
         <button type="button" class="btn btn-secondary" @click="cancelEdit">Cancel</button>
+      </div>
       </form>
     </div>
 

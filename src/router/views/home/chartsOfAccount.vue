@@ -1,7 +1,7 @@
 <script>
 import Layout from "../../layouts/main";
 import appConfig from "@/app.config";
-import tableVue from '../../../components/chartOfAccounts/tableVue.vue';
+import ChartsOfAccounts from '../../../components/home/chartsOfAccounts.vue';
 //import table1Vue from '../../../components/common/Table1.vue';
 
 export default {
@@ -22,8 +22,7 @@ export default {
     },
     components: {
         Layout,
-        tableVue,
-        //table1Vue
+        ChartsOfAccounts
     },
     data() {
         return {
@@ -50,13 +49,10 @@ export default {
             </nav>
         </div>
         <div class="custom-layout">
-            <div class="table-content">
-                <div class="card">
+            <div class="card mb-0 h-100">
                     <div class="card-body">
-                        <table1Vue />
-                        <tableVue />
+                        <charts-of-accounts />
                     </div>
                 </div>
-            </div>
         </div>
 </Layout></template>
