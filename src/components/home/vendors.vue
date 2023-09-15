@@ -6,9 +6,9 @@
           <i class="mdi mdi-file-export"></i> Export
         </template>
         <b-dropdown-item><download-excel :data="data">
-          Excel
-</download-excel></b-dropdown-item>
-<b-dropdown-item @click="generatePDF()">PDF</b-dropdown-item>
+            Excel
+          </download-excel></b-dropdown-item>
+        <b-dropdown-item @click="generatePDF()">PDF</b-dropdown-item>
       </b-dropdown>
       <!-- <button @click="toggleForm" class="btn btn-success mb-2 me-2">Add Item</button> -->
       <!-- <button class="btn btn-success btn-md mb-2" @click="myInfo = true">Info</button> -->
@@ -20,9 +20,9 @@
       ref="html2Pdf">
       <template v-slot:pdf-content>
         <Table :fields="fields" :tableData="data" />
-    </template>
+      </template>
     </vue3-html2pdf>
-    <Table :fields="fields" :tableData="data" :showSearchPagination="true" add-title="Add Item" add="Add Item"
+    <Table :fields="fields" :tableData="data" :showSearchPagination="true" add-title="Add" add="Add Item"
       edit-title="Edit Item" @delete-item="deleteItem" />
     <b-modal v-model="myInfo" id="modal-info" class="green-header" centered title-class="font-18" hide-footer
       title="Notes +">
@@ -34,24 +34,24 @@
 
 <script>
 import { ref } from 'vue';
-import Table from "../common/Table.vue"; 
+import Table from "../common/Table.vue";
 import JsonExcel from "vue-json-excel3";
 import Vue3Html2pdf from "vue3-html2pdf";
 export default {
   components: {
     Table,
-    downloadExcel:JsonExcel,
+    downloadExcel: JsonExcel,
     Vue3Html2pdf,
   },
   setup() {
     const isFormVisible = ref(false);
     const myInfo = ref(false);
     const data = ref([
-      { id: 1, no: "IPH00001", phone: "", name: 'PERTUBUHAN KESELAMATAN SOSIAL', responsibility: '17,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "12/07/21 14:50:47", searchname: "PERTUBUHAN KESELAMATAN SOSIAL", balance: '-12,348.30'},
-      { id: 2, no: "IPH00002", phone: "", name: '', responsibility: '7,895',  gstdatechecked: "0.00", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "",balance: '19,895',},
-      { id: 3, no: "IPH00003", phone: "", name: '', responsibility: '19,895', gstdatechecked: "0.00", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "", balance: '20,895'},
-      { id: 4, no: "IPH00004", phone: "", name: 'CHECKROLL - TIMBER OPERATION	', responsibility: '17,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "CHECKROLL - TIMBER OPERATION", balance: '-944,124.81'},
-      { id: 5, no: "IPH00005", phone: "", name: 'CHECKROLL - AGRICROPS', responsibility: '7,895',  gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "CHECKROLL - AGRICROPS",balance: '-7,613,695.74',}
+      { id: 1, no: "IPH00001", phone: "", name: 'PERTUBUHAN KESELAMATAN SOSIAL', responsibility: '17,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "12/07/21 14:50:47", searchname: "PERTUBUHAN KESELAMATAN SOSIAL", balance: '-12,348.30' },
+      { id: 2, no: "IPH00002", phone: "", name: '', responsibility: '7,895', gstdatechecked: "0.00", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "", balance: '19,895', },
+      { id: 3, no: "IPH00003", phone: "", name: '', responsibility: '19,895', gstdatechecked: "0.00", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "", balance: '20,895' },
+      { id: 4, no: "IPH00004", phone: "", name: 'CHECKROLL - TIMBER OPERATION	', responsibility: '17,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "CHECKROLL - TIMBER OPERATION", balance: '-944,124.81' },
+      { id: 5, no: "IPH00005", phone: "", name: 'CHECKROLL - AGRICROPS', responsibility: '7,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "CHECKROLL - AGRICROPS", balance: '-7,613,695.74', }
     ]);
 
     const formData = ref({
@@ -75,16 +75,16 @@ export default {
       if (!isFormVisible.value) {
         formData.value = {
           no: ``,
-      name: ``,
-      responsibility: ``,
-      gstdatechecked: ``,
-      gstdatechecked1: ``,
-      locationcode: ``,
-      phone: ``,
-      contact: ``,
-      lastmodify: ``,
-      searchname: ``,
-      balance: `$`,
+          name: ``,
+          responsibility: ``,
+          gstdatechecked: ``,
+          gstdatechecked1: ``,
+          locationcode: ``,
+          phone: ``,
+          contact: ``,
+          lastmodify: ``,
+          searchname: ``,
+          balance: `$`,
         };
       }
     };

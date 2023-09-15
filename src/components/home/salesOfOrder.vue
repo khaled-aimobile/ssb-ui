@@ -7,7 +7,7 @@
         </template>
         <b-dropdown-item><download-excel :data="data">
             Excel
-          </download-excel></b-dropdown-item> 
+          </download-excel></b-dropdown-item>
         <b-dropdown-item @click="generatePDF()">PDF</b-dropdown-item>
       </b-dropdown>
       <!-- <button @click="toggleForm" class="btn btn-success mb-2 me-2">Add Item</button> -->
@@ -22,9 +22,9 @@
         <Table :fields="fields" :tableData="data" />
       </template>
     </vue3-html2pdf>
-    
-    <Table :fields="fields" :tableData="data" :showSearchPagination="true" add-title="Add Item" add="Add Item" edit-title="Edit Item"
-      @delete-item="deleteItem" />
+
+    <Table :fields="fields" :tableData="data" :showSearchPagination="true" add-title="Add" add="Add Item"
+      edit-title="Edit Item" @delete-item="deleteItem" />
     <b-modal v-model="myInfo" id="modal-info" class="green-header" centered title-class="font-18" hide-footer
       title="Notes +">
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the

@@ -6,16 +6,16 @@
           <i class="mdi mdi-file-export"></i> Export
         </template>
         <b-dropdown-item><download-excel :data="data">
-          Excel
-</download-excel></b-dropdown-item>
+            Excel
+          </download-excel></b-dropdown-item>
         <!-- <b-dropdown-item @click="exportToExcel">PDF</b-dropdown-item> -->
       </b-dropdown>
       <!-- <button @click="toggleForm" class="btn btn-success mb-2 me-2">Add Item</button> -->
       <!-- <button class="btn btn-success btn-md mb-2" @click="myInfo = true">Info</button> -->
     </div>
     <!-- Table Component -->
-    <Table :fields="fields" :tableData="data" add-title="Add Item for Page 1"
-      edit-title="Edit Item for Page 1" @delete-item="deleteItem" />
+    <Table :fields="fields" :tableData="data" add-title="Add Item for Page 1" edit-title="Edit Item for Page 1"
+      @delete-item="deleteItem" />
 
     <b-modal v-model="myInfo" id="modal-info" class="green-header" centered title-class="font-18" hide-footer
       title="Notes +">
@@ -27,12 +27,12 @@
 
 <script>
 import { ref } from 'vue';
-import Table from "../common/Table.vue"; 
+import Table from "../common/Table.vue";
 import JsonExcel from "vue-json-excel3";
 export default {
   components: {
     Table,
-    downloadExcel:JsonExcel
+    downloadExcel: JsonExcel
   },
   setup() {
     const isFormVisible = ref(false);
@@ -48,7 +48,7 @@ export default {
       { id: 8, no: "8", no2: "", name: 'Jacob', netchange: '7,895', balance: '19,895', incomebalance: 'Balance Sheet', directchange: false, actions: '' },
       { id: 9, no: "9", no2: "", name: 'Larry', netchange: '19,895', balance: '20,895', incomebalance: 'Balance Sheet', directchange: false, actions: '' },
       { id: 10, no: "10", no2: "", name: 'Mark', netchange: '17,895', balance: '17,895', incomebalance: 'Balance Sheet', directchange: true, actions: '' },
-      { id:11, no: "11", no2: "", name: 'Jacob', netchange: '7,895', balance: '19,895', incomebalance: 'Balance Sheet', directchange: false, actions: '' },
+      { id: 11, no: "11", no2: "", name: 'Jacob', netchange: '7,895', balance: '19,895', incomebalance: 'Balance Sheet', directchange: false, actions: '' },
       { id: 12, no: "12", no2: "", name: 'Larry', netchange: '19,895', balance: '20,895', incomebalance: 'Balance Sheet', directchange: false, actions: '' },
     ]);
 
@@ -67,7 +67,7 @@ export default {
       isFormVisible.value = !isFormVisible.value;
       if (!isFormVisible.value) {
         formData.value = {
-          name: '', 
+          name: '',
           no: ``,
           no2: ``,
           netchange: ``,

@@ -229,26 +229,78 @@ a {
         }
     }
 }
-.dropdown-menu-top{
-    .dropdown-menu{
-        .dropdown-item{
-            a{
+
+.dropdown-menu-top {
+    .dropdown-menu {
+        .dropdown-item {
+            a {
                 color: $dark;
             }
 
-            &:hover{
-                a{
+            &:hover {
+                a {
                     color: $primary;
                 }
             }
+
+            .btn-group {
+                width: 100%;
+
+                button[data-bs-auto-close="outside"] {
+                    text-align: left;
+                    width: 100%;
+                    border: 0;
+                    background-color: transparent;
+                    padding: 0;
+
+                    &.show {
+                        color: $primary;
+                    }
+                }
+
+                .dropdown-item {
+                    a {
+                        color: $dark;
+                    }
+
+                    &:hover {
+                        a {
+                            color: $primary;
+                        }
+                    }
+                }
+            }
         }
-        .green{
+
+        .green {
             margin-bottom: 2px;
-            .dropdown-item{
+
+            .dropdown-item {
                 background-color: $primary;
                 color: $white;
-                a{
+
+                a {
                     color: $white;
+                }
+
+                .btn-group {
+                    button[data-bs-auto-close="outside"] {
+                        color: $white;
+
+                        &.show {
+                            color: $white;
+                        }
+                    }
+
+                    .dropdown-item {
+                        background-color: $white;
+                        color: $primary;
+
+                        &:hover {
+                            background-color: rgba($primary, 0.05);
+                            color: $primary;
+                        }
+                    }
                 }
             }
         }
@@ -357,8 +409,6 @@ a {
                         padding-bottom: 0;
                         color: $black;
                         font-weight: 600;
-
-                        &::after {}
                     }
 
                     .accordion-body {
@@ -386,13 +436,16 @@ a {
                             }
                         }
                     }
-                    @include lg{
+
+                    @include lg {
                         width: calc(33% - 8px);
                     }
-                    @include md{
+
+                    @include md {
                         width: calc(50% - 8px);
                     }
-                    @include sm{
+
+                    @include sm {
                         width: 100%;
                     }
                 }
@@ -483,6 +536,12 @@ a {
         .bitcoin-row {
             .card {
                 height: calc(100% - 24px);
+
+                .card-body {
+                    >.text-theme {
+                        display: flex;
+                    }
+                }
 
                 .card-title {
                     background-color: $primary;
@@ -689,10 +748,18 @@ a {
     max-width: 250px;
     margin-right: auto;
     float: left;
+
+    @include md {
+        float: unset;
+    }
 }
 
 .action-buttons {
     float: right;
+
+    @include md {
+        float: unset;
+    }
 }
 
 .pagination {
@@ -709,7 +776,7 @@ a {
         &.disabled {
             .page-link {
                 background-color: rgba($primary, 0.5) !important;
-                border-color: rgba($primary, 0.5) !important;
+                border: 1px solid rgba($primary, 0.10) !important;
             }
         }
 
@@ -755,6 +822,7 @@ a {
     overflow-x: auto;
     width: 100%;
     @include custom_scroll;
+
     table {
         width: 100%;
     }
@@ -816,12 +884,14 @@ a {
                 }
             }
         }
-        &.trial-table{
-            th{
+
+        &.trial-table {
+            th {
                 padding-top: 15px;
             }
-            td{
-                &.td-bg{
+
+            td {
+                &.td-bg {
                     text-align: center;
                     background-color: rgba($grey, 0.1);
                     font-weight: 700;
