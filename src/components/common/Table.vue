@@ -41,7 +41,7 @@
     </div>
 
     <!-- Edit Form -->
-    <div v-if="isEditing">
+    <div v-if="isEditing" class="add-items">
       <h2>{{ editTitle }}</h2>
       <form @submit.prevent="saveItem">
         <div class="add-item">
@@ -58,7 +58,7 @@
     </div>
 
     <!-- Add Form -->
-    <div v-if="isAdding">
+    <div v-if="isAdding" class="add-items">
       <h2>{{ addTitle }}</h2>
       <form @submit.prevent="addItem">
         <div class="add-item">

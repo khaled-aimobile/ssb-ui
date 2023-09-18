@@ -16,10 +16,19 @@
     pdf-format="a3" :pdf-margin="10" pdf-orientation="portrait" pdf-content-width="800px" @progress="onProgress($event)"
     ref="html2Pdf">
     <template v-slot:pdf-content>
-      <Table :fields="fields" :tableData="data" />
+      <Table :fields="visibleFields" :tableData="data" />
     </template>
   </vue3-html2pdf>
-  <Table :fields="fields" :tableData="data" :showSearchPagination="true" add-title="Add" add="Add Item"
+  <b-dropdown id="filter-column" variant="success" class="m-2 ms-0 filter-column" no-caret>
+      <template #button-content>
+      <i class="mdi mdi-filter"></i>  Filter Column
+    </template>
+      <b-dropdown-item v-on:click.stop v-for="field in fields" :key="field.key"><b-form-checkbox v-model="showColumns[field.key]">
+          {{ field.label }}
+        </b-form-checkbox></b-dropdown-item>
+    </b-dropdown>
+
+  <Table :fields="visibleFields" :tableData="data" :showSearchPagination="true" add-title="Add" add="Add Item"
     edit-title="Edit Item" @delete-item="deleteItem" />
   <b-modal v-model="myInfo" id="modal-info" class="green-header" centered title-class="font-18" hide-footer
     title="Notes +">
@@ -29,7 +38,7 @@
 </template>
   
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import Table from "../common/Table.vue";
 import JsonExcel from "vue-json-excel3";
 import Vue3Html2pdf from "vue3-html2pdf";
@@ -55,20 +64,30 @@ export default {
       },
 
     ]);
-
-    return {
-      data,
-      isFormVisible,
-      myInfo,
-      fields: [
-        { key: 'no', label: 'No' },
+    const showColumns = ref({});
+const fields = [
+{ key: 'no', label: 'No' },
         { key: 'name', label: 'Name' },
         { key: 'description', label: 'Description' },
         { key: 'page_number', label: 'Default Page Number' },
         { key: 'column_layout', label: 'Default Column Layout' },
         { key: 'code_filter', label: 'Default Prod. Cost Code Filter' },
         { key: 'analys_view_name', label: 'Analysis View Name' },
-      ],
+];
+fields.forEach((field) => {
+  showColumns.value[field.key] = true; // Set the initial value here based on your requirements.
+});
+const visibleFields = computed(() => {
+  return fields.filter((field) => showColumns.value[field.key]);
+});
+
+    return {
+      data,
+      isFormVisible,
+      myInfo,
+      fields,
+      showColumns,
+      visibleFields,
     };
   },
   methods: {

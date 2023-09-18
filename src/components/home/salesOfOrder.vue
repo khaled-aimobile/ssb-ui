@@ -19,11 +19,19 @@
       pdf-format="a3" :pdf-margin="10" pdf-orientation="portrait" pdf-content-width="800px" @progress="onProgress($event)"
       ref="html2Pdf">
       <template v-slot:pdf-content>
-        <Table :fields="fields" :tableData="data" />
+        <Table :fields="visibleFields" :tableData="data" />
       </template>
     </vue3-html2pdf>
+    <b-dropdown id="filter-column" variant="success" class="m-2 ms-0 filter-column" no-caret>
+      <template #button-content>
+      <i class="mdi mdi-filter"></i>  Filter Column
+    </template>
+      <b-dropdown-item v-on:click.stop v-for="field in fields" :key="field.key"><b-form-checkbox v-model="showColumns[field.key]">
+          {{ field.label }}
+        </b-form-checkbox></b-dropdown-item>
+    </b-dropdown>
 
-    <Table :fields="fields" :tableData="data" :showSearchPagination="true" add-title="Add" add="Add Item"
+    <Table :fields="visibleFields" :tableData="data" :showSearchPagination="true" add-title="Add" add="Add Item"
       edit-title="Edit Item" @delete-item="deleteItem" />
     <b-modal v-model="myInfo" id="modal-info" class="green-header" centered title-class="font-18" hide-footer
       title="Notes +">
@@ -34,7 +42,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import Table from "../common/Table.vue";
 import JsonExcel from "vue-json-excel3";
 import Vue3Html2pdf from "vue3-html2pdf";
@@ -55,6 +63,30 @@ export default {
       { id: 4, no: "SM10/0004", customerno: "IPLB0010", name: 'KUNAK REFINERY SDN BHD (BSSB)', externaldoc: '17,895', documentdate: "16/06/2010", assign: "", locationcode: "", status: "Open", completeshipped: "", amountshipped: "0", amountshippednot: '0.00', amount: "0.00", amountgst: "0.00" },
       { id: 5, no: "SM10/0005", customerno: "IPLB0011", name: 'NUNAK REFINERY SDN BHD (BSSB)', externaldoc: '7,895', documentdate: "16/06/2010", assign: "", locationcode: "", status: "Open", completeshipped: "", amountshipped: "0", amountshippednot: '0.00', amount: "0.00", amountgst: "0.00" }
     ]);
+    const showColumns = ref({});
+
+
+const fields = [
+{ key: 'no', label: 'No' },
+        { key: 'customerno', label: 'Sell-to Customer No.' },
+        { key: 'name', label: 'Sell-to Customer Name' },
+        { key: 'externaldoc', label: 'External Document No.' },
+        { key: 'locationcode', label: 'Location Code' },
+        { key: 'assign', label: 'Assigned User ID' },
+        { key: 'documentdate', label: 'Document Date' },
+        { key: 'status', label: 'Status' },
+        { key: 'completeshipped', label: 'Completely Shipped' },
+        { key: 'amountshipped', label: 'Amount Shipped Not Invoiced ($)' },
+        { key: 'amountshippednot', label: 'Amount Shipped Not Invoiced ($) Incl. GST' },
+        { key: 'amount', label: 'Amount' },
+        { key: 'amountgst', label: 'Amount Including GST' },
+];
+fields.forEach((field) => {
+  showColumns.value[field.key] = true; // Set the initial value here based on your requirements.
+});
+const visibleFields = computed(() => {
+  return fields.filter((field) => showColumns.value[field.key]);
+});
 
     const formData = ref({
       id: data.value.length + 1,
@@ -99,21 +131,9 @@ export default {
       isFormVisible,
       toggleForm,
       myInfo,
-      fields: [
-        { key: 'no', label: 'No' },
-        { key: 'customerno', label: 'Sell-to Customer No.' },
-        { key: 'name', label: 'Sell-to Customer Name' },
-        { key: 'externaldoc', label: 'External Document No.' },
-        { key: 'locationcode', label: 'Location Code' },
-        { key: 'assign', label: 'Assigned User ID' },
-        { key: 'documentdate', label: 'Document Date' },
-        { key: 'status', label: 'Status' },
-        { key: 'completeshipped', label: 'Completely Shipped' },
-        { key: 'amountshipped', label: 'Amount Shipped Not Invoiced ($)' },
-        { key: 'amountshippednot', label: 'Amount Shipped Not Invoiced ($) Incl. GST' },
-        { key: 'amount', label: 'Amount' },
-        { key: 'amountgst', label: 'Amount Including GST' },
-      ],
+      fields,
+      showColumns,
+      visibleFields,
     };
   },
   methods: {

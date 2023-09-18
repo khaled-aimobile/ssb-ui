@@ -165,6 +165,229 @@ export default {
         ],
       },
     ];
+    const menuItems = [
+  {
+    label: 'General Ledger',
+    dropdownItems: [
+      {
+        class: 'green',
+        label: 'Chart of Accounts',
+        route: '/general-ledger-charts-of-account',
+      },
+      {
+        class: 'green',
+        label: 'G/L Budgets',
+        route: '/general-ledger-gl-budget',
+      },
+      {
+        class: 'green',
+        label: 'Account Schedules',
+        route: '/general-ledger-account-schedule',
+      },
+      {
+        class: 'green',
+        label: 'Analysis by Dimensions',
+        route: '/general-ledger-analysis-dimension',
+      },
+      {
+        label: 'GST (3)',
+      },
+      {
+        class: 'green',
+        submenu: {
+          label: 'Intercompany (6)',
+          items: [
+            { label: 'General Journal',  route: '/general-ledger-intercompany-general-journal' },
+            { label: 'Inbox Transactions',  route: '/general-ledger-intercompany-inbox-transaction' },
+            { label: 'Outbox Transactions',  route: '/general-ledger-intercompany-outbox-transaction' },
+            { label: 'Handled Intercompany Inbox Transactions',  route: '/general-ledger-handled-intercompany-inbox-transaction' },
+            { label: 'Handled Intercompany Outbox Transactions',  route: '/general-ledger-handled-intercompany-outbox-transaction' }
+          ],
+        },
+      },
+      {
+        class: 'green',
+        submenu: {
+          label: 'Consolidation (3)',
+          items: [
+            {
+              label: 'Business Units',
+              route: '/general-ledger-consolidation-business-units',
+            },
+          ],
+        },
+      },
+      {
+        class: 'green',
+        submenu: {
+          label: 'Journals (4)',
+          items: [
+            { label: 'General Journal', route: '/general-ledger-journals-general-journal' },
+            { label: 'Recurring General Journal', route: '/general-ledger-journals-recurring-general-journal' },
+            { label: 'Intrastat Journal', route: '/general-ledger-journals-intrastat-journal' },
+            { label: 'Intercompany General Journal', route: '/general-ledger-journals-intercompany-general-journal' },
+          ],
+        },
+      },
+      {
+        class: 'green',
+        submenu: {
+          label: 'Register/Entries (8)',
+          items: [
+            { label: 'G/L Register', route: '/general-ledger-register-gl-register' },
+          ],
+        },
+      },
+      { label: 'Reports (4)', class: '', route: '' },
+      { label: 'Setup (6)', class: '', route: '' },
+      // Add more dropdown items as needed
+    ],
+  },
+  {
+    label: 'Cash Management',
+    dropdownItems: [
+      {
+        label: 'Bank Accounts',
+        route: '',
+      },
+      {
+        label: 'Receivables-Payables',
+        route: '',
+      },
+      {
+        label: 'Payment Registration',
+        route: '',
+      },
+      {
+        label: 'Cash Flow (5)',
+        route: '',
+      },
+      {
+        label: 'Reconciliation (3)',
+        route: '',
+      },
+      {
+        label: 'Journals (3)',
+        route: '',
+      },
+      {
+        label: 'Ledger Entries (3)',
+        route: '',
+      },
+      {
+        label: 'Reports (8)',
+        route: '',
+      },
+      {
+        label: 'Setup (7)',
+        route: '',
+      },
+      // Add more dropdown items as needed
+    ],
+  },
+  {
+    label: 'Cost Accounting',
+    dropdownItems: [
+      {
+        label: 'Chart of Cost Centers',
+        route: '',
+      },
+      {
+        label: 'Chart of Cost Objects',
+        route: '',
+      },
+      {
+        label: 'Chart of Cost Types',
+        route: '',
+      },
+      {
+        label: 'Cost Allocations',
+        route: '',
+      },
+      {
+        label: 'Cost Budgets',
+        route: '',
+      },
+      {
+        label: 'Cost Journals',
+        route: '',
+      },
+      {
+        label: 'Registers (2)',
+        route: '',
+      },
+      {
+        label: 'Reports (4)',
+        route: '',
+      },
+      {
+        label: 'Setup (2)',
+        route: '',
+      },
+      // Add more dropdown items as needed
+    ],
+  },
+  {
+    label: 'Receivables',
+    dropdownItems: [
+      {
+        label: 'Customers',
+        route: '',
+      },
+      {
+        label: 'Sales Invoices',
+        route: '',
+      },
+      {
+        label: 'Sales Credit Memos',
+        route: '',
+      },
+      {
+        label: 'Direct Debit Collections',
+        route: '',
+      },
+      {
+        label: 'Create Recurring Sales Invoices',
+        route: '',
+      },
+      {
+        label: 'Register Customer Payments',
+        route: '',
+      },
+      {
+        label: 'Combine (2)',
+        route: '',
+      },
+      {
+        label: 'Collection (4)',
+        route: '',
+      },
+      {
+        label: 'Journals (2)',
+        route: '',
+      },
+      {
+        label: 'Posted Documents (4)',
+        route: '',
+      },
+      {
+        label: 'Registers/Entries (4)',
+        route: '',
+      },
+      {
+        label: 'Reports (20)',
+        route: '',
+      },
+      {
+        label: 'Setup (5)',
+        route: '',
+      },
+      // Add more dropdown items as needed
+    ],
+  },
+  // Add more top-level menu items as needed
+];
+
     const filteredAccordion = computed(() => {
       const normalizedSearchText = searchText.value.toLowerCase().trim();
       return accordionItems.map((item) => {
@@ -187,8 +410,6 @@ export default {
       });
     });
 
-
-
     // Toggle accordion item
     const toggleAccordionItem = (index, subIndex = null) => {
       if (subIndex !== null) {
@@ -209,6 +430,7 @@ export default {
       filteredAccordion,
       toggleAccordionItem,
       filterAccordion,
+      menuItems
     };
   },
   props: {
@@ -401,143 +623,61 @@ export default {
         <button id="toggle" type="button" class="btn btn-sm me-2 font-size-16 d-xl-none header-item" @click="toggleMenu">
           <i class="fa fa-fw fa-bars"></i>
         </button>
-        <b-dropdown variant="black" data-bs-auto-close="outside"
-          class="dropdown-menu-end d-xl-block d-none dropdown-menu-top" toggle-class="header-item">
-          <template v-slot:button-content>
-            General Ledger
-            <i class="mdi mdi-chevron-down"></i>
-          </template>
+        <div v-for="menuItem in menuItems" :key="menuItem.label">
+      <b-dropdown
+        variant="black"
+        data-bs-auto-close="outside"
+        class="dropdown-menu-end d-xl-block d-none dropdown-menu-top"
+        toggle-class="header-item"
+      >
+        <template v-slot:button-content>
+          {{ menuItem.label }}
+          <i class="mdi mdi-chevron-down"></i>
+        </template>
 
-          <b-dropdown-item v-on:click.stop class="green"><router-link to="/general-ledger-charts-of-account">Chart of
-              Accounts</router-link> </b-dropdown-item>
-          <b-dropdown-item v-on:click.stop class="green"><router-link to="/general-ledger-gl-budget"
-              class="router-link-active">G/L
-              Budgets</router-link></b-dropdown-item>
-          <b-dropdown-item v-on:click.stop class="green"><router-link to="/general-ledger-account-schedule">Account
-              Schedules</router-link> </b-dropdown-item>
-          <b-dropdown-item v-on:click.stop class="green"><router-link to="/general-ledger-analysis-dimension">Analysis by
-              Dimensions</router-link></b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>GST (3)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop class="green">
+        <b-dropdown-item v-on:click.stop
+          v-for="dropdownItem in menuItem.dropdownItems"
+          :key="dropdownItem.label"
+          :class="dropdownItem.class"
+        >
+          <template v-if="dropdownItem.submenu">
             <div class="btn-group">
-              <button class="dropdown-inner-btn" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                aria-expanded="false">
-                Intercompany (6) <i class="mdi mdi-chevron-down"></i>
+              <button
+                class="dropdown-inner-btn"
+                type="button"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+                aria-expanded="false"
+              >
+                {{ dropdownItem.submenu.label }} <i class="mdi mdi-chevron-down"></i>
               </button>
               <ul class="dropdown-menu">
-                <li class="dropdown-item"><router-link to="/general-ledger-intercompany-general-journal"
-                    class="router-link-active">General Journal</router-link></li>
-                <li class="dropdown-item"><router-link to="/general-ledger-intercompany-inbox-transaction"
-                    class="router-link-active">Inbox Transactions</router-link></li>
-                <li class="dropdown-item"><router-link to="/general-ledger-intercompany-outbox-transaction"
-                    class="router-link-active">Outbox Transactions</router-link></li>
-                <li class="dropdown-item"><router-link to="/general-ledger-handled-intercompany-inbox-transaction"
-                    class="router-link-active">Handled Intercompany Inbox Transactions</router-link></li>
-                <li class="dropdown-item"><router-link to="/general-ledger-handled-intercompany-outbox-transaction"
-                    class="router-link-active">Handled Intercompany Outbox Transactions</router-link></li>
+                <li
+                  class="dropdown-item"
+                  v-for="subItem in dropdownItem.submenu.items"
+                  :key="subItem.label"
+                >
+                  <router-link
+                    :class="subItem.class"
+                    v-if="subItem.route"
+                    :to="subItem.route"
+                  >
+                    {{ subItem.label }}
+                  </router-link>
+                  <span v-else>{{ subItem.label }}</span>
+                </li>
               </ul>
             </div>
-          </b-dropdown-item>
-          <b-dropdown-item v-on:click.stop class="green">
-            <div class="btn-group">
-              <button class="dropdown-inner-btn" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                aria-expanded="false">
-                Consolidation (3) <i class="mdi mdi-chevron-down"></i>
-              </button>
-              <ul class="dropdown-menu">
-                <li class="dropdown-item"><router-link to="/general-ledger-consolidation-business-units"
-                    class="router-link-active">Business Units</router-link></li>
-              </ul>
-            </div>
-          </b-dropdown-item>
-          <b-dropdown-item v-on:click.stop class="green">
-            <div class="btn-group">
-              <button class="dropdown-inner-btn" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                aria-expanded="false">
-                Journals (4) <i class="mdi mdi-chevron-down"></i>
-              </button>
-              <ul class="dropdown-menu">
-                <li class="dropdown-item"><router-link to="/general-ledger-journals-general-journal"
-                    class="router-link-active">General Journal</router-link></li>
-                <li class="dropdown-item"><router-link to="/general-ledger-journals-recurring-general-journal"
-                    class="router-link-active">Recurring General Journal</router-link></li>
-                <li class="dropdown-item"><router-link to="/general-ledger-journals-intrastat-journal"
-                    class="router-link-active">Intrastat Journal</router-link></li>
-                <li class="dropdown-item"><router-link to="/general-ledger-journals-intercompany-general-journal"
-                    class="router-link-active">Intercompany General Journal</router-link></li>
-              </ul>
-            </div>
-          </b-dropdown-item>
-          <b-dropdown-item v-on:click.stop class="green">
-            <div class="btn-group">
-              <button class="dropdown-inner-btn" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                aria-expanded="false">
-                Register/Entries (8) <i class="mdi mdi-chevron-down"></i>
-              </button>
-              <ul class="dropdown-menu">
-                <li class="dropdown-item"><router-link to="/general-ledger-register-gl-register"
-                    class="router-link-active">G/L Register</router-link></li>
-              </ul>
-            </div>
-          </b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Reports (4)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Setup (6)</b-dropdown-item>
-        </b-dropdown>
-        <b-dropdown variant="black" class="dropdown-menu-end d-xl-block d-none dropdown-menu-top"
-          toggle-class="header-item">
-          <template v-slot:button-content>
-            Cash Management
-            <i class="mdi mdi-chevron-down"></i>
           </template>
-          <b-dropdown-item v-on:click.stop>Bank Accounts</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Receivables-Payables</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Payment Registration</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Cash Flow (5)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Reconciliation (3)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Journals (3)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Ledger Entries (3)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Reports (8)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Setup (7)</b-dropdown-item>
-
-        </b-dropdown>
-        <b-dropdown variant="black" class="dropdown-menu-end d-xl-block d-none dropdown-menu-top"
-          toggle-class="header-item">
-          <template v-slot:button-content>
-            Cost Accounting
-            <i class="mdi mdi-chevron-down"></i>
+          <template v-else>
+            <router-link :class="dropdownItem.class" v-if="dropdownItem.route" :to="dropdownItem.route">
+              {{ dropdownItem.label }}
+            </router-link>
+            <span v-else>{{ dropdownItem.label }}</span>
           </template>
-          <b-dropdown-item v-on:click.stop>Chart of Cost Centers</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Chart of Cost Objects</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Chart of Cost Types</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Cost Allocations</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Cost Budgets</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Cost Journals</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Registers (2)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Reports (4)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Setup (2)</b-dropdown-item>
-
-        </b-dropdown>
-        <b-dropdown variant="black" class="dropdown-menu-end d-xl-block d-none dropdown-menu-top"
-          toggle-class="header-item">
-          <template v-slot:button-content>
-            Receivables
-            <i class="mdi mdi-chevron-down"></i>
-          </template>
-          <b-dropdown-item v-on:click.stop>Customers</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Sales Invoices</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Sales Credit Memos</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Direct Debit Collections</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Create Recurring Sales Invoices</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Register Customer Payments</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Combine (2)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Collection (4)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Journals (2)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Posted Documents (4)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Registers/Entries (4)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Reports (20)</b-dropdown-item>
-          <b-dropdown-item v-on:click.stop>Setup (5)</b-dropdown-item>
-
-        </b-dropdown>
+        </b-dropdown-item>
+      </b-dropdown>
+    </div>
       </div>
 
       <div class="d-flex">
@@ -848,4 +988,5 @@ export default {
 <style>
 .highlighted {
   background-color: yellow;
-}</style>
+}
+</style>

@@ -11,11 +11,18 @@ body {
         #page-topbar {
             .navbar-header {
                 max-width: calc(100% - 30px);
+                @include md{
+                    max-width: 100%;
+                    padding: 0;
+                }
             }
         }
 
         .container-fluid {
             max-width: calc(100% - 30px);
+            @include md{
+                max-width: 100%;
+            }
         }
 
         .page-content {
@@ -900,4 +907,39 @@ a {
         }
     }
 
+}
+.filter-column{
+    float: left;
+}
+.add-items{
+    display: inline-block;
+    width: 100%;
+    .add-item{
+        width: 100%;
+    }
+}
+#filter-column{
+   + .dropdown-menu{
+    &.show{
+        max-height: 200px;
+        overflow-y: auto;
+    }
+        .dropdown-item{
+            .form-check-input{
+                &:checked{
+                    background-color: $primary;
+                }
+                &:focus{
+                    box-shadow: 0 0 0 0.15rem rgba($primary, 0.25);
+                }
+            }
+            .form-check-label{
+                width: 100%;
+            }
+            &:hover{
+                background-color: transparent;
+                color: $dark !important;
+            }
+        }
+    }
 }

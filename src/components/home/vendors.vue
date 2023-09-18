@@ -19,10 +19,27 @@
       pdf-format="a3" :pdf-margin="10" pdf-orientation="portrait" pdf-content-width="800px" @progress="onProgress($event)"
       ref="html2Pdf">
       <template v-slot:pdf-content>
-        <Table :fields="fields" :tableData="data" />
+        <Table :fields="visibleFields" :tableData="data" />
       </template>
     </vue3-html2pdf>
-    <Table :fields="fields" :tableData="data" :showSearchPagination="true" add-title="Add" add="Add Item"
+    <b-dropdown id="filter-column" variant="success" class="m-2 ms-0 filter-column" no-caret>
+      <template #button-content>
+      <i class="mdi mdi-filter"></i>  Filter Column
+    </template>
+      <b-dropdown-item v-on:click.stop v-for="field in fields" :key="field.key"><b-form-checkbox v-model="showColumns[field.key]">
+          {{ field.label }}
+        </b-form-checkbox></b-dropdown-item>
+    </b-dropdown>
+    <!-- <b-form-checkbox-group id="checkbox-group-1" :aria-describedby="ariaDescribedby">
+    <b-form-checkbox
+      v-model="showColumns[field.key]"
+      v-for="field in fields"
+      :key="field.key"
+    >
+      {{ field.label }}
+    </b-form-checkbox>
+  </b-form-checkbox-group> -->
+    <Table :fields="visibleFields" :tableData="data" :showSearchPagination="true" add-title="Add" add="Add Item"
       edit-title="Edit Item" @delete-item="deleteItem" />
     <b-modal v-model="myInfo" id="modal-info" class="green-header" centered title-class="font-18" hide-footer
       title="Notes +">
@@ -33,7 +50,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import Table from "../common/Table.vue";
 import JsonExcel from "vue-json-excel3";
 import Vue3Html2pdf from "vue3-html2pdf";
@@ -44,6 +61,7 @@ export default {
     Vue3Html2pdf,
   },
   setup() {
+
     const isFormVisible = ref(false);
     const myInfo = ref(false);
     const data = ref([
@@ -53,6 +71,28 @@ export default {
       { id: 4, no: "IPH00004", phone: "", name: 'CHECKROLL - TIMBER OPERATION	', responsibility: '17,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "CHECKROLL - TIMBER OPERATION", balance: '-944,124.81' },
       { id: 5, no: "IPH00005", phone: "", name: 'CHECKROLL - AGRICROPS', responsibility: '7,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "CHECKROLL - AGRICROPS", balance: '-7,613,695.74', }
     ]);
+    const showColumns = ref({});
+
+
+    const fields = [
+      { key: 'no', label: 'No', visible: true },
+      { key: 'name', label: 'Name', visible: false },
+      { key: 'responsibility', label: 'Responsibility Center', visible: true },
+      { key: 'gstdatechecked', label: 'Date GST Status Last Checked', visible: true },
+      { key: 'gstdatechecked1', label: 'Date GST Status Last Checked1', visible: true },
+      { key: 'locationcode', label: 'Location Code', visible: false },
+      { key: 'phone', label: 'Phone No.', visible: true },
+      { key: 'contact', label: 'Contact', visible: false },
+      { key: 'lastmodify', label: 'Last Modified Date Time', visible: true },
+      { key: 'searchname', label: 'Search Name', visible: true },
+      { key: 'balance', label: 'Balance ($)', visible: false },
+    ];
+    fields.forEach((field) => {
+      showColumns.value[field.key] = true; // Set the initial value here based on your requirements.
+    });
+    const visibleFields = computed(() => {
+      return fields.filter((field) => showColumns.value[field.key]);
+    });
 
     const formData = ref({
       id: data.value.length + 1,
@@ -94,19 +134,9 @@ export default {
       isFormVisible,
       toggleForm,
       myInfo,
-      fields: [
-        { key: 'no', label: 'No' },
-        { key: 'name', label: 'Name' },
-        { key: 'responsibility', label: 'Responsibility Center' },
-        { key: 'gstdatechecked', label: 'Date GST Status Last Checked' },
-        { key: 'gstdatechecked1', label: 'Date GST Status Last Checked1' },
-        { key: 'locationcode', label: 'Location Code' },
-        { key: 'phone', label: 'Phone No.' },
-        { key: 'contact', label: 'Contact' },
-        { key: 'lastmodify', label: 'Last Modified Date Time' },
-        { key: 'searchname', label: 'Search Name' },
-        { key: 'balance', label: 'Balance ($)' },
-      ],
+      fields,
+      showColumns,
+      visibleFields,
     };
   },
   methods: {
