@@ -1,6 +1,12 @@
 import store from "@/state/store";
 
 export default [
+    {
+    path: "/landing",
+    name: "landing",
+    meta: { requiresAuth: false},
+    component: () => import("./views/landingPage"),
+  },
   {
     path: "/",
     name: "default",

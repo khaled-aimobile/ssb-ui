@@ -1,0 +1,19 @@
+{
+  "login": [
+    {
+      "id": 0,
+      "user_name": "Admin123",
+      "email": "admin@themesbrand.com",
+      "password": "Admin123"
+    },
+    {
+      "id": 1,
+      "user_name": "Admin1234",
+      "email": "admin1@themesbrand.com",
+      "password": "Admin1234"
+    }
+  ],
+  "users": [
+    {}
+  ]
+}
