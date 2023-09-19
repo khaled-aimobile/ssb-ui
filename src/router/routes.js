@@ -2,14 +2,14 @@ import store from "@/state/store";
 
 export default [
     {
-    path: "/landing",
-    name: "landing",
-    meta: { requiresAuth: false},
+    path: "/",
+    name: "default",
+    meta: { requiresAuth: true},
     component: () => import("./views/landingPage"),
   },
   {
-    path: "/",
-    name: "default",
+    path: "/dashboard",
+    name: "dashboard",
     meta: { authRequired: true},
     component: () => import("./views/dashboards/default"),
   },
@@ -225,7 +225,7 @@ export default [
         // If the user is already logged in
         if (store.getters["auth/loggedIn"]) {
           // Redirect to the home page instead
-          next({ name: "default" });
+          next({ name: "dashboard" });
         } else {
           // Continue to the login page
           next();
@@ -284,7 +284,7 @@ export default [
         );
         // Navigate back to previous page, or home as a fallback
         next(
-          authRequiredOnPreviousRoute ? { name: "default" } : { ...routeFrom }
+          authRequiredOnPreviousRoute ? { name: "dashboard" } : { ...routeFrom }
         );
       },
     },

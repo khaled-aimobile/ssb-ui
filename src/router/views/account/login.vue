@@ -34,8 +34,8 @@ export default {
   },
   data() {
     return {
-      email: '',
-      password: '',
+      email: "admin@themesbrand.com",
+      password: "123456",
       submitted: false,
       authError: null,
       tryingToLogIn: false,
@@ -61,52 +61,61 @@ export default {
     ...authMethods,
     ...authFackMethods,
     ...notificationMethods,
+    // Try to log the user in with the username
+    // and password they provided.
     tryToLogIn() {
       this.submitted = true;
+      // stop here if form is invalid
       this.v$.$touch();
 
       if (this.v$.$invalid) {
         return;
-      }
-
-      this.authError = null;
-      this.tryingToLogIn = true;
-
-      const loginData = {
-        email: this.email,
-        password: this.password,
-      };
-
-      // Make an API request to fetch user data for authentication
-      axios.get("http://localhost:8081/login")
-        .then((response) => {
-          // Assuming the API returns an array of user objects
-          const usersData = response.data;
-          // Find a user with matching email and password
-          const matchedUser = usersData.find(
-            (user) =>
-              user.email === loginData.email && user.password === loginData.password
+      } else {
+        if (process.env.VUE_APP_DEFAULT_AUTH === "firebase") {
+          this.tryingToLogIn = true;
+          // Reset the authError if it existed.
+          this.authError = null;
+          return (
+            this.logIn({
+              email: this.email,
+              password: this.password,
+            })
+              // eslint-disable-next-line no-unused-vars
+              .then((token) => {
+                this.tryingToLogIn = false;
+                this.isAuthError = false;
+                // Redirect to the originally requested page, or to the home page
+                this.$router.push(
+                  this.$route.query.redirectFrom || {
+                    name: "default",
+                  }
+                );
+              })
+              .catch((error) => {
+                this.tryingToLogIn = false;
+                this.authError = error ? error : "";
+                this.isAuthError = true;
+              })
           );
-
-          if (matchedUser) {
-            // Authentication was successful
-            // You may want to store user information in your Vue.js app here
-            this.tryingToLogIn = false;
-            this.isAuthError = false;
-            this.$router.push(this.$route.query.redirectFrom || { name: "landing" });
-          } else {
-            // Authentication failed, display error message
-            this.tryingToLogIn = false;
-            this.authError = "These credentials do not match our records.";
-            this.isAuthError = true;
+        } else if (process.env.VUE_APP_DEFAULT_AUTH === "fakebackend") {
+          const { email, password } = this;
+          if (email && password) {
+            this.login({
+              email,
+              password,
+            });
           }
-        })
-        .catch((error) => {
-          this.tryingToLogIn = false;
-          this.authError = "An error occurred while trying to log in.";
-          this.isAuthError = true;
-          console.error("Login Error:", error);
-        });
+        } else if (process.env.VUE_APP_DEFAULT_AUTH === "authapi") {
+          axios
+            .post("http://127.0.0.1:8000/api/login", {
+              email: this.email,
+              password: this.password,
+            })
+            .then((res) => {
+              return res;
+            });
+        }
+      }
     },
   },
   mounted() {},
@@ -140,7 +149,7 @@ export default {
               <router-link to="/">
                 <div class="avatar-md profile-user-wid mb-4">
                   <span class="avatar-title rounded-circle bg-light">
-                    <img src="@/assets/images/logo.jpg" alt height="34" />
+                    <img src="@/assets/images/logo.svg" alt height="34" />
                   </span>
                 </div>
               </router-link>
@@ -159,7 +168,7 @@ export default {
               {{ notification.message }}
             </div>
 
-            <b-form class="p-2">
+            <b-form class="p-2" @submit.prevent="tryToLogIn">
               <b-form-group
                 class="mb-3"
                 id="input-group-1"
@@ -218,10 +227,9 @@ export default {
                 Remember me
               </b-form-checkbox>
               <div class="mt-3 d-grid">
-                <!-- <b-button type="submit" variant="success" class="btn-block"
+                <b-button type="submit" variant="success" class="btn-block"
                   >Log In</b-button
-                > -->
-                <router-link class="btn btn-success btn-md btn-block" to="/landing"><!----><div class="btn-content">Log In</div></router-link>
+                >
               </div>
               <div class="mt-4 text-center">
                 <h5 class="font-size-14 mb-3">Sign in with</h5>
