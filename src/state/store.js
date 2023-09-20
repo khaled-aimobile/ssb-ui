@@ -1,41 +1,47 @@
 import { createStore } from 'vuex'
 
 import modules from './modules'
-import axios from 'axios';
+
 
 const store = createStore({
   state: {
-    token: null,
+    isAuthenticated: false,
+    token: localStorage.getItem('access_token') || '',
+    user: null,
   },
   mutations: {
-    setToken(state, token) {
-      state.token = token;
+    SET_AUTH(state, isAuthenticated) {
+      state.isAuthenticated = isAuthenticated;
     },
-    clearToken(state) {
-      state.token = null;
+    SET_TOKEN(state, token) {
+      state.token = token;
+      localStorage.setItem('access_token', token);
+      console.log(state.token);
+    },
+    SET_USER(state, user) {
+      state.user = user;
+    },
+    LOGOUT(state) {
+      state.isAuthenticated = false;
+      state.token = '';
+      state.user = null;
+      localStorage.removeItem('access_token');
     },
   },
   actions: {
-    login({ commit }, { email, password }) {
-      axios.post('http://localhost:8081/login', { email, password })
-        .then(response => {
-          const token = response.data.token;
-          commit('setToken', token);
-        })
-        .catch(error => {
-          // Handle authentication errors
-          console.error(error);
-        });
+    login({ commit }, userData) {
+      commit('SET_AUTH', true);
+      commit('SET_TOKEN', userData.access_token);
+      commit('SET_USER', userData.user_details);
+      localStorage.setItem('user', JSON.stringify(userData.user_details));
     },
     logout({ commit }) {
-      // Clear the token when the user logs out
-      commit('clearToken');
+      commit('LOGOUT');
     },
   },
   getters: {
-    isAuthenticated(state) {
-      return state.token !== null;
-    },
+    isAuthenticated: (state) => state.isAuthenticated,
+    currentUser: (state) => state.user,
   },
   modules,
   // Enable strict mode in development to get a warning

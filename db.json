@@ -1,19 +1,10 @@
 {
-  "login": [
-    {
-      "id": 0,
-      "user_name": "Admin123",
-      "email": "admin@themesbrand.com",
-      "password": "Admin123"
-    },
-    {
-      "id": 1,
-      "user_name": "Admin1234",
-      "email": "admin1@themesbrand.com",
-      "password": "Admin1234"
-    }
-  ],
-  "users": [
-    {}
-  ]
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY5NTE3OTAxMCwiZXhwIjoxNjk1MTgyNjEwLCJuYmYiOjE2OTUxNzkwMTAsImp0aSI6ImRKOG5kZzQ1YTJQYU1aTFUiLCJzdWIiOjYsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.nS3a7P8knqLSkJoQwkXviNkKhfyvExhlvckYwTtOVfY",
+  "token_type": "bearer",
+  "user_details": {
+      "id": 6,
+      "name": "kishan kewat",
+      "email": "kishansa1s1@gmail.com"
+  },
+  "expires_in": 86400
 }

@@ -1,6 +1,6 @@
-import store from "@/state/store";
+//import store from "@/state/store";
 
-export default [
+const routes = [
     {
     path: "/",
     name: "default",
@@ -10,284 +10,235 @@ export default [
   {
     path: "/dashboard",
     name: "dashboard",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/dashboards/default"),
   },
   {
     path: "/bank-accounts",
     name: "bankaccount",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/bankAccounts"),
   },
   {
     path: "/budgets",
     name: "budgets",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/budgets"),
   },
   {
     path: "/charts-of-accounts",
     name: "chartsofaccounts",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/chartsOfAccount"),
   },
   {
     path: "/customers",
     name: "customers",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/customers"),
   },
   {
     path: "/finance-charge-memos",
     name: "financeChargeMemos",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/financeChargeMemos"),
   },
   {
     path: "/gst-statements",
     name: "gstStatements",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/gstStatements"),
   },
   {
     path: "/incoming-documents",
     name: "incomingDocuments",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/incomingDocuments"),
   },
   {
     path: "/items",
     name: "items",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/items"),
   },
   {
     path: "/purchase-orders",
     name: "purchaseOrders",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/purchaseOrders"),
   },
   {
     path: "/reminders",
     name: "reminders",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/reminders"),
   },
   {
     path: "/sales-orders",
     name: "salesorder",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/salesOrders"),
   },
   {
     path: "/vendors",
     name: "vendors",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/vendors"),
   },
   {
     path: "/ec-sales-list",
     name: "ecSalesList",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/home/ecSalesList.vue"),
   },
   //reports
   {
     path: "/gl-budget",
     name: "glBudget",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/reports/glBudget.vue"),
   },
   {
     path: "/budget",
     name: "Budget",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/reports/budget.vue"),
   },
   {
     path: "/balance-sheet",
     name: "balanceSheet",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/reports/balanceSheet.vue"),
   },
   {
     path: "/cash-flow-statement",
     name: "cashFlowStatement",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/reports/cashFlowStatement.vue"),
   },
   {
     path: "/trial-balance",
     name: "trialBalance",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/reports/trialBalance.vue"),
   },
   //general-ledger
   {
     path: "/general-ledger-charts-of-account",
     name: "generalLedgerChartsOfAccount",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/chartsOfAccount.vue"),
   },
   {
     path: "/general-ledger-gl-budget",
     name: "generalLedgerGlBudget",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/glBudget.vue"),
   },
   {
     path: "/general-ledger-account-schedule",
     name: "generalLedgerAccountSchedule",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/accountSchedule.vue"),
   },
   {
     path: "/general-ledger-analysis-dimension",
     name: "generalLedgerAnalysisDimension",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/analysisDimension.vue"),
   },
   {
     path: "/general-ledger-intercompany-general-journal",
     name: "intercompanyGeneralJournal",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/interCompany/intercompanyGeneralJournal.vue"),
   },
   {
     path: "/general-ledger-intercompany-inbox-transaction",
     name: "intercompanyInboxTransaction",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/interCompany/intercompanyInboxTransaction.vue"),
   },
   {
     path: "/general-ledger-intercompany-outbox-transaction",
     name: "intercompanyOutboxTransaction",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/interCompany/intercompanyOutboxTransaction.vue"),
   },
   {
     path: "/general-ledger-handled-intercompany-inbox-transaction",
     name: "handleIntercompanyInboxTransaction",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/interCompany/handledIntercompanyInboxTransaction.vue"),
   },
   {
     path: "/general-ledger-handled-intercompany-outbox-transaction",
     name: "handleIntercompanyOutboxTransaction",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/interCompany/handledIntercompanyOutboxTransaction.vue"),
   },
   //Consolidation
   {
     path: "/general-ledger-consolidation-business-units",
     name: "businessUnits",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/consolidation/businessUnits.vue"),
   },
   //Journals
   {
     path: "/general-ledger-journals-general-journal",
     name: "generalJournal",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/journals/generalJournal.vue"),
   },
   {
     path: "/general-ledger-journals-recurring-general-journal",
     name: "recurringGeneralJournal",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/journals/recurringGeneralJournal.vue"),
   },
   {
     path: "/general-ledger-journals-intrastat-journal",
     name: "intrastatJournal",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/journals/intrastatJournal.vue"),
   },
   {
     path: "/general-ledger-journals-intercompany-general-journal",
     name: "journalsintercompanyGeneralJournal",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/journals/intercompanyGeneralJournal.vue"),
   },
   //Register
   {
     path: "/general-ledger-register-gl-register",
     name: "registerGlRegister",
-    meta: { authRequired: true},
+    meta: { requiresAuth: true},
     component: () => import("./views/generalLedger/register/glRegister.vue"),
   },
   {
     path: "/login",
     name: "login",
     component: () => import("./views/account/login"),
-    meta: {
-      beforeResolve(routeTo, routeFrom, next) {
-        // If the user is already logged in
-        if (store.getters["auth/loggedIn"]) {
-          // Redirect to the home page instead
-          next({ name: "dashboard" });
-        } else {
-          // Continue to the login page
-          next();
-        }
-      },
-    },
+    meta: { requiresAuth: false},
   },
   {
     path: "/register",
     name: "Register",
     component: () => import("./views/account/register"),
-    meta: {
-      beforeResolve(routeTo, routeFrom, next) {
-        // If the user is already logged in
-        if (store.getters["auth/loggedIn"]) {
-          // Redirect to the home page instead
-          next({ name: "default" });
-        } else {
-          // Continue to the login page
-          next();
-        }
-      },
-    },
+    meta: { requiresAuth: false},
   },
   {
     path: "/forgot-password",
     name: "Forgot password",
     component: () => import("./views/account/forgot-password"),
-    meta: {
-      beforeResolve(routeTo, routeFrom, next) {
-        // If the user is already logged in
-        if (store.getters["auth/loggedIn"]) {
-          // Redirect to the home page instead
-          next({ name: "default" });
-        } else {
-          // Continue to the login page
-          next();
-        }
-      },
-    },
+    meta: { requiresAuth: false},
   },
   {
     path: "/logout",
     name: "logout",
     component: () => import("./views/account/logout"),
-    meta: {
-      authRequired: true,
-      beforeResolve(routeTo, routeFrom, next) {
-        if (process.env.VUE_APP_DEFAULT_AUTH === "firebase") {
-          store.dispatch("auth/logOut");
-        } else {
-          store.dispatch("authfack/logout");
-        }
-        const authRequiredOnPreviousRoute = routeFrom.matched.some((route) =>
-          route.push("/login")
-        );
-        // Navigate back to previous page, or home as a fallback
-        next(
-          authRequiredOnPreviousRoute ? { name: "dashboard" } : { ...routeFrom }
-        );
-      },
-    },
+    meta: { requiresAuth: false},
   }
   // Redirect any unmatched routes to the 404 page. This may
   // require some server configuration to work in production:
@@ -297,3 +248,6 @@ export default [
   //   redirect: "404",
   // },
 ];
+
+
+export default routes

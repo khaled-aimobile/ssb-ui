@@ -28,11 +28,17 @@ const firebaseConfig = {
   appId: process.env.VUE_APP_APPId,
   measurementId: process.env.VUE_APP_MEASUREMENTID
 };
+const userData = JSON.parse(localStorage.getItem('user'));
 
 if (process.env.VUE_APP_DEFAULT_AUTH === "firebase") {
   initFirebaseBackend(firebaseConfig);
 } else {
   configureFakeBackend();
+}
+
+if (userData) {
+  store.commit('SET_USER', userData); // Set user data in Vuex
+  store.commit('SET_AUTH', true); // Set authentication status to true
 }
 
 import 'sweetalert2/dist/sweetalert2.min.css';

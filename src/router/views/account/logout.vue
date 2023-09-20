@@ -21,8 +21,8 @@ export default {
     Layout,
   },
   mounted() {
-    localStorage.clear();
-    this.$router.push({name:'login'})
+    this.$store.dispatch('logout');
+    this.email = '';
   },
 };
 </script>

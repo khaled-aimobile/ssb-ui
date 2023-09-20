@@ -537,6 +537,11 @@ export default {
       document.getElementById("header-lang-img").setAttribute("src", flag);
       this.$i18n.locale = locale;
     },
+    logout() {
+      this.$store.dispatch('logout');
+      this.$router.push('/login');
+      this.email = ''; // Clear the email input field
+    },
   },
   watch: {
     type: {
@@ -968,10 +973,10 @@ export default {
             {{ $t("navbar.dropdown.henry.list.lockscreen") }}
           </b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
-          <router-link to="/login" class="dropdown-item text-danger">
+          <a @click="logout" class="dropdown-item text-danger cursor-pointer">
             <i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
             {{ $t("navbar.dropdown.henry.list.logout") }}
-          </router-link>
+          </a>
         </b-dropdown>
 
         <div class="dropdown d-inline-block d-none">

@@ -1,24 +1,18 @@
 <script>
-import axios from "axios";
-
 import Layout from "../../layouts/auth";
-import {
-  authMethods,
-  authFackMethods,
-  notificationMethods,
-} from "@/state/helpers";
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 import appConfig from "@/app.config";
 import { required, email, helpers } from "@vuelidate/validators";
-import useVuelidate from "@vuelidate/core";
-
+import jsonData from '../../../../db.json';
 /**
  * Login component
  */
 export default {
   setup() {
-    return { v$: useVuelidate() };
+    return { 
+
+     };
   },
   page: {
     title: "Login",
@@ -34,11 +28,7 @@ export default {
   },
   data() {
     return {
-      email: "admin@themesbrand.com",
-      password: "123456",
-      submitted: false,
-      authError: null,
-      tryingToLogIn: false,
+      email: "",
       isAuthError: false,
     };
   },
@@ -53,72 +43,59 @@ export default {
   },
   computed: {
     ...mapState("authfack", ["status"]),
+    ...mapGetters(['isAuthenticated', 'currentUser']),
     notification() {
       return this.$store ? this.$store.state.notification : null;
     },
-  },
-  methods: {
-    ...authMethods,
-    ...authFackMethods,
-    ...notificationMethods,
-    // Try to log the user in with the username
-    // and password they provided.
-    tryToLogIn() {
-      this.submitted = true;
-      // stop here if form is invalid
-      this.v$.$touch();
-
-      if (this.v$.$invalid) {
-        return;
-      } else {
-        if (process.env.VUE_APP_DEFAULT_AUTH === "firebase") {
-          this.tryingToLogIn = true;
-          // Reset the authError if it existed.
-          this.authError = null;
-          return (
-            this.logIn({
-              email: this.email,
-              password: this.password,
-            })
-              // eslint-disable-next-line no-unused-vars
-              .then((token) => {
-                this.tryingToLogIn = false;
-                this.isAuthError = false;
-                // Redirect to the originally requested page, or to the home page
-                this.$router.push(
-                  this.$route.query.redirectFrom || {
-                    name: "default",
-                  }
-                );
-              })
-              .catch((error) => {
-                this.tryingToLogIn = false;
-                this.authError = error ? error : "";
-                this.isAuthError = true;
-              })
-          );
-        } else if (process.env.VUE_APP_DEFAULT_AUTH === "fakebackend") {
-          const { email, password } = this;
-          if (email && password) {
-            this.login({
-              email,
-              password,
-            });
-          }
-        } else if (process.env.VUE_APP_DEFAULT_AUTH === "authapi") {
-          axios
-            .post("http://127.0.0.1:8000/api/login", {
-              email: this.email,
-              password: this.password,
-            })
-            .then((res) => {
-              return res;
-            });
-        }
-      }
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
+    },
+    currentUser() {
+      return this.$store.getters.currentUser;
     },
   },
-  mounted() {},
+  methods: {
+    login() {
+      const { user_details } = jsonData;
+      const { email } = user_details;
+
+      if (this.email === email) {
+        this.$store.dispatch('login', jsonData);
+        this.$router.push('/');
+      } else {
+        console.error('Login failed: Invalid email');
+      }
+    },
+//     async login() {
+//       const apiUrl = 'http://localhost:8081/login';
+//     try {
+//       const response = await fetch(apiUrl, {
+//           method: 'POST',
+//           headers: {
+//             'Content-Type': 'application/json',
+//           },
+//           body: JSON.stringify({
+//             email: this.email,
+//             password: this.password,
+//           }),
+//         });
+// console.log(response);
+//       if (response.ok) {
+//         const data = await response.json();
+//         const { access_token, user_details } = data;
+
+//         // Store the access token in Vuex and local storage
+//         this.$store.dispatch('login', { access_token, user_details });
+//         this.$router.push('/');
+//       } else {
+//         console.error('Login failed: Invalid credentials');
+//       }
+//     } catch (error) {
+//       console.error('Login failed:', error);
+//     }
+//   },
+  },
+  mounted() { },
 };
 </script>
 
@@ -136,11 +113,7 @@ export default {
                 </div>
               </div>
               <div class="col-5 align-self-end">
-                <img
-                  src="@/assets/images/profile-img.png"
-                  alt
-                  class="img-fluid"
-                />
+                <img src="@/assets/images/profile-img.png" alt class="img-fluid" />
               </div>
             </div>
           </div>
@@ -149,127 +122,25 @@ export default {
               <router-link to="/">
                 <div class="avatar-md profile-user-wid mb-4">
                   <span class="avatar-title rounded-circle bg-light">
-                    <img src="@/assets/images/logo.svg" alt height="34" />
+                    <img src="@/assets/images/logo.jpg" alt height="34" />
                   </span>
                 </div>
               </router-link>
             </div>
-            <b-alert
-              v-model="isAuthError"
-              variant="danger"
-              class="mt-3"
-              dismissible
-              >{{ authError }}</b-alert
-            >
-            <div
-              v-if="notification.message"
-              :class="'alert ' + notification.type"
-            >
+            <b-alert v-model="isAuthError" variant="danger" class="mt-3" dismissible>{{ authError }}</b-alert>
+            <div v-if="notification.message" :class="'alert ' + notification.type">
               {{ notification.message }}
             </div>
 
-            <b-form class="p-2" @submit.prevent="tryToLogIn">
-              <b-form-group
-                class="mb-3"
-                id="input-group-1"
-                label="Email"
-                label-for="input-1"
-              >
-                <b-form-input
-                  id="input-1"
-                  v-model="email"
-                  type="text"
-                  placeholder="Enter email"
-                  :class="{
-                    'is-invalid': submitted && v$.email.$error,
-                  }"
-                ></b-form-input>
-                <div
-                  v-for="(item, index) in v$.email.$errors"
-                  :key="index"
-                  class="invalid-feedback"
-                >
-                  <span v-if="item.$message">{{ item.$message }}</span>
-                </div>
-              </b-form-group>
-
-              <b-form-group
-                class="mb-3"
-                id="input-group-2"
-                label="Password"
-                label-for="input-2"
-              >
-                <b-form-input
-                  id="input-2"
-                  v-model="password"
-                  type="password"
-                  placeholder="Enter password"
-                  :class="{
-                    'is-invalid': submitted && v$.password.$error,
-                  }"
-                ></b-form-input>
-                <div
-                  v-if="submitted && v$.password.$error"
-                  class="invalid-feedback"
-                >
-                  <span v-if="v$.password.required.$message">{{
-                    v$.password.required.$message
-                  }}</span>
-                </div>
-              </b-form-group>
-              <b-form-checkbox
-                class="form-check me-2"
-                id="customControlInline"
-                name="checkbox-1"
-                value="accepted"
-                unchecked-value="not_accepted"
-              >
+            <b-form class="p-2">
+              <label for="input-1" class="form-label d-block">Email</label>
+              <input class="form-control mb-3" v-model="email" id="input-1" type="text" placeholder="Email">
+              <b-form-checkbox class="form-check me-2" id="customControlInline" name="checkbox-1" value="accepted"
+                unchecked-value="not_accepted">
                 Remember me
               </b-form-checkbox>
               <div class="mt-3 d-grid">
-                <b-button type="submit" variant="success" class="btn-block"
-                  >Log In</b-button
-                >
-              </div>
-              <div class="mt-4 text-center">
-                <h5 class="font-size-14 mb-3">Sign in with</h5>
-
-                <ul class="list-inline">
-                  <li class="list-inline-item">
-                    <a
-                      href="#"
-                      class="
-                        social-list-item
-                        bg-primary
-                        text-white
-                        border-primary
-                      "
-                    >
-                      <i class="mdi mdi-facebook"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a
-                      href="#"
-                      class="social-list-item bg-info text-white border-info"
-                    >
-                      <i class="mdi mdi-twitter"></i>
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a
-                      href="#"
-                      class="
-                        social-list-item
-                        bg-danger
-                        text-white
-                        border-danger
-                      "
-                    >
-                      <i class="mdi mdi-google"></i>
-                    </a>
-                  </li>
-                </ul>
+                <b-button @click="login" variant="success" class="btn-block">Log In</b-button>
               </div>
               <div class="mt-4 text-center">
                 <router-link to="/forgot-password" class="text-muted">
@@ -285,9 +156,7 @@ export default {
         <div class="mt-5 text-center">
           <p>
             Don't have an account ?
-            <router-link to="/register" class="fw-medium text-success"
-              >Signup now</router-link
-            >
+            <router-link to="/register" class="fw-medium text-success">Signup now</router-link>
           </p>
           <p>
             © {{ new Date().getFullYear() }} Skote. Crafted with
