@@ -122,7 +122,10 @@ a {
     &.is-active {
         box-shadow: none !important;
     }
-
+    .multiselect-search{
+        font-size: 13px;
+        color: $dark;
+    }
     .multiselect-tag {
         background-color: $primary;
         font-weight: 500;
@@ -131,6 +134,14 @@ a {
 
     .multiselect-option {
         font-size: 14px;
+        &.is-selected{
+            background: $primary;
+            color: $white;
+            &:hover{
+                background: $primary;
+                color: $white;
+            }
+        }
     }
 
     .multiselect-dropdown {
@@ -958,24 +969,56 @@ a {
 .landing-main {
 
     .landing-content {
+        .custom-container{
+            padding: 0 calc(24px / 2) 60px calc(24px / 2);
+            max-width: calc(100% - 30px);
+            margin: auto;
+        }
         .landing-head {
             .card-body {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: $primary;
-                img {
-                    max-width: 49px;
-                    margin-right: 10px;
-                    border-radius: 5px;
-                    height: 50px;
-                    object-fit: cover;
+                    background-color: $primary;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                .landing-logo{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    img {
+                        max-width: 49px;
+                        margin-right: 10px;
+                        border-radius: 5px;
+                        height: 50px;
+                        object-fit: cover;
+                    }
+                    h1 {
+                        margin-bottom: 0;
+                        font-size: 23px;
+                        color: $white;
+                    }
                 }
-
-                h1 {
-                    margin-bottom: 0;
-                    font-size: 23px;
-                    color: $white;
+                .landing-dropdown{
+                    .btn-group{
+                        .header-item{
+                            height: auto;
+                            padding-top: 0;
+                            color: $white !important;
+                        }
+                        .header-profile-user{
+                            height: 36px;
+                            width: 36px;
+                        }
+                    }
+                    .dropdown-item{
+                        a{
+                            color: $dark;
+                        }
+                        &:hover{
+                            a{
+                                color: $primary;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -1041,6 +1084,72 @@ a {
             .text-success{
                 color: $primary !important;
             }
+        }
+    }
+}
+
+//users-list{
+.users-list{
+    .card{
+        form{
+            h6{
+                font-size: 14px;
+                font-weight: 600;
+                margin-bottom: 15px;
+                padding: 6px 12px;
+                background-color: $primary;
+                color: $white;
+            }
+            .form-control{
+                max-height: 36px;
+            }
+            .multiselect{
+                max-height: 36px;
+                min-height: 36px;
+                .multiselect-wrapper{
+                    max-height: 36px;
+                    min-height: 36px;
+                    .multiselect-search{
+                        max-height: 34px;
+                        top: 1px;
+                    }
+                }
+            }
+            .dp__input_wrap{
+                .dp__input_icon_pad{
+                    max-height: 36px;
+                }
+            }
+        }
+    }
+}
+
+//picture-input
+.picture-input{
+    > div{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    justify-content: center;
+        .preview-container{
+            margin: 0 !important;
+            margin-bottom: 15px !important;
+            display: block;
+            width: 100%;
+            max-width: inherit !important;
+    .picture-preview{
+        max-width: 80px;
+    }
+            .picture-inner{
+                top: -85px !important;
+                max-width: 72px;
+            }
+        }
+        .btn{
+            max-height: 36px;
+            margin-left: 16px;
+            background-color: $primary;
+            color: $white;
         }
     }
 }

@@ -1,6 +1,18 @@
 //import store from "@/state/store";
 
 const routes = [
+  {
+    path: "/users",
+    name: "users",
+    meta: { requiresAuth: true},
+    component: () => import("./views/users"),
+  },
+  {
+    path: "/add-user",
+    name: "addUser",
+    meta: { requiresAuth: true},
+    component: () => import("./views/users/addUser"),
+  },
     {
     path: "/",
     name: "default",

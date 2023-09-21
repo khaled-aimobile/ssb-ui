@@ -50,6 +50,7 @@ import "../src/design/app.scss";
 import VueHtml2pdf from 'vue3-html2pdf'
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
+import PictureInput from 'vue-picture-input'
 
 createApp(App)
   .use(store)
@@ -65,4 +66,5 @@ createApp(App)
   .use(Maska)
   .use(VueHtml2pdf)
   .use(VueDatePicker)
+  .use(PictureInput)
   .mount('#app')

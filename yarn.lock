@@ -10335,6 +10335,11 @@ vue-loader@^17.0.0:
     hash-sum "^2.0.0"
     loader-utils "^2.0.0"
 
+vue-picture-input@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/vue-picture-input/-/vue-picture-input-3.0.1.tgz#52b8a1646adee108d425ac2ae8940bac14bfc9cc"
+  integrity sha512-VGzqoH4iAN/S7L9RY2DyyLs4AjLt4QoWx6asT3y3PTXK2yFTXbUjx5qYdHrUJrVpInhvQwngEO/mJ7LhGXGFFg==
+
 vue-router@4.1.6:
   version "4.1.6"
   resolved "https://registry.npmjs.org/vue-router/-/vue-router-4.1.6.tgz"
