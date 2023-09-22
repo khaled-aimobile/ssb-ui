@@ -29,10 +29,15 @@ export default {
   data() {
     return {
       email: "",
+      staff_id: "", // Add staff_id field
+    password: "",
       isAuthError: false,
     };
   },
   validations: {
+    staff_id: {
+    required: helpers.withMessage("Staff ID is required", required), // Add validation for staff_id
+  },
     email: {
       required: helpers.withMessage("Email is required", required),
       email: helpers.withMessage("Please enter valid email", email),
@@ -56,44 +61,16 @@ export default {
   },
   methods: {
     login() {
-      const { user_details } = jsonData;
-      const { email } = user_details;
+    const { user_details } = jsonData;
+    const { staff_id, password } = user_details;
 
-      if (this.email === email) {
-        this.$store.dispatch('login', jsonData);
-        this.$router.push('/');
-      } else {
-        console.error('Login failed: Invalid email');
-      }
-    },
-//     async login() {
-//       const apiUrl = 'http://localhost:8081/login';
-//     try {
-//       const response = await fetch(apiUrl, {
-//           method: 'POST',
-//           headers: {
-//             'Content-Type': 'application/json',
-//           },
-//           body: JSON.stringify({
-//             email: this.email,
-//             password: this.password,
-//           }),
-//         });
-// console.log(response);
-//       if (response.ok) {
-//         const data = await response.json();
-//         const { access_token, user_details } = data;
-
-//         // Store the access token in Vuex and local storage
-//         this.$store.dispatch('login', { access_token, user_details });
-//         this.$router.push('/');
-//       } else {
-//         console.error('Login failed: Invalid credentials');
-//       }
-//     } catch (error) {
-//       console.error('Login failed:', error);
-//     }
-//   },
+    if (this.staff_id === staff_id && this.password === password) {
+      this.$store.dispatch('login', jsonData);
+      this.$router.push('/');
+    } else {
+      console.error('Login failed: Invalid staff ID or password');
+    }
+  },
   },
   mounted() { },
 };
@@ -133,8 +110,10 @@ export default {
             </div>
 
             <b-form class="p-2">
-              <label for="input-1" class="form-label d-block">Email</label>
-              <input class="form-control mb-3" v-model="email" id="input-1" type="text" placeholder="Email">
+              <label for="input-1" class="form-label d-block">Staff ID</label>
+              <input class="form-control mb-3" v-model="staff_id" id="input-1" type="text" placeholder="Staff ID">
+              <label for="input-1" class="form-label d-block">Password</label>
+              <input class="form-control mb-3" v-model="password" id="input-1" type="text" placeholder="Password">
               <b-form-checkbox class="form-check me-2" id="customControlInline" name="checkbox-1" value="accepted"
                 unchecked-value="not_accepted">
                 Remember me

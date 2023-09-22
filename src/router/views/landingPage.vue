@@ -1,11 +1,15 @@
 <script>
 import axios from 'axios';
+import subMenu from '@/components/subMenu'
 
 export default {
     data() {
         return {
             // Input field for email
         };
+    },
+    components:{
+        subMenu
     },
     methods: {
         async sendDataToServer() {
@@ -46,54 +50,18 @@ export default {
 <template>
     <div class="landing-main">
         <div class="landing-content">
-            <b-card class="landing-head">
-                <div class="landing-logo">
-                    <img src="@/assets/images/logo.jpg" />
-                    <h1>Sabah Softwood Berhad</h1>
-                </div>
-                <div class="landing-dropdown">
-                    <b-dropdown right variant="black" toggle-class="header-item">
-                        <template v-slot:button-content>
-                            <img class="rounded-circle header-profile-user" src="@/assets/images/users/avatar-1.jpg"
-                                alt="Header Avatar" />
-                            <span class="d-none d-xl-inline-block ms-1">{{
-                                $t("navbar.dropdown.henry.text")
-                            }}</span>
-                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-                        </template>
-                        <!-- item-->
-                        <b-dropdown-item v-on:click.stop>
-                            <router-link to="/add-user">
-                                <span>
-                                    <i class="bx bx-user-plus font-size-16 align-middle me-1"></i>
-                                    Add User
-                                </span>
-                            </router-link>
-                        </b-dropdown-item>
-                        <b-dropdown-item v-on:click.stop>
-                            <router-link to="/users">
-                                <span>
-                                    <i class="mdi mdi-account-group font-size-16 align-middle me-1"></i>
-                                    Users
-                                </span>
-                            </router-link>
-                        </b-dropdown-item>
-                        <a @click="logout" class="dropdown-item text-danger cursor-pointer">
-                            <i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
-                            {{ $t("navbar.dropdown.henry.list.logout") }}
-                        </a>
-                    </b-dropdown>
-                </div>
-            </b-card>
+            <sub-menu />
+            
             <div class="landing-body">
                 <b-container>
                     <b-row>
-                        <!-- <b-col lg="12">
-                            <div v-if="isAuthenticated">
+                         <b-col lg="12" class="text-center mb-5">
+                            <h1>Welcome</h1>
+                            <!-- <div v-if="isAuthenticated">
                                 <h2 v-if="currentUser">{{ currentUser.name }}</h2>
                                 <p v-if="currentUser">Email: {{ currentUser.email }}</p>
-                            </div>
-                        </b-col> -->
+                            </div> -->
+                        </b-col>
                         <b-col lg="3" sm="6">
                             <div class="card">
                                 <a v-if="currentUser.email === 'kishansa1s1@gmail.com'" href="https://54.254.141.79/login"

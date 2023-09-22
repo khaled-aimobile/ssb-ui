@@ -2,6 +2,12 @@
 
 const routes = [
   {
+    path: "/menu-setting",
+    name: "menuSetting",
+    meta: { requiresAuth: true},
+    component: () => import("./views/menuSetting"),
+  },
+  {
     path: "/users",
     name: "users",
     meta: { requiresAuth: true},

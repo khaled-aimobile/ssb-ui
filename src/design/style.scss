@@ -122,10 +122,12 @@ a {
     &.is-active {
         box-shadow: none !important;
     }
-    .multiselect-search{
+
+    .multiselect-search {
         font-size: 13px;
         color: $dark;
     }
+
     .multiselect-tag {
         background-color: $primary;
         font-weight: 500;
@@ -134,10 +136,12 @@ a {
 
     .multiselect-option {
         font-size: 14px;
-        &.is-selected{
+
+        &.is-selected {
             background: $primary;
             color: $white;
-            &:hover{
+
+            &:hover {
                 background: $primary;
                 color: $white;
             }
@@ -969,21 +973,40 @@ a {
 .landing-main {
 
     .landing-content {
-        .custom-container{
+        .custom-container {
             padding: 0 calc(24px / 2) 60px calc(24px / 2);
             max-width: calc(100% - 30px);
             margin: auto;
+
+            .add-menu {
+                display: flex;
+                gap: 8px;
+            }
+            .checkbox-toggle{
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+                input{
+                    margin-right: 5px;
+                }
+                label{
+                    margin-bottom: 0;
+                }
+            }
         }
+
         .landing-head {
             .card-body {
-                    background-color: $primary;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                .landing-logo{
+                background-color: $primary;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .landing-logo {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+
                     img {
                         max-width: 49px;
                         margin-right: 10px;
@@ -991,30 +1014,35 @@ a {
                         height: 50px;
                         object-fit: cover;
                     }
+
                     h1 {
                         margin-bottom: 0;
                         font-size: 23px;
                         color: $white;
                     }
                 }
-                .landing-dropdown{
-                    .btn-group{
-                        .header-item{
+
+                .landing-dropdown {
+                    .btn-group {
+                        .header-item {
                             height: auto;
                             padding-top: 0;
                             color: $white !important;
                         }
-                        .header-profile-user{
+
+                        .header-profile-user {
                             height: 36px;
                             width: 36px;
                         }
                     }
-                    .dropdown-item{
-                        a{
+
+                    .dropdown-item {
+                        a {
                             color: $dark;
                         }
-                        &:hover{
-                            a{
+
+                        &:hover {
+                            a {
                                 color: $primary;
                             }
                         }
@@ -1028,7 +1056,7 @@ a {
             display: flex;
             align-items: center;
 
-            .card{
+            .card {
                 background-color: rgba($primary, 0.13);
                 background-image: linear-gradient(to bottom, rgba($primary, 0.3) -20%, rgba($white, 0.3) 50%);
                 border-radius: 5px;
@@ -1037,36 +1065,40 @@ a {
 
                 .card-body {
                     text-align: center;
-    
+
                     .mdi {
                         font-size: 49px;
                         color: $primary;
                         transition: 0.5s all ease;
                     }
-    
+
                     .card-title {
                         margin-bottom: 15px;
                         font-size: 20px;
                         color: $primary;
                         transition: 0.5s all ease;
                     }
-    
+
                     .landing-content {
                         display: block;
-    
+
                         a {
                             display: none;
+
                             &.btn {
                                 min-width: 70px;
                             }
                         }
                     }
                 }
-                &:hover{
+
+                &:hover {
                     background-color: rgba($primary, 0.6);
+
                     i.mdi {
                         color: $white;
                     }
+
                     h4.card-title {
                         color: $white;
                     }
@@ -1077,11 +1109,22 @@ a {
 }
 
 //login
-.account-pages{
-    .bg-success{
-        &.bg-soft{
+.bg-success {
+    &.bg-soft {
+        background-color: rgba($primary, 0.25) !important;
+
+        .text-success,
+        &.text-success {
+            color: $primary !important;
+        }
+    }
+}
+.account-pages {
+    .bg-success {
+        &.bg-soft {
             background-color: rgba($primary, 0.25) !important;
-            .text-success{
+
+            .text-success {
                 color: $primary !important;
             }
         }
@@ -1089,10 +1132,10 @@ a {
 }
 
 //users-list{
-.users-list{
-    .card{
-        form{
-            h6{
+.users-list {
+    .card {
+        form {
+            h6 {
                 font-size: 14px;
                 font-weight: 600;
                 margin-bottom: 15px;
@@ -1100,23 +1143,28 @@ a {
                 background-color: $primary;
                 color: $white;
             }
-            .form-control{
+
+            .form-control {
                 max-height: 36px;
             }
-            .multiselect{
+
+            .multiselect {
                 max-height: 36px;
                 min-height: 36px;
-                .multiselect-wrapper{
+
+                .multiselect-wrapper {
                     max-height: 36px;
                     min-height: 36px;
-                    .multiselect-search{
+
+                    .multiselect-search {
                         max-height: 34px;
                         top: 1px;
                     }
                 }
             }
-            .dp__input_wrap{
-                .dp__input_icon_pad{
+
+            .dp__input_wrap {
+                .dp__input_icon_pad {
                     max-height: 36px;
                 }
             }
@@ -1125,31 +1173,84 @@ a {
 }
 
 //picture-input
-.picture-input{
-    > div{
+.picture-input {
+    >div {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-    justify-content: center;
-        .preview-container{
+        justify-content: center;
+
+        .preview-container {
             margin: 0 !important;
             margin-bottom: 15px !important;
             display: block;
             width: 100%;
             max-width: inherit !important;
-    .picture-preview{
-        max-width: 80px;
-    }
-            .picture-inner{
+
+            .picture-preview {
+                max-width: 80px;
+            }
+
+            .picture-inner {
                 top: -85px !important;
                 max-width: 72px;
             }
         }
-        .btn{
+
+        .btn {
             max-height: 36px;
             margin-left: 16px;
             background-color: $primary;
             color: $white;
+        }
+    }
+}
+
+.user-card.card {
+    box-shadow: 0 0px 8px rgba($primary, 0.5);
+    .user-dob{
+        display: inline-flex;
+        width: auto;
+        padding: 8px 9px;
+        transition: 0.5s all;
+        position: relative;
+        &.bg-success.bg-soft{
+            background-color: rgba(0, 109, 51, 0.15) !important;
+            &:hover{
+                background-color: rgba($primary, 0.15) !important;
+                color: $primary !important;
+            }
+        }
+        i{
+            margin-left: 5px;
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            margin: 0;
+        }
+    }
+    .avatar-sm {
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .back-main {
+        display: flex;
+        font-size: 12px;
+        align-items: center;
+        .back-arrow {
+            min-width: 26px;
+            width: 26px;
+            min-height: 26px;
+            height: 26px;
+            margin: auto;
+            margin-right: 5px;
+            border-radius: 50%;
+            background-color: $primary;
+            color: $white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 }

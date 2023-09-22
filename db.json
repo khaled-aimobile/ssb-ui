@@ -2,6 +2,8 @@
   "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY5NTE3OTAxMCwiZXhwIjoxNjk1MTgyNjEwLCJuYmYiOjE2OTUxNzkwMTAsImp0aSI6ImRKOG5kZzQ1YTJQYU1aTFUiLCJzdWIiOjYsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.nS3a7P8knqLSkJoQwkXviNkKhfyvExhlvckYwTtOVfY",
   "token_type": "bearer",
   "user_details": {
+    "staff_id": "SSB0000",
+    "password": "109545",
       "id": 6,
       "name": "kishan kewat",
       "email": "kishansa1s1@gmail.com"
