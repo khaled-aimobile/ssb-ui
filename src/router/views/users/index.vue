@@ -158,8 +158,8 @@ export default {
                                     }}</a>
                                 </h5>
                                 <p class="text-muted mb-1">{{ user.department }}</p>
-                                <p class="text-muted mb-1">{{ user.designation }}</p>
-                                <p class="text-muted">{{ user.contact }}</p>
+                                <p class="text-muted mb-3">{{ user.designation }}</p>
+                                <!-- <p class="text-muted">{{ user.contact }}</p> -->
 
                                 <div>
                                     <router-link to="" class="badge user-dob bg-success bg-soft text-success font-size-11 m-1"><i class="bx bx-gift"></i> {{
