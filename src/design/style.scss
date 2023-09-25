@@ -16,6 +16,16 @@ body {
                     max-width: 100%;
                     padding: 0;
                 }
+                .dropdown-item{
+                    a{
+                        color: $dark;
+                    }
+                    &:hover{
+                        a{
+                            color: $primary;
+                        }
+                    }
+                }
             }
         }
 
@@ -215,6 +225,7 @@ a {
 .topnav {
     .navbar-nav {
         .nav-item {
+            
             &:first-of-type {
                 @include xl {
                     .nav-link {
@@ -240,7 +251,7 @@ a {
         }
 
         .nav-link {
-
+            font-size: 13px;
             &:focus,
             &:hover {
                 color: $primary !important;
@@ -490,7 +501,7 @@ a {
 
         span {
             color: $white;
-            font-size: 18px;
+            font-size: 13px;
         }
     }
 }
@@ -981,6 +992,27 @@ a {
             .add-menu {
                 display: flex;
                 gap: 8px;
+                .form-control,
+                .multiselect {
+                    max-height: 36px;
+                    min-height: 36px;
+    
+                    .multiselect-wrapper {
+                        max-height: 36px;
+                        min-height: 36px;
+    
+                        .multiselect-search {
+                            max-height: 34px;
+                            top: 1px;
+                        }
+                    }
+                    &.max-100{
+                        max-width: 100px;
+                    }
+                }
+                .checkbox-toggle{
+                    width: 100%;
+                }
             }
             .checkbox-toggle{
                 display: flex;
@@ -1252,5 +1284,29 @@ a {
             align-items: center;
             justify-content: center;
         }
+    }
+}
+//user-search
+.user-search{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .form-control{
+        margin-right: 15px;
+        max-width: 500px;
+    }
+    .filter-dropdown{
+        display: flex;
+        .form-select{
+            margin-left: 5px;
+            max-width: fit-content;
+        }
+    }
+}
+
+//menu-table
+.menu-table{
+    .export{
+        display: none;
     }
 }

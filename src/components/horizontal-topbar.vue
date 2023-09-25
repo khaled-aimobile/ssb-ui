@@ -166,227 +166,227 @@ export default {
       },
     ];
     const menuItems = [
-  {
-    label: 'General Ledger',
-    dropdownItems: [
       {
-        class: 'green',
-        label: 'Chart of Accounts',
-        route: '/general-ledger-charts-of-account',
-      },
-      {
-        class: 'green',
-        label: 'G/L Budgets',
-        route: '/general-ledger-gl-budget',
-      },
-      {
-        class: 'green',
-        label: 'Account Schedules',
-        route: '/general-ledger-account-schedule',
-      },
-      {
-        class: 'green',
-        label: 'Analysis by Dimensions',
-        route: '/general-ledger-analysis-dimension',
-      },
-      {
-        label: 'GST (3)',
-      },
-      {
-        class: 'green',
-        submenu: {
-          label: 'Intercompany (6)',
-          items: [
-            { label: 'General Journal',  route: '/general-ledger-intercompany-general-journal' },
-            { label: 'Inbox Transactions',  route: '/general-ledger-intercompany-inbox-transaction' },
-            { label: 'Outbox Transactions',  route: '/general-ledger-intercompany-outbox-transaction' },
-            { label: 'Handled Intercompany Inbox Transactions',  route: '/general-ledger-handled-intercompany-inbox-transaction' },
-            { label: 'Handled Intercompany Outbox Transactions',  route: '/general-ledger-handled-intercompany-outbox-transaction' }
-          ],
-        },
-      },
-      {
-        class: 'green',
-        submenu: {
-          label: 'Consolidation (3)',
-          items: [
-            {
-              label: 'Business Units',
-              route: '/general-ledger-consolidation-business-units',
+        label: 'General Ledger',
+        dropdownItems: [
+          {
+            class: 'green',
+            label: 'Chart of Accounts',
+            route: '/general-ledger-charts-of-account',
+          },
+          {
+            class: 'green',
+            label: 'G/L Budgets',
+            route: '/general-ledger-gl-budget',
+          },
+          {
+            class: 'green',
+            label: 'Account Schedules',
+            route: '/general-ledger-account-schedule',
+          },
+          {
+            class: 'green',
+            label: 'Analysis by Dimensions',
+            route: '/general-ledger-analysis-dimension',
+          },
+          {
+            label: 'GST (3)',
+          },
+          {
+            class: 'green',
+            submenu: {
+              label: 'Intercompany (6)',
+              items: [
+                { label: 'General Journal', route: '/general-ledger-intercompany-general-journal' },
+                { label: 'Inbox Transactions', route: '/general-ledger-intercompany-inbox-transaction' },
+                { label: 'Outbox Transactions', route: '/general-ledger-intercompany-outbox-transaction' },
+                { label: 'Handled Intercompany Inbox Transactions', route: '/general-ledger-handled-intercompany-inbox-transaction' },
+                { label: 'Handled Intercompany Outbox Transactions', route: '/general-ledger-handled-intercompany-outbox-transaction' }
+              ],
             },
-          ],
-        },
+          },
+          {
+            class: 'green',
+            submenu: {
+              label: 'Consolidation (3)',
+              items: [
+                {
+                  label: 'Business Units',
+                  route: '/general-ledger-consolidation-business-units',
+                },
+              ],
+            },
+          },
+          {
+            class: 'green',
+            submenu: {
+              label: 'Journals (4)',
+              items: [
+                { label: 'General Journal', route: '/general-ledger-journals-general-journal' },
+                { label: 'Recurring General Journal', route: '/general-ledger-journals-recurring-general-journal' },
+                { label: 'Intrastat Journal', route: '/general-ledger-journals-intrastat-journal' },
+                { label: 'Intercompany General Journal', route: '/general-ledger-journals-intercompany-general-journal' },
+              ],
+            },
+          },
+          {
+            class: 'green',
+            submenu: {
+              label: 'Register/Entries (8)',
+              items: [
+                { label: 'G/L Register', route: '/general-ledger-register-gl-register' },
+              ],
+            },
+          },
+          { label: 'Reports (4)', class: '', route: '' },
+          { label: 'Setup (6)', class: '', route: '' },
+          // Add more dropdown items as needed
+        ],
       },
       {
-        class: 'green',
-        submenu: {
-          label: 'Journals (4)',
-          items: [
-            { label: 'General Journal', route: '/general-ledger-journals-general-journal' },
-            { label: 'Recurring General Journal', route: '/general-ledger-journals-recurring-general-journal' },
-            { label: 'Intrastat Journal', route: '/general-ledger-journals-intrastat-journal' },
-            { label: 'Intercompany General Journal', route: '/general-ledger-journals-intercompany-general-journal' },
-          ],
-        },
+        label: 'Cash Management',
+        dropdownItems: [
+          {
+            label: 'Bank Accounts',
+            route: '',
+          },
+          {
+            label: 'Receivables-Payables',
+            route: '',
+          },
+          {
+            label: 'Payment Registration',
+            route: '',
+          },
+          {
+            label: 'Cash Flow (5)',
+            route: '',
+          },
+          {
+            label: 'Reconciliation (3)',
+            route: '',
+          },
+          {
+            label: 'Journals (3)',
+            route: '',
+          },
+          {
+            label: 'Ledger Entries (3)',
+            route: '',
+          },
+          {
+            label: 'Reports (8)',
+            route: '',
+          },
+          {
+            label: 'Setup (7)',
+            route: '',
+          },
+          // Add more dropdown items as needed
+        ],
       },
       {
-        class: 'green',
-        submenu: {
-          label: 'Register/Entries (8)',
-          items: [
-            { label: 'G/L Register', route: '/general-ledger-register-gl-register' },
-          ],
-        },
-      },
-      { label: 'Reports (4)', class: '', route: '' },
-      { label: 'Setup (6)', class: '', route: '' },
-      // Add more dropdown items as needed
-    ],
-  },
-  {
-    label: 'Cash Management',
-    dropdownItems: [
-      {
-        label: 'Bank Accounts',
-        route: '',
-      },
-      {
-        label: 'Receivables-Payables',
-        route: '',
-      },
-      {
-        label: 'Payment Registration',
-        route: '',
-      },
-      {
-        label: 'Cash Flow (5)',
-        route: '',
-      },
-      {
-        label: 'Reconciliation (3)',
-        route: '',
-      },
-      {
-        label: 'Journals (3)',
-        route: '',
-      },
-      {
-        label: 'Ledger Entries (3)',
-        route: '',
+        label: 'Cost Accounting',
+        dropdownItems: [
+          {
+            label: 'Chart of Cost Centers',
+            route: '',
+          },
+          {
+            label: 'Chart of Cost Objects',
+            route: '',
+          },
+          {
+            label: 'Chart of Cost Types',
+            route: '',
+          },
+          {
+            label: 'Cost Allocations',
+            route: '',
+          },
+          {
+            label: 'Cost Budgets',
+            route: '',
+          },
+          {
+            label: 'Cost Journals',
+            route: '',
+          },
+          {
+            label: 'Registers (2)',
+            route: '',
+          },
+          {
+            label: 'Reports (4)',
+            route: '',
+          },
+          {
+            label: 'Setup (2)',
+            route: '',
+          },
+          // Add more dropdown items as needed
+        ],
       },
       {
-        label: 'Reports (8)',
-        route: '',
+        label: 'Receivables',
+        dropdownItems: [
+          {
+            label: 'Customers',
+            route: '',
+          },
+          {
+            label: 'Sales Invoices',
+            route: '',
+          },
+          {
+            label: 'Sales Credit Memos',
+            route: '',
+          },
+          {
+            label: 'Direct Debit Collections',
+            route: '',
+          },
+          {
+            label: 'Create Recurring Sales Invoices',
+            route: '',
+          },
+          {
+            label: 'Register Customer Payments',
+            route: '',
+          },
+          {
+            label: 'Combine (2)',
+            route: '',
+          },
+          {
+            label: 'Collection (4)',
+            route: '',
+          },
+          {
+            label: 'Journals (2)',
+            route: '',
+          },
+          {
+            label: 'Posted Documents (4)',
+            route: '',
+          },
+          {
+            label: 'Registers/Entries (4)',
+            route: '',
+          },
+          {
+            label: 'Reports (20)',
+            route: '',
+          },
+          {
+            label: 'Setup (5)',
+            route: '',
+          },
+          // Add more dropdown items as needed
+        ],
       },
-      {
-        label: 'Setup (7)',
-        route: '',
-      },
-      // Add more dropdown items as needed
-    ],
-  },
-  {
-    label: 'Cost Accounting',
-    dropdownItems: [
-      {
-        label: 'Chart of Cost Centers',
-        route: '',
-      },
-      {
-        label: 'Chart of Cost Objects',
-        route: '',
-      },
-      {
-        label: 'Chart of Cost Types',
-        route: '',
-      },
-      {
-        label: 'Cost Allocations',
-        route: '',
-      },
-      {
-        label: 'Cost Budgets',
-        route: '',
-      },
-      {
-        label: 'Cost Journals',
-        route: '',
-      },
-      {
-        label: 'Registers (2)',
-        route: '',
-      },
-      {
-        label: 'Reports (4)',
-        route: '',
-      },
-      {
-        label: 'Setup (2)',
-        route: '',
-      },
-      // Add more dropdown items as needed
-    ],
-  },
-  {
-    label: 'Receivables',
-    dropdownItems: [
-      {
-        label: 'Customers',
-        route: '',
-      },
-      {
-        label: 'Sales Invoices',
-        route: '',
-      },
-      {
-        label: 'Sales Credit Memos',
-        route: '',
-      },
-      {
-        label: 'Direct Debit Collections',
-        route: '',
-      },
-      {
-        label: 'Create Recurring Sales Invoices',
-        route: '',
-      },
-      {
-        label: 'Register Customer Payments',
-        route: '',
-      },
-      {
-        label: 'Combine (2)',
-        route: '',
-      },
-      {
-        label: 'Collection (4)',
-        route: '',
-      },
-      {
-        label: 'Journals (2)',
-        route: '',
-      },
-      {
-        label: 'Posted Documents (4)',
-        route: '',
-      },
-      {
-        label: 'Registers/Entries (4)',
-        route: '',
-      },
-      {
-        label: 'Reports (20)',
-        route: '',
-      },
-      {
-        label: 'Setup (5)',
-        route: '',
-      },
-      // Add more dropdown items as needed
-    ],
-  },
-  // Add more top-level menu items as needed
-];
+      // Add more top-level menu items as needed
+    ];
 
     const filteredAccordion = computed(() => {
       const normalizedSearchText = searchText.value.toLowerCase().trim();
@@ -620,7 +620,7 @@ export default {
             </span>
             <span class="logo-lg">
               <img src="@/assets/images/logo.jpg" alt height="26" />
-              <span>Softwood</span>
+              <span>Softwoods</span>
             </span>
           </router-link>
         </div>
@@ -629,60 +629,40 @@ export default {
           <i class="fa fa-fw fa-bars"></i>
         </button>
         <div v-for="menuItem in menuItems" :key="menuItem.label">
-      <b-dropdown
-        variant="black"
-        data-bs-auto-close="outside"
-        class="dropdown-menu-end d-xl-block d-none dropdown-menu-top"
-        toggle-class="header-item"
-      >
-        <template v-slot:button-content>
-          {{ menuItem.label }}
-          <i class="mdi mdi-chevron-down"></i>
-        </template>
+          <b-dropdown variant="black" data-bs-auto-close="outside"
+            class="dropdown-menu-end d-xl-block d-none dropdown-menu-top" toggle-class="header-item">
+            <template v-slot:button-content>
+              {{ menuItem.label }}
+              <i class="mdi mdi-chevron-down"></i>
+            </template>
 
-        <b-dropdown-item v-on:click.stop
-          v-for="dropdownItem in menuItem.dropdownItems"
-          :key="dropdownItem.label"
-          :class="dropdownItem.class"
-        >
-          <template v-if="dropdownItem.submenu">
-            <div class="btn-group">
-              <button
-                class="dropdown-inner-btn"
-                type="button"
-                data-bs-toggle="dropdown"
-                data-bs-auto-close="outside"
-                aria-expanded="false"
-              >
-                {{ dropdownItem.submenu.label }} <i class="mdi mdi-chevron-down"></i>
-              </button>
-              <ul class="dropdown-menu">
-                <li
-                  class="dropdown-item"
-                  v-for="subItem in dropdownItem.submenu.items"
-                  :key="subItem.label"
-                >
-                  <router-link
-                    :class="subItem.class"
-                    v-if="subItem.route"
-                    :to="subItem.route"
-                  >
-                    {{ subItem.label }}
-                  </router-link>
-                  <span v-else>{{ subItem.label }}</span>
-                </li>
-              </ul>
-            </div>
-          </template>
-          <template v-else>
-            <router-link :class="dropdownItem.class" v-if="dropdownItem.route" :to="dropdownItem.route">
-              {{ dropdownItem.label }}
-            </router-link>
-            <span v-else>{{ dropdownItem.label }}</span>
-          </template>
-        </b-dropdown-item>
-      </b-dropdown>
-    </div>
+            <b-dropdown-item v-on:click.stop v-for="dropdownItem in menuItem.dropdownItems" :key="dropdownItem.label"
+              :class="dropdownItem.class">
+              <template v-if="dropdownItem.submenu">
+                <div class="btn-group">
+                  <button class="dropdown-inner-btn" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                    aria-expanded="false">
+                    {{ dropdownItem.submenu.label }} <i class="mdi mdi-chevron-down"></i>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item" v-for="subItem in dropdownItem.submenu.items" :key="subItem.label">
+                      <router-link :class="subItem.class" v-if="subItem.route" :to="subItem.route">
+                        {{ subItem.label }}
+                      </router-link>
+                      <span v-else>{{ subItem.label }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </template>
+              <template v-else>
+                <router-link :class="dropdownItem.class" v-if="dropdownItem.route" :to="dropdownItem.route">
+                  {{ dropdownItem.label }}
+                </router-link>
+                <span v-else>{{ dropdownItem.label }}</span>
+              </template>
+            </b-dropdown-item>
+          </b-dropdown>
+        </div>
       </div>
 
       <div class="d-flex">
@@ -959,18 +939,29 @@ export default {
               </span>
             </router-link>
           </b-dropdown-item>
-          <b-dropdown-item href="#">
-            <i class="bx bx-wallet font-size-16 align-middle me-1"></i>
-            {{ $t("navbar.dropdown.henry.list.mywallet") }}
+          <b-dropdown-item v-on:click.stop>
+            <router-link to="/add-user">
+              <span>
+                <i class="bx bx-user-plus font-size-16 align-middle me-1"></i>
+                Add User
+              </span>
+            </router-link>
           </b-dropdown-item>
-          <b-dropdown-item class="d-block" href="#">
-            <span class="badge bg-success float-end">11</span>
-            <i class="bx bx-wrench font-size-16 align-middle me-1"></i>
-            {{ $t("navbar.dropdown.henry.list.settings") }}
+          <b-dropdown-item v-on:click.stop>
+            <router-link to="/users">
+              <span>
+                <i class="mdi mdi-account-group font-size-16 align-middle me-1"></i>
+                Users
+              </span>
+            </router-link>
           </b-dropdown-item>
-          <b-dropdown-item href="#">
-            <i class="bx bx-lock-open font-size-16 align-middle me-1"></i>
-            {{ $t("navbar.dropdown.henry.list.lockscreen") }}
+          <b-dropdown-item v-on:click.stop>
+            <router-link to="/menu-setting">
+              <span>
+                <i class="bx bx-sidebar font-size-16 align-middle me-1"></i>
+                Menu Setting
+              </span>
+            </router-link>
           </b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
           <a @click="logout" class="dropdown-item text-danger cursor-pointer">

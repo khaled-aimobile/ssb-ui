@@ -14,6 +14,7 @@
       :active-class="'active-page'"
       :hide-prev-next="false"
     ></paginate>
+    
   </template>
   
   <script>

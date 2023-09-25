@@ -3,6 +3,8 @@ import Layout from "../../layouts/main";
 import appConfig from "@/app.config";
 import PageHeader from "@/components/page-header";
 import Multiselect from '@vueform/multiselect'
+import Table from "../../../components/common/Table.vue";
+import { ref } from 'vue';
 
 export default {
     page: {
@@ -14,10 +16,44 @@ export default {
             },
         ],
     },
+    setup() {
+    const isFormVisible = ref(false);
+    const myInfo = ref(false);
+    const data = ref([
+      {
+        id: 1,
+        name: 'Parent',
+        no: '1',
+        position: "Search",
+        actions: '',
+      },
+      {
+        id: 2,
+        name: 'Sub',
+        no: '5',
+        position: "Top",
+        actions: '',
+      },
+
+    ]);
+
+    return {
+      data,
+      isFormVisible,
+      myInfo,
+      fields: [
+          { key: 'no', label: 'Order' },
+          { key: 'position', label: 'Position' },
+        { key: 'name', label: 'Name' },
+        { key: 'actions', label: 'Actions' },
+      ],
+    };
+  },
     components: {
         Layout,
         PageHeader,
         Multiselect,
+        Table
     },
     data() {
         return {
@@ -28,8 +64,8 @@ export default {
     },
     methods: {
         handleImageUpload() {
-      this.toggleUpload = false;
-    },
+            this.toggleUpload = false;
+        },
     }
 };
 </script>
@@ -43,19 +79,19 @@ export default {
                     <b-row>
                         <b-col>
                             <b-card>
-                                <h4>Add Menu</h4>
+                                <h4>Parent Menu</h4>
                                 <form>
                                     <div class="add-menu">
-                                        <b-form-input placeholder="Menu Name" class="mb-2"></b-form-input>
-                                        <input v-if="toggleUpload" type="file" class="form-control mb-2" >
+                                        <input v-if="toggleUpload" type="file" class="form-control mb-2">
                                         <b-form-input v-else placeholder="Icon Name" class="mb-2"></b-form-input>
+                                        <div class="checkbox-toggle">
+                                            <input type="checkbox" v-model="toggleUpload" id="toggleCheckbox">
+                                            <label for="toggleCheckbox">
+                                                {{ toggleUpload ? 'Upload Image' : 'Enter Icon Name' }}
+                                            </label>
+                                        </div>
                                     </div>
-                                    <div class="checkbox-toggle">
-                                        <input type="checkbox" v-model="toggleUpload" id="toggleCheckbox">
-                                        <label for="toggleCheckbox">
-                                            {{ toggleUpload ? 'Upload Image' : 'Enter Icon Name' }}
-                                        </label>
-                                    </div>
+                                    <b-form-input placeholder="Menu Name" class="mb-2"></b-form-input>
                                     <div class="">
                                         <Multiselect class="multi-table mb-3" placeholder="Menu Position" track-by="name"
                                             label="name" :close-on-select="false" :searchable="true" :options="[
@@ -75,46 +111,43 @@ export default {
                         </b-col>
                         <b-col>
                             <b-card>
-                                <h4>Manage Menu</h4>
+                                <h4>Sub Menu</h4>
                                 <form>
                                     <div class="add-menu">
+                                        <Multiselect class="multi-table mb-2" placeholder="Parent Menu" track-by="name"
+                                            label="name" :close-on-select="false" :searchable="true" :options="[
+                                                { value: 'Admin', name: 'Admin' },
+                                            ]">
+                                            <template v-slot:option="{ option }">
+                                                <div>{{ option.name }}</div>
+                                            </template>
+                                        </Multiselect>
+                                        <Multiselect class="multi-table mb-2 max-100" placeholder="Order" track-by="name"
+                                            label="name" :close-on-select="false" :searchable="true" :options="[
+                                                { value: '1', name: '1' },
+                                                { value: '2', name: '2' },
+                                                { value: '3', name: '3' },
+                                                { value: '4', name: '4' },
+                                                { value: '5', name: '5' },
+                                                { value: '6', name: '6' },
+                                                { value: '7', name: '7' },
+                                                { value: '8', name: '8' },
+                                            ]">
+                                            <template v-slot:option="{ option }">
+                                                <div>{{ option.name }}</div>
+                                            </template>
+                                        </Multiselect>
                                         <b-form-input placeholder="Sub Menu Name" class="mb-2"></b-form-input>
-                                        <Multiselect class="multi-table mb-2" placeholder="Parent Menu" track-by="name"
-                                            label="name" :close-on-select="false" :searchable="true" :options="[
-                                                { value: 'Admin', name: 'Admin' },
-                                            ]">
-                                            <template v-slot:option="{ option }">
-                                                <div>{{ option.name }}</div>
-                                            </template>
-                                        </Multiselect>
+                                        <b-button variant="success" class="mb-2">Add</b-button>
                                     </div>
-                                    <b-button variant="success">Add</b-button>
-                                </form>
-
-                                <form class="mt-4">
-                                    <div class="add-menu">
-                                        <Multiselect class="multi-table mb-2" placeholder="Sub Menu" track-by="name"
-                                            label="name" :close-on-select="false" :searchable="true" :options="[
-                                                { value: 'SubAdmin', name: 'Sub Admin' },
-                                            ]">
-                                            <template v-slot:option="{ option }">
-                                                <div>{{ option.name }}</div>
-                                            </template>
-                                        </Multiselect>
-                                        <Multiselect class="multi-table mb-2" placeholder="Parent Menu" track-by="name"
-                                            label="name" :close-on-select="false" :searchable="true" :options="[
-                                                { value: 'Admin', name: 'Admin' },
-                                            ]">
-                                            <template v-slot:option="{ option }">
-                                                <div>{{ option.name }}</div>
-                                            </template>
-                                        </Multiselect>
-                                    </div>
-                                    <b-button variant="success">Save</b-button>
                                 </form>
                             </b-card>
                         </b-col>
                     </b-row>
+                    <b-card class="menu-table">
+                        <Table :fields="fields" :tableData="data" :showSearchPagination="true" add-title="Add" add="Add Item"
+    edit-title="Edit Menu" @delete-item="deleteItem" />
+                    </b-card>
                 </div>
             </div>
         </div>
