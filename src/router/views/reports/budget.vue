@@ -277,7 +277,7 @@ export default {
             <vue3-html2pdf :show-layout="false" :float-layout="true" :enable-download="true" :preview-modal="true"
                 :paginate-elements-by-height="1400" filename="nightprogrammerpdf" :pdf-quality="2"
                 :manual-pagination="false" pdf-format="a4" :pdf-margin="10" pdf-orientation="portrait"
-                pdf-content-width="800px" @progress="onProgress($event)" ref="html2Pdf">
+                pdf-content-width="100%" @progress="onProgress($event)" ref="html2Pdf">
                 <template v-slot:pdf-content>
                     <Budget />
                 </template>

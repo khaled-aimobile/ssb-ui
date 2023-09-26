@@ -64,7 +64,7 @@ export default {
                         </b-col>
                         <b-col lg="3" sm="6">
                             <div class="card">
-                                <a v-if="currentUser.email === 'kishansa1s1@gmail.com'" href="https://54.254.141.79/login"
+                                <a v-if="currentUser.email === 'kishan@gmail.com'" href="https://54.254.141.79/login"
                                     target="_blank" @click="sendDataToServer">
                                     <div class="card-body">
                                         <i class="mdi mdi-tree-outline"></i>

@@ -77,7 +77,7 @@ export default {
                 <div class="custom-container">
                     <PageHeader :title="title" :items="items" />
                     <b-row>
-                        <b-col>
+                        <b-col md="6">
                             <b-card>
                                 <h4>Parent Menu</h4>
                                 <form>
@@ -109,11 +109,11 @@ export default {
                                 </form>
                             </b-card>
                         </b-col>
-                        <b-col>
+                        <b-col md="6">
                             <b-card>
                                 <h4>Sub Menu</h4>
                                 <form>
-                                    <div class="add-menu">
+                                    <div class="add-menu sub-menu">
                                         <Multiselect class="multi-table mb-2" placeholder="Parent Menu" track-by="name"
                                             label="name" :close-on-select="false" :searchable="true" :options="[
                                                 { value: 'Admin', name: 'Admin' },

@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 
 import modules from './modules'
+import axios from 'axios';
 
 
 const store = createStore({
@@ -27,6 +28,9 @@ const store = createStore({
       state.user = null;
       localStorage.removeItem('access_token');
     },
+    SET_COUNTRY_DATA(state, countryData) {
+      state.countryData = countryData; // Assuming you have a 'countryData' property in your state
+    },
   },
   actions: {
     login({ commit }, userData) {
@@ -38,10 +42,26 @@ const store = createStore({
     logout({ commit }) {
       commit('LOGOUT');
     },
+    fetchCountryData({ commit }) {
+      axios.get('http://54.169.164.7/ssb_users/public/api/country')
+        .then((response) => {
+          const countries = response.data.countries;
+          const countryNames = countries.map((country) => ({
+            value: country.name,
+            name: country.name,
+          }));
+  
+          commit('SET_COUNTRY_DATA', countryNames);
+        })
+        .catch((error) => {
+          console.error('Error fetching country data:', error);
+        });
+    },
   },
   getters: {
     isAuthenticated: (state) => state.isAuthenticated,
     currentUser: (state) => state.user,
+    countryData: (state) => state.countryData,
   },
   modules,
   // Enable strict mode in development to get a warning

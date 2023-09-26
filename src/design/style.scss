@@ -26,6 +26,40 @@ body {
                         }
                     }
                 }
+                .dropdown-menu-top{
+                    > .dropdown-menu > .green > .dropdown-item {
+                        a{
+                            color: $white;
+                        }
+                        &:hover{
+                            a{
+                                color: $white;
+                            }
+                        }
+                        .btn-group{
+                            .dropdown-item{
+                                a{
+                                    color: $dark;
+                                }
+                                &:hover{
+                                    a{
+                                        color: $primary;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .dropdown-item{
+                        a{
+                            color: $primary;
+                        }
+                        &:hover{
+                            a{
+                                color: $primary;
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -39,7 +73,7 @@ body {
 
         .page-content {
             @include xl {
-                padding-top: 60px;
+                padding-top: 80px;
             }
         }
     }
@@ -66,6 +100,9 @@ a {
 
 .text-theme {
     color: $primary;
+}
+.text-success{
+    color: $primary !important;
 }
 
 .semi-bold {
@@ -1013,6 +1050,25 @@ a {
                 .checkbox-toggle{
                     width: 100%;
                 }
+                @include lg{
+                    flex-wrap: wrap;
+                }
+                &.sub-menu{
+                    flex-wrap: wrap;
+                    .multiselect{
+                        min-width: 220px;
+                        max-width: 220px;
+                        margin: 0;
+                        &.max-100{
+                            min-width: 100px;
+                            max-width: 100px;
+                        }
+                    }
+                    .form-control{
+                        min-width: 150px;
+                        max-width: 150px;
+                    }
+                }
             }
             .checkbox-toggle{
                 display: flex;
@@ -1308,5 +1364,12 @@ a {
 .menu-table{
     .export{
         display: none;
+    }
+}
+.vue-html2pdf{
+    .layout-container.show-layout{
+        .content-wrapper{
+            width: 100% !important;
+        }
     }
 }

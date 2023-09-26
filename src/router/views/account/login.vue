@@ -4,7 +4,7 @@ import { mapState, mapGetters } from "vuex";
 
 import appConfig from "@/app.config";
 import { required, email, helpers } from "@vuelidate/validators";
-import jsonData from '../../../../db.json';
+//import jsonData from '../../../../db.json';
 /**
  * Login component
  */
@@ -60,17 +60,45 @@ export default {
     },
   },
   methods: {
-    login() {
-    const { user_details } = jsonData;
-    const { staff_id, password } = user_details;
+  //   login() {
+  //   const { user_details } = jsonData;
+  //   const { staff_id, password } = user_details;
 
-    if (this.staff_id === staff_id && this.password === password) {
-      this.$store.dispatch('login', jsonData);
+  //   if (this.staff_id === staff_id && this.password === password) {
+  //     this.$store.dispatch('login', jsonData);
+  //     this.$router.push('/');
+  //   } else {
+  //     console.error('Login failed: Invalid staff ID or password');
+  //   }
+  // },
+  async login() {
+  try {
+    const formData = new FormData();
+    formData.append('email', this.email);
+    formData.append('password', this.password);
+
+    const response = await fetch('http://54.169.164.7/ssb_users/public/api/login', {
+      method: 'POST',
+      body: formData, // Use the FormData object as the request body
+    });
+
+    if (response.ok) {
+      const userData = await response.json();
+      this.$store.dispatch('login', userData);
       this.$router.push('/');
     } else {
-      console.error('Login failed: Invalid staff ID or password');
+      // Log the error response
+      console.error('Login failed:', response.status, response.statusText);
+      this.isAuthError = true;
     }
-  },
+  } catch (error) {
+    console.error('An error occurred during login:', error);
+    this.isAuthError = true;
+  }
+}
+
+
+
   },
   mounted() { },
 };
@@ -110,8 +138,8 @@ export default {
             </div>
 
             <b-form class="p-2">
-              <label for="input-1" class="form-label d-block">Staff ID</label>
-              <input class="form-control mb-3" v-model="staff_id" id="input-1" type="text" placeholder="Staff ID">
+              <label for="input-1" class="form-label d-block">Email</label>
+              <input class="form-control mb-3" v-model="email" id="input-1" type="text" placeholder="Email">
               <label for="input-1" class="form-label d-block">Password</label>
               <input class="form-control mb-3" v-model="password" id="input-1" type="text" placeholder="Password">
               <b-form-checkbox class="form-check me-2" id="customControlInline" name="checkbox-1" value="accepted"
