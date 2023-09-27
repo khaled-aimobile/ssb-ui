@@ -54,6 +54,7 @@ import { ref, computed } from 'vue';
 import Table from "../common/Table.vue";
 import JsonExcel from "vue-json-excel3";
 import Vue3Html2pdf from "vue3-html2pdf";
+import Image from '../../assets/images/users/avatar-1.jpg'
 export default {
   components: {
     Table,
@@ -65,28 +66,26 @@ export default {
     const isFormVisible = ref(false);
     const myInfo = ref(false);
     const data = ref([
-      { id: 1, no: "IPH00001", phone: "", date: "", name: 'PERTUBUHAN KESELAMATAN SOSIAL', responsibility: '17,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "12/07/21 14:50:47", searchname: "PERTUBUHAN KESELAMATAN SOSIAL", balance: '-12,348.30' },
-      { id: 2, no: "IPH00002", phone: "", date: "", name: '', responsibility: '7,895', gstdatechecked: "0.00", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "", balance: '19,895', },
-      { id: 3, no: "IPH00003", phone: "", date: "", name: '', responsibility: '19,895', gstdatechecked: "0.00", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "", balance: '20,895' },
-      { id: 4, no: "IPH00004", phone: "", date: "", name: 'CHECKROLL - TIMBER OPERATION	', responsibility: '17,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "CHECKROLL - TIMBER OPERATION", balance: '-944,124.81' },
-      { id: 5, no: "IPH00005", phone: "", date: "", name: 'CHECKROLL - AGRICROPS', responsibility: '7,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "CHECKROLL - AGRICROPS", balance: '-7,613,695.74', }
+      { id: 1, no: "IPH00001", contact: "", date: "", img: Image, address: 'PERTUBUHAN KESELAMATAN SOSIAL', description: '17,895',referance: "", status: "", actions: "" },
+      { id: 2, no: "IPH00002", contact: "", date: "", img: Image, address: '', description: '7,895', referance: "0.00", status: "", actions: "", },
+      { id: 3, no: "IPH00003", contact: "", date: "", img: Image, address: '', description: '19,895', referance: "0.00", status: "", actions: "", },
+      { id: 4, no: "IPH00004", contact: "", date: "", img: Image, address: 'CHECKROLL - TIMBER OPERATION	', description: '17,895', referance: "", status: "", actions: "", },
+      { id: 5, no: "IPH00005", contact: "", date: "", img: Image, address: 'CHECKROLL - AGRICROPS', description: '7,895', referance: "", status: "", actions: "",  }
     ]);
     const showColumns = ref({});
 
 
     const fields = [
-      { key: 'no', label: 'No', visible: true },
+      //{ key: 'no', label: 'No', visible: true },
       { key: 'name', label: 'Name', visible: false },
-      { key: 'responsibility', label: 'Responsibility Center', visible: true },
-      { key: 'gstdatechecked', label: 'Date GST Status Last Checked', visible: true },
-      { key: 'gstdatechecked1', label: 'Date GST Status Last Checked1', visible: true },
-      { key: 'locationcode', label: 'Location Code', visible: false },
-      { key: 'phone', label: 'Phone No.', visible: true },
       { key: 'contact', label: 'Contact', visible: false },
+      { key: 'address', label: 'Address', visible: true },
+      { key: 'description', label: 'Description', visible: true },
+      { key: 'referance', label: 'Referance', visible: true },
       { key: 'date', label: 'Date', visible: false },
-      { key: 'lastmodify', label: 'Last Modified Date Time', visible: true },
-      { key: 'searchname', label: 'Search Name', visible: true },
-      { key: 'balance', label: 'Balance ($)', visible: false },
+      { key: 'img', label: 'Image', visible: false },
+      { key: 'status', label: 'Status', visible: false },
+      { key: 'actions', label: 'Actions', visible: true },
     ];
     fields.forEach((field) => {
       showColumns.value[field.key] = true; // Set the initial value here based on your requirements.

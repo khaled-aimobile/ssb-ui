@@ -30,22 +30,22 @@ const store = createStore({
       localStorage.removeItem('access_token');
     },
     SET_COUNTRY_DATA(state, countryData) {
-      state.countryData = countryData; 
+      state.countryData = countryData;
     },
     SET_MARITAL_DATA(state, maritalData) {
-      state.maritalData = maritalData; 
+      state.maritalData = maritalData;
     },
     SET_NATIONALITY_DATA(state, nationalityData) {
-      state.nationalityData = nationalityData; 
+      state.nationalityData = nationalityData;
     },
     SET_RACE_DATA(state, raceData) {
-      state.raceData = raceData; 
+      state.raceData = raceData;
     },
     SET_RELIGION_DATA(state, religionData) {
-      state.religionData = religionData; 
+      state.religionData = religionData;
     },
     SET_STATE_DATA(state, stateData) {
-      state.stateData = stateData; 
+      state.stateData = stateData;
     },
     SET_REGISTRATION_ERROR(state, error) {
       state.registrationError = error;
@@ -71,7 +71,7 @@ const store = createStore({
             value: country.name,
             name: country.name,
           }));
-  
+
           commit('SET_COUNTRY_DATA', countryNames);
         })
         .catch((error) => {
@@ -86,7 +86,7 @@ const store = createStore({
             value: marital.name,
             name: marital.name,
           }));
-  
+
           commit('SET_MARITAL_DATA', maritalNames);
         })
         .catch((error) => {
@@ -101,7 +101,7 @@ const store = createStore({
             value: nationality.name,
             name: nationality.name,
           }));
-  
+
           commit('SET_NATIONALITY_DATA', nationalityNames);
         })
         .catch((error) => {
@@ -116,7 +116,7 @@ const store = createStore({
             value: race.name,
             name: race.name,
           }));
-  
+
           commit('SET_RACE_DATA', raceNames);
         })
         .catch((error) => {
@@ -131,7 +131,7 @@ const store = createStore({
             value: religion.name,
             name: religion.name,
           }));
-  
+
           commit('SET_RELIGION_DATA', religionNames);
         })
         .catch((error) => {
@@ -146,27 +146,21 @@ const store = createStore({
             value: state.name,
             name: state.name,
           }));
-  
+
           commit('SET_STATE_DATA', stateNames);
         })
         .catch((error) => {
           console.error('Error fetching country data:', error);
         });
     },
-    registerUser({ commit }, userData) {
-      // Replace this with your actual Axios registration request
-      // Make sure to handle success and errors appropriately
-      return new Promise((resolve, reject) => {
-        // Simulate a registration error for demonstration
-        if (userData.email === 'existing@example.com') {
-          commit('SET_REGISTRATION_ERROR', 'The email has already been taken.');
-          reject('Registration failed');
-        } else {
-          // Registration successful
-          commit('SET_REGISTRATION_ERROR', null);
-          resolve('Registration successful');
-        }
-      });
+    async registerUser({ commit }, formData) {
+      try {
+        const response = await axios.post('http://54.169.164.7/ssb_users/public/api/register', formData);
+        return response.data;
+      } catch (error) {
+        commit('setRegistrationError', error.response.data.message || 'Registration failed');
+        throw error;
+      }
     },
   },
   getters: {
@@ -177,6 +171,7 @@ const store = createStore({
     raceData: (state) => state.raceData,
     religionData: (state) => state.religionData,
     stateData: (state) => state.stateData,
+    registrationError: state => state.registrationError,
   },
   modules,
   // Enable strict mode in development to get a warning

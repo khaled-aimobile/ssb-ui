@@ -100,7 +100,6 @@ export default {
               <div class="col-7">
                 <div class="text-success p-4">
                   <h5 class="text-success">Reset Password</h5>
-                  <p>Re-Password with Softwoods.</p>
                 </div>
               </div>
               <div class="col-5 align-self-end">
@@ -117,7 +116,7 @@ export default {
               <router-link to="/">
                 <div class="avatar-md profile-user-wid mb-4">
                   <span class="avatar-title rounded-circle bg-light">
-                    <img src="@/assets/images/logo.svg" alt height="34" />
+                    <img src="@/assets/images/logo.jpg" alt height="34" />
                   </span>
                 </div>
               </router-link>

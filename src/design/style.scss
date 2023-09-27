@@ -789,6 +789,17 @@ a {
             color: $white;
         }
     }
+
+    td{
+        vertical-align: middle;
+        .dp__main {
+            max-width: 150px;
+        }
+        .table-img{
+            max-width: 50px;
+            border-radius: 5px;
+        }
+    }
 }
 
 //charts of account
@@ -1372,4 +1383,7 @@ a {
             width: 100% !important;
         }
     }
+}
+.footer{
+    background-color: #f8f8fb;
 }

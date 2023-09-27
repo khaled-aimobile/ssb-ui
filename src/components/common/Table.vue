@@ -4,44 +4,46 @@
     <div v-if="isTableView">
       <!-- Table -->
       <div v-if="showSearchPagination">
-        <b-form-input v-model="searchText" type="text" class="mb-2 mt-2 search-table" placeholder="Search here..."></b-form-input>
+        <b-form-input v-model="searchText" type="text" class="mb-2 mt-2 search-table"
+          placeholder="Search here..."></b-form-input>
       </div>
       <button class="btn btn-success mb-2 export" @click="showAddForm" v-if="add">{{ add }}</button>
-       <!-- <button class="btn btn-success mb-2 export">Add Item</button> -->
-       <div class="custom-table">
-    <b-table id="my-table" striped hover :fields="fields" :items="paginatedData" :per-page="perPage" :current-page="currentPage"
-        class="table-green">
-        <!-- Name Column -->
-        <template #cell(name)="data">
-          {{ data.item.name }}
-        </template>
+      <!-- <button class="btn btn-success mb-2 export">Add Item</button> -->
+      <div class="custom-table">
+        <b-table id="my-table" striped hover :fields="fields" :items="paginatedData" :per-page="perPage"
+          :current-page="currentPage" class="table-green">
+          <!-- Name Column -->
+          <template #cell(name)="data">
+            {{ data.item.name }}
+          </template>
 
-        <template #cell(date)="data">
-          <VueDatePicker append-to-body v-model="data.item.date"></VueDatePicker>
-        </template>
+          <template #cell(date)="data">
+            <VueDatePicker append-to-body v-model="data.item.date"></VueDatePicker>
+          </template>
 
-        <!-- Description Column -->
-        <template #cell(directchange)="data">
-          <input type="checkbox" v-model="data.item.directchange" :disabled="true">
-        </template>
+          <template #cell(img)="data">
+            <img class="table-img" :src="data.item.img" alt="">
+          </template>
 
-        <!-- Actions Column -->
-        <template #cell(actions)="data">
-          <div class="d-flex">
-            <button @click="editItem(data.item)" class="btn btn-sm btn-primary me-2">Edit</button>
-            <!-- <button class="btn btn-sm btn-primary me-2">Edit</button> -->
-            <button @click="showDeleteConfirmation(data.item)" class="btn btn-sm btn-danger">Delete</button>
-          </div>
-        </template>
-      </b-table>
-    </div>
+          <!-- Description Column -->
+          <template #cell(directchange)="data">
+            <input type="checkbox" v-model="data.item.directchange" :disabled="true">
+          </template>
+
+          <!-- Actions Column -->
+          <template #cell(actions)="data">
+            <div class="d-flex">
+              <button @click="editItem(data.item)" class="btn btn-sm btn-primary me-2">Edit</button>
+              <!-- <button class="btn btn-sm btn-primary me-2">Edit</button> -->
+              <button @click="showDeleteConfirmation(data.item)" class="btn btn-sm btn-danger">Delete</button>
+            </div>
+          </template>
+        </b-table>
+      </div>
       <!-- Table Pagination -->
       <div class="custom-pagination" v-if="showSearchPagination">
-    <pagination
-      :pageCount="pageCount"
-      @set-currentpage="setCurrentPage"
-    />
-  </div>
+        <pagination :pageCount="pageCount" @set-currentpage="setCurrentPage" />
+      </div>
     </div>
 
     <!-- Edit Form -->
@@ -49,15 +51,23 @@
       <h2>{{ editTitle }}</h2>
       <form @submit.prevent="saveItem">
         <div class="add-item">
-        <div v-for="field in fields" :key="field.key" class="mb-3">
-          <label :for="`edit-${field.key}`" class="form-label">{{ field.label }}</label>
-          <input :id="`edit-${field.key}`" class="form-control" v-model="editedItem[field.key]" :required="field.required" />
+          <div v-for="field in fields" :key="field.key" class="mb-3">
+          <template v-if="fieldType[field.key] === 'date'">
+            <VueDatePicker :id="`edit-${field.key}`" v-model="editedItem[field.key]" />
+          </template>
+
+          <template v-else-if="fieldType[field.key] === 'img'">
+            <input type="file" :id="`edit-${field.key}`" @change="handleImageChange" />
+          </template>
+          <template v-else>
+            <input :id="`edit-${field.key}`" class="form-control" :value="editedItem ? editedItem[field.key] : ''" />
+          </template>
+          </div>
         </div>
-      </div>
-      <div class="add-item-footer">
-        <button type="submit" class="btn btn-primary me-2" @click="cancelEdit">Save</button>
-        <button type="button" class="btn btn-secondary" @click="cancelEdit">Cancel</button>
-      </div>
+        <div class="add-item-footer">
+          <button type="submit" class="btn btn-primary me-2" @click="cancelEdit">Save</button>
+          <button type="button" class="btn btn-secondary" @click="cancelEdit">Cancel</button>
+        </div>
       </form>
     </div>
 
@@ -67,12 +77,25 @@
       <form @submit.prevent="addItem">
         <div class="add-item">
           <div v-for="field in fields" :key="field.key" class="mb-3">
-            <label :for="`add-${field.key}`" class="form-label">{{ field.label }}</label>
-            <input :id="`add-${field.key}`" class="form-control" v-model="addingItem[field.key]" :required="field.required" />
+            <label :for="`edit-${field.key}`" class="form-label">{{ field.label }}</label>
+
+            <template v-if="field.slot === 'date'">
+              <VueDatePicker :id="`edit-${field.key}`" v-model="addingItem[field.key]"></VueDatePicker>
+            </template>
+
+            <template v-else-if="field.slot === 'img'">
+              <img-uploader :id="`edit-${field.key}`" v-model="addingItem[field.key]"></img-uploader>
+            </template>
+
+            <template v-else>
+              <input :id="`edit-${field.key}`" class="form-control" :value="addingItem ? addingItem[field.key] : ''" />
+            </template>
+
           </div>
+
         </div>
         <div class="add-item-footer">
-          <button type="submit" class="btn btn-primary me-2" @click="cancelAdd">Add</button>
+          <button type="submit" class="btn btn-primary me-2" @click="cancelAdd">Save</button>
           <button type="button" class="btn btn-secondary" @click="cancelAdd">Cancel</button>
         </div>
       </form>
@@ -90,7 +113,7 @@
 </template>
 
 <script>
-import { ref, computed,  reactive,watch, toRefs, } from 'vue';
+import { ref, computed, reactive, watch, toRefs, } from 'vue';
 import Pagination from './pagination.vue'
 import VueDatePicker from '@vuepic/vue-datepicker';
 
@@ -98,7 +121,7 @@ export default {
   props: {
     tableData: Array,
     fields: Array,
-    addTitle: String,  
+    addTitle: String,
     editTitle: String,
     add: String,
     showSearchPagination: Boolean,
@@ -109,39 +132,39 @@ export default {
     const itemToDelete = ref(null);
     const searchText = ref('');
     const editedItem = ref(null);
-    const editedItemOriginal = ref(null); 
-    const addingItem = ref({}); 
-    const isAdding = ref(false); 
-  const isEditing = ref(false);
-  const isTableView = ref(true); 
+    const editedItemOriginal = ref(null);
+    const addingItem = ref({});
+    const isAdding = ref(false);
+    const isEditing = ref(false);
+    const isTableView = ref(true);
 
-  const showAddForm = () => {
-    isAdding.value = true;
-    isEditing.value = false;
-    isTableView.value = false;
-  };
+    const showAddForm = () => {
+      isAdding.value = true;
+      isEditing.value = false;
+      isTableView.value = false;
+    };
 
-  const showEditForm = () => {
-    isAdding.value = false;
-    isEditing.value = true; 
-  };
+    const showEditForm = () => {
+      isAdding.value = false;
+      isEditing.value = true;
+    };
 
     const data = ref(props.tableData);
     const filteredData = computed(() => {
-  const searchTextValue = searchText.value ? searchText.value.toLowerCase() : '';
+      const searchTextValue = searchText.value ? searchText.value.toLowerCase() : '';
 
-  return state.data.filter((item) =>
-    (item.no && item.no.toLowerCase().includes(searchTextValue)) ||
-    (item.name && item.name.toLowerCase().includes(searchTextValue)) ||
-    (item.customerno && item.customerno.toLowerCase().includes(searchTextValue))
-  );
-});
+      return state.data.filter((item) =>
+        (item.no && item.no.toLowerCase().includes(searchTextValue)) ||
+        (item.name && item.name.toLowerCase().includes(searchTextValue)) ||
+        (item.customerno && item.customerno.toLowerCase().includes(searchTextValue))
+      );
+    });
     const state = reactive({
       currentPage: 1,
       data: data,
       rowsPerPage: 5,
       pageCount: computed(() =>
-      Math.ceil(state.data.length / state.rowsPerPage),
+        Math.ceil(state.data.length / state.rowsPerPage),
       ),
       paginatedData: computed(() =>
         filteredData.value.slice(
@@ -190,38 +213,38 @@ export default {
     };
 
     const cancelEdit = () => {
-  // if (editedItem.value !== null && typeof editedItem.value !== 'undefined') {
-  //   if (JSON.stringify(editedItem.value) !== JSON.stringify(editedItemOriginal.value)) {
-  //     if (confirm('Discard changes?')) {
-  //       editedItem.value = null;
-  //       isTableView.value = true;
-  //     }
-  //   } else {
-  //     editedItem.value = null;
-  //   }
-  // } else {
-  //   //
-  // }
-  isTableView.value = true;
-  isEditing.value = false;
-};
-const cancelAdd = () => {
-  // if (addingItem.value !== null && typeof addingItem.value !== 'undefined') {
-  //   if (JSON.stringify(addingItem.value) !== JSON.stringify({})) {
-  //     if (confirm('Discard changes?')) {
-  //       addingItem.value = {};
-  //     }
-  //   } else {
-  //     addingItem.value = {};
-  //   }
-  //   isTableView.value = true;
-  //   isAdding.value = false;
-  // } else {
-  //   //
-  // }
-  isTableView.value = true;
-    isAdding.value = false;
-};
+      // if (editedItem.value !== null && typeof editedItem.value !== 'undefined') {
+      //   if (JSON.stringify(editedItem.value) !== JSON.stringify(editedItemOriginal.value)) {
+      //     if (confirm('Discard changes?')) {
+      //       editedItem.value = null;
+      //       isTableView.value = true;
+      //     }
+      //   } else {
+      //     editedItem.value = null;
+      //   }
+      // } else {
+      //   //
+      // }
+      isTableView.value = true;
+      isEditing.value = false;
+    };
+    const cancelAdd = () => {
+      // if (addingItem.value !== null && typeof addingItem.value !== 'undefined') {
+      //   if (JSON.stringify(addingItem.value) !== JSON.stringify({})) {
+      //     if (confirm('Discard changes?')) {
+      //       addingItem.value = {};
+      //     }
+      //   } else {
+      //     addingItem.value = {};
+      //   }
+      //   isTableView.value = true;
+      //   isAdding.value = false;
+      // } else {
+      //   //
+      // }
+      isTableView.value = true;
+      isAdding.value = false;
+    };
     const addItem = () => {
       data.value.push({ ...addingItem.value });
       addingItem.value = {};
@@ -251,12 +274,12 @@ const cancelAdd = () => {
       addItem,
       isTableView,
       showAddForm,
-    showEditForm,
-    ...toRefs(state),
+      showEditForm,
+      ...toRefs(state),
       setCurrentPage,
     };
   },
-  components:{
+  components: {
     Pagination,
     VueDatePicker
   },
@@ -269,6 +292,11 @@ const cancelAdd = () => {
     },
     generatePDF() {
       this.$refs.html2Pdf.generatePdf();
+    },
+    handleImageChange(event) {
+      const selectedImage = event.target.files[0];
+      // Store the selected image in your data, e.g., addingItem
+      this.addingItem.img = selectedImage;
     },
   },
 };

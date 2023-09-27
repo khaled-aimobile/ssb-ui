@@ -32,6 +32,7 @@ export default {
       staff_id: "", // Add staff_id field
     password: "",
       isAuthError: false,
+      rememberMe: false, 
     };
   },
   validations: {
@@ -91,16 +92,27 @@ export default {
       console.error('Login failed:', response.status, response.statusText);
       this.isAuthError = true;
     }
+    
+//cookie
+if (this.rememberMe) {
+          this.$cookies.set('email', this.email, '7d'); // Store email for 7 days
+          this.$cookies.set('password', this.password, '7d'); // Store password for 7 days
+        } else {
+          // Clear cookies if "Remember me" is not checked
+          this.$cookies.remove('email');
+          this.$cookies.remove('password');
+        }
+
   } catch (error) {
     console.error('An error occurred during login:', error);
     this.isAuthError = true;
   }
 }
-
-
-
   },
-  mounted() { },
+  mounted() { 
+    this.email = this.$cookies.get('email') || '';
+    this.password = this.$cookies.get('password') || '';
+  },
 };
 </script>
 
@@ -114,7 +126,7 @@ export default {
               <div class="col-7">
                 <div class="text-success p-4">
                   <h5 class="text-success">Welcome Back !</h5>
-                  <p>Sign in to continue to Softwoods.</p>
+                  <p>Sign in to continue to Sabah Softwoods Berhad ERP.</p>
                 </div>
               </div>
               <div class="col-5 align-self-end">
@@ -132,14 +144,10 @@ export default {
                 </div>
               </router-link>
             </div>
-            <!-- <b-alert v-model="isAuthError" variant="danger" class="mt-3" dismissible>{{ authError }}</b-alert>
-            <div v-if="notification.message" :class="'alert ' + notification.type">
-              {{ notification.message }}
-            </div> -->
 
             <b-form class="p-2">
-              <label for="input-1" class="form-label d-block">Email</label>
-              <input class="form-control mb-3" v-model="email" id="input-1" type="text" placeholder="Email">
+              <label for="input-1" class="form-label d-block">Email/staffID</label>
+              <input class="form-control mb-3" v-model="email" id="input-1" type="text" placeholder="Email/staffID">
               <label for="input-1" class="form-label d-block">Password</label>
               <input class="form-control mb-3" v-model="password" id="input-1" type="text" placeholder="Password">
               <b-form-checkbox class="form-check me-2" id="customControlInline" name="checkbox-1" value="accepted"
@@ -150,7 +158,7 @@ export default {
                 <b-button @click="login" variant="success" class="btn-block">Log In</b-button>
               </div>
               <div class="mt-4 text-center">
-                <router-link to="/login" class="text-muted d-inline-block">
+                <router-link to="/forgot-password" class="text-muted d-inline-block">
                   <i class="mdi mdi-lock me-1"></i> Forgot your password?
                 </router-link>
               </div>
@@ -160,17 +168,6 @@ export default {
         </div>
         <!-- end card -->
 
-        <div class="mt-5 text-center">
-          <p>
-            Don't have an account ?
-            <router-link to="/login" class="fw-medium text-success d-inline-block">Signup now</router-link>
-          </p>
-          <!-- <p>
-            © {{ new Date().getFullYear() }} Softwoods. Crafted with
-            <i class="mdi mdi-heart text-danger"></i> by Themesbrand
-          </p> -->
-        </div>
-        <!-- end row -->
       </div>
       <!-- end col -->
     </div>
