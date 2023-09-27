@@ -16,6 +16,10 @@
           {{ data.item.name }}
         </template>
 
+        <template #cell(date)="data">
+          <VueDatePicker append-to-body v-model="data.item.date"></VueDatePicker>
+        </template>
+
         <!-- Description Column -->
         <template #cell(directchange)="data">
           <input type="checkbox" v-model="data.item.directchange" :disabled="true">
@@ -88,7 +92,7 @@
 <script>
 import { ref, computed,  reactive,watch, toRefs, } from 'vue';
 import Pagination from './pagination.vue'
-
+import VueDatePicker from '@vuepic/vue-datepicker';
 
 export default {
   props: {
@@ -254,6 +258,7 @@ const cancelAdd = () => {
   },
   components:{
     Pagination,
+    VueDatePicker
   },
   methods: {
     onProgress(event) {

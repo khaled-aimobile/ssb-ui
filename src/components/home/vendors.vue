@@ -65,11 +65,11 @@ export default {
     const isFormVisible = ref(false);
     const myInfo = ref(false);
     const data = ref([
-      { id: 1, no: "IPH00001", phone: "", name: 'PERTUBUHAN KESELAMATAN SOSIAL', responsibility: '17,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "12/07/21 14:50:47", searchname: "PERTUBUHAN KESELAMATAN SOSIAL", balance: '-12,348.30' },
-      { id: 2, no: "IPH00002", phone: "", name: '', responsibility: '7,895', gstdatechecked: "0.00", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "", balance: '19,895', },
-      { id: 3, no: "IPH00003", phone: "", name: '', responsibility: '19,895', gstdatechecked: "0.00", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "", balance: '20,895' },
-      { id: 4, no: "IPH00004", phone: "", name: 'CHECKROLL - TIMBER OPERATION	', responsibility: '17,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "CHECKROLL - TIMBER OPERATION", balance: '-944,124.81' },
-      { id: 5, no: "IPH00005", phone: "", name: 'CHECKROLL - AGRICROPS', responsibility: '7,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "CHECKROLL - AGRICROPS", balance: '-7,613,695.74', }
+      { id: 1, no: "IPH00001", phone: "", date: "", name: 'PERTUBUHAN KESELAMATAN SOSIAL', responsibility: '17,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "12/07/21 14:50:47", searchname: "PERTUBUHAN KESELAMATAN SOSIAL", balance: '-12,348.30' },
+      { id: 2, no: "IPH00002", phone: "", date: "", name: '', responsibility: '7,895', gstdatechecked: "0.00", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "", balance: '19,895', },
+      { id: 3, no: "IPH00003", phone: "", date: "", name: '', responsibility: '19,895', gstdatechecked: "0.00", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "", balance: '20,895' },
+      { id: 4, no: "IPH00004", phone: "", date: "", name: 'CHECKROLL - TIMBER OPERATION	', responsibility: '17,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "CHECKROLL - TIMBER OPERATION", balance: '-944,124.81' },
+      { id: 5, no: "IPH00005", phone: "", date: "", name: 'CHECKROLL - AGRICROPS', responsibility: '7,895', gstdatechecked: "", gstdatechecked1: "", locationcode: "", contact: "", lastmodify: "", searchname: "CHECKROLL - AGRICROPS", balance: '-7,613,695.74', }
     ]);
     const showColumns = ref({});
 
@@ -83,6 +83,7 @@ export default {
       { key: 'locationcode', label: 'Location Code', visible: false },
       { key: 'phone', label: 'Phone No.', visible: true },
       { key: 'contact', label: 'Contact', visible: false },
+      { key: 'date', label: 'Date', visible: false },
       { key: 'lastmodify', label: 'Last Modified Date Time', visible: true },
       { key: 'searchname', label: 'Search Name', visible: true },
       { key: 'balance', label: 'Balance ($)', visible: false },

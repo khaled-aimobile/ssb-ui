@@ -53,9 +53,34 @@ export default {
             console.log(this.$store.getters.countryData)
             return this.$store.getters.countryData
         },
+        maritalData() {
+            console.log(this.$store.getters.maritalData)
+            return this.$store.getters.maritalData
+        },
+        nationalityData() {
+            console.log(this.$store.getters.nationalityData)
+            return this.$store.getters.nationalityData
+        },
+       raceData() {
+            console.log(this.$store.getters.raceData)
+            return this.$store.getters.raceData
+        },
+        religionData() {
+            console.log(this.$store.getters.religionData)
+            return this.$store.getters.religionData
+        },
+        stateData() {
+            console.log(this.$store.getters.stateData)
+            return this.$store.getters.stateData
+        },
     },
     mounted() {
         this.$store.dispatch('fetchCountryData');
+        this.$store.dispatch('fetchMaritalData');
+        this.$store.dispatch('fetchNationalityData');
+        this.$store.dispatch('fetchRaceData');
+        this.$store.dispatch('fetchReligionData');
+        this.$store.dispatch('fetchStateData');
     },
     methods: {
         onSubmit(event) {
@@ -137,7 +162,7 @@ export default {
                                                 label-for="Nationality">
                                                 <Multiselect class="multi-table" placeholder="Please Select" track-by="name"
                                                     label="name" :close-on-select="false" :searchable="true"
-                                                    :options="countryData">
+                                                    :options="nationalityData">
                                                     <template v-slot:option="{ option }">
                                                         <div>{{ option.name }}</div>
                                                     </template>
@@ -148,13 +173,8 @@ export default {
                                             <b-form-group id="form-MaritalStatus" label="Marital Status:"
                                                 label-for="MaritalStatus">
                                                 <Multiselect class="multi-table" placeholder="Please Select" track-by="name"
-                                                    label="name" :close-on-select="false" :searchable="true" :options="[
-                                                        { value: 'Single', name: 'Single' },
-                                                        { value: 'Married', name: 'Married' },
-                                                        { value: 'Separated', name: 'Separated' },
-                                                        { value: 'Divorced', name: 'Divorced' },
-                                                        { value: 'Widowed', name: 'Widowed' },
-                                                    ]">
+                                                    label="name" :close-on-select="false" :searchable="true"
+                                                    :options="maritalData">
                                                     <template v-slot:option="{ option }">
                                                         <div>{{ option.name }}</div>
                                                     </template>
@@ -216,31 +236,23 @@ export default {
                                 <b-col lg="3" md="4" sm="6">
                                     <b-form-group id="form-Race" label="Race:" label-for="Race">
                                         <Multiselect class="multi-table" placeholder="Please Select" track-by="name"
-                                            label="name" :close-on-select="false" :searchable="true" :options="[
-                                                { value: 'Malay', name: 'Malay' },
-                                                { value: 'Chinese', name: 'Chinese' },
-                                                { value: 'Indian', name: 'Indian' },
-                                                { value: 'Christian', name: 'Christian' },
-                                            ]">
-                                            <template v-slot:option="{ option }">
-                                                <div>{{ option.name }}</div>
-                                            </template>
-                                        </Multiselect>
+                                                    label="name" :close-on-select="false" :searchable="true"
+                                                    :options="raceData">
+                                                    <template v-slot:option="{ option }">
+                                                        <div>{{ option.name }}</div>
+                                                    </template>
+                                                </Multiselect>
                                     </b-form-group>
                                 </b-col>
                                 <b-col lg="3" md="4" sm="6">
                                     <b-form-group id="form-Religion" label="Religion:" label-for="Religion">
                                         <Multiselect class="multi-table" placeholder="Please Select" track-by="name"
-                                            label="name" :close-on-select="false" :searchable="true" :options="[
-                                                { value: 'Islam', name: 'Islam' },
-                                                { value: 'Buddhist', name: 'Buddhist' },
-                                                { value: 'Hindu', name: 'Hindu' },
-                                                { value: 'Christian', name: 'Christian' },
-                                            ]">
-                                            <template v-slot:option="{ option }">
-                                                <div>{{ option.name }}</div>
-                                            </template>
-                                        </Multiselect>
+                                                    label="name" :close-on-select="false" :searchable="true"
+                                                    :options="religionData">
+                                                    <template v-slot:option="{ option }">
+                                                        <div>{{ option.name }}</div>
+                                                    </template>
+                                                </Multiselect>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -282,13 +294,12 @@ export default {
                                 <b-col lg="3" md="4" sm="6">
                                     <b-form-group id="form-CurrentState" label="Current State:" label-for="CurrentState">
                                         <Multiselect class="multi-table" placeholder="Please Select" track-by="name"
-                                            label="name" :close-on-select="false" :searchable="true" :options="[
-                                                { value: 'Malaysia', name: 'Malaysia' },
-                                            ]">
-                                            <template v-slot:option="{ option }">
-                                                <div>{{ option.name }}</div>
-                                            </template>
-                                        </Multiselect>
+                                                    label="name" :close-on-select="false" :searchable="true"
+                                                    :options="stateData">
+                                                    <template v-slot:option="{ option }">
+                                                        <div>{{ option.name }}</div>
+                                                    </template>
+                                                </Multiselect>
                                     </b-form-group>
                                 </b-col>
                                 <b-col lg="3" md="4" sm="6">
@@ -327,13 +338,12 @@ export default {
                                     <b-form-group id="form-PermanentState" label="Permanent State:"
                                         label-for="PermanentState">
                                         <Multiselect class="multi-table" placeholder="Please Select" track-by="name"
-                                            label="name" :close-on-select="false" :searchable="true" :options="[
-                                                { value: 'Malaysia', name: 'Malaysia' },
-                                            ]">
-                                            <template v-slot:option="{ option }">
-                                                <div>{{ option.name }}</div>
-                                            </template>
-                                        </Multiselect>
+                                                    label="name" :close-on-select="false" :searchable="true"
+                                                    :options="stateData">
+                                                    <template v-slot:option="{ option }">
+                                                        <div>{{ option.name }}</div>
+                                                    </template>
+                                                </Multiselect>
                                     </b-form-group>
                                 </b-col>
                                 <b-col lg="3" md="4" sm="6" class="d-flex align-items-center">

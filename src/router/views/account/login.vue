@@ -132,10 +132,10 @@ export default {
                 </div>
               </router-link>
             </div>
-            <b-alert v-model="isAuthError" variant="danger" class="mt-3" dismissible>{{ authError }}</b-alert>
+            <!-- <b-alert v-model="isAuthError" variant="danger" class="mt-3" dismissible>{{ authError }}</b-alert>
             <div v-if="notification.message" :class="'alert ' + notification.type">
               {{ notification.message }}
-            </div>
+            </div> -->
 
             <b-form class="p-2">
               <label for="input-1" class="form-label d-block">Email</label>
@@ -150,7 +150,7 @@ export default {
                 <b-button @click="login" variant="success" class="btn-block">Log In</b-button>
               </div>
               <div class="mt-4 text-center">
-                <router-link to="/forgot-password" class="text-muted">
+                <router-link to="/login" class="text-muted d-inline-block">
                   <i class="mdi mdi-lock me-1"></i> Forgot your password?
                 </router-link>
               </div>
@@ -163,12 +163,12 @@ export default {
         <div class="mt-5 text-center">
           <p>
             Don't have an account ?
-            <router-link to="/register" class="fw-medium text-success">Signup now</router-link>
+            <router-link to="/login" class="fw-medium text-success d-inline-block">Signup now</router-link>
           </p>
-          <p>
+          <!-- <p>
             © {{ new Date().getFullYear() }} Skote. Crafted with
             <i class="mdi mdi-heart text-danger"></i> by Themesbrand
-          </p>
+          </p> -->
         </div>
         <!-- end row -->
       </div>

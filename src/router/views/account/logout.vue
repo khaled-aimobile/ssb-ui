@@ -22,7 +22,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch('logout');
-    this.email = '';
   },
 };
 </script>

@@ -29,7 +29,22 @@ const store = createStore({
       localStorage.removeItem('access_token');
     },
     SET_COUNTRY_DATA(state, countryData) {
-      state.countryData = countryData; // Assuming you have a 'countryData' property in your state
+      state.countryData = countryData; 
+    },
+    SET_MARITAL_DATA(state, maritalData) {
+      state.maritalData = maritalData; 
+    },
+    SET_NATIONALITY_DATA(state, nationalityData) {
+      state.nationalityData = nationalityData; 
+    },
+    SET_RACE_DATA(state, raceData) {
+      state.raceData = raceData; 
+    },
+    SET_RELIGION_DATA(state, religionData) {
+      state.religionData = religionData; 
+    },
+    SET_STATE_DATA(state, stateData) {
+      state.stateData = stateData; 
     },
   },
   actions: {
@@ -40,10 +55,12 @@ const store = createStore({
       localStorage.setItem('user', JSON.stringify(userData.user_details));
     },
     logout({ commit }) {
-      commit('LOGOUT');
+      commit('SET_AUTH', false);
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('user');
     },
     fetchCountryData({ commit }) {
-      axios.get('http://54.169.164.7/ssb_users/public/api/country')
+      axios.get(process.env.VUE_APP_API_URL + '/country')
         .then((response) => {
           const countries = response.data.countries;
           const countryNames = countries.map((country) => ({
@@ -57,11 +74,90 @@ const store = createStore({
           console.error('Error fetching country data:', error);
         });
     },
+    fetchMaritalData({ commit }) {
+      axios.get(process.env.VUE_APP_API_URL + '/marital_status')
+        .then((response) => {
+          const marital = response.data.marital_status;
+          const maritalNames = marital.map((marital) => ({
+            value: marital.name,
+            name: marital.name,
+          }));
+  
+          commit('SET_MARITAL_DATA', maritalNames);
+        })
+        .catch((error) => {
+          console.error('Error fetching country data:', error);
+        });
+    },
+    fetchNationalityData({ commit }) {
+      axios.get(process.env.VUE_APP_API_URL + '/nationality')
+        .then((response) => {
+          const nationality = response.data.nationality;
+          const nationalityNames = nationality.map((nationality) => ({
+            value: nationality.name,
+            name: nationality.name,
+          }));
+  
+          commit('SET_NATIONALITY_DATA', nationalityNames);
+        })
+        .catch((error) => {
+          console.error('Error fetching country data:', error);
+        });
+    },
+    fetchRaceData({ commit }) {
+      axios.get(process.env.VUE_APP_API_URL + '/race')
+        .then((response) => {
+          const race = response.data.race;
+          const raceNames = race.map((race) => ({
+            value: race.name,
+            name: race.name,
+          }));
+  
+          commit('SET_RACE_DATA', raceNames);
+        })
+        .catch((error) => {
+          console.error('Error fetching country data:', error);
+        });
+    },
+    fetchReligionData({ commit }) {
+      axios.get(process.env.VUE_APP_API_URL + '/religion')
+        .then((response) => {
+          const religion = response.data.religion;
+          const religionNames = religion.map((religion) => ({
+            value: religion.name,
+            name: religion.name,
+          }));
+  
+          commit('SET_RELIGION_DATA', religionNames);
+        })
+        .catch((error) => {
+          console.error('Error fetching country data:', error);
+        });
+    },
+    fetchStateData({ commit }) {
+      axios.get(process.env.VUE_APP_API_URL + '/state')
+        .then((response) => {
+          const state = response.data.states;
+          const stateNames = state.map((state) => ({
+            value: state.name,
+            name: state.name,
+          }));
+  
+          commit('SET_STATE_DATA', stateNames);
+        })
+        .catch((error) => {
+          console.error('Error fetching country data:', error);
+        });
+    },
   },
   getters: {
     isAuthenticated: (state) => state.isAuthenticated,
     currentUser: (state) => state.user,
     countryData: (state) => state.countryData,
+    maritalData: (state) => state.maritalData,
+    raceData: (state) => state.raceData,
+    religionData: (state) => state.religionData,
+    stateData: (state) => state.stateData,
   },
   modules,
   // Enable strict mode in development to get a warning
