@@ -3,7 +3,7 @@
     <b-container fluid>
       <b-row>
         <div class="col-sm-6">
-          <!-- {{ new Date().getFullYear() - 1 }} - {{ new Date().getFullYear() }} © Skote. -->
+          <!-- {{ new Date().getFullYear() - 1 }} - {{ new Date().getFullYear() }} © Softwoods. -->
         </div>
         <div class="col-sm-6">
           <div class="text-sm-end d-none d-sm-block">

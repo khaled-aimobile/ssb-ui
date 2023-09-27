@@ -141,7 +141,7 @@ export default {
               <div class="col-7">
                 <div class="text-success p-4">
                   <h5 class="text-success">Free Register</h5>
-                  <p>Get your free Skote account now.</p>
+                  <p>Get your free Softwoods account now.</p>
                 </div>
               </div>
               <div class="col-5 align-self-end">
@@ -316,7 +316,7 @@ export default {
 
               <div class="mt-4 text-center">
                 <p class="mb-0">
-                  By registering you agree to the Skote
+                  By registering you agree to the Softwoods
                   <a href="#" class="text-success"
                     >Terms of Use</a
                   >
@@ -336,7 +336,7 @@ export default {
             >
           </p>
           <!-- <p>
-            © {{ new Date().getFullYear() }} Skote. Crafted with
+            © {{ new Date().getFullYear() }} Softwoods. Crafted with
             <i class="mdi mdi-heart text-danger"></i> by Themesbrand
           </p> -->
         </div>

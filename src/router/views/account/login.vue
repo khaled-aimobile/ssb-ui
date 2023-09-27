@@ -114,7 +114,7 @@ export default {
               <div class="col-7">
                 <div class="text-success p-4">
                   <h5 class="text-success">Welcome Back !</h5>
-                  <p>Sign in to continue to Skote.</p>
+                  <p>Sign in to continue to Softwoods.</p>
                 </div>
               </div>
               <div class="col-5 align-self-end">
@@ -166,7 +166,7 @@ export default {
             <router-link to="/login" class="fw-medium text-success d-inline-block">Signup now</router-link>
           </p>
           <!-- <p>
-            © {{ new Date().getFullYear() }} Skote. Crafted with
+            © {{ new Date().getFullYear() }} Softwoods. Crafted with
             <i class="mdi mdi-heart text-danger"></i> by Themesbrand
           </p> -->
         </div>

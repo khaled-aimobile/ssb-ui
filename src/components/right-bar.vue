@@ -319,7 +319,7 @@ export default {
           <div class="mb-2">
             <router-link
               target="_blank"
-              to="//skote.vuejs-light.themesbrand.com/"
+              to="//Softwoods.vuejs-light.themesbrand.com/"
             >
               <img
                 src="@/assets/images/layouts/layout-1.jpg"
@@ -332,7 +332,7 @@ export default {
           <div class="mb-2">
             <router-link
               target="_blank"
-              to="//skote.vuejs-dark.themesbrand.com/"
+              to="//Softwoods.vuejs-dark.themesbrand.com/"
             >
               <img
                 src="@/assets/images/layouts/layout-2.jpg"
@@ -345,7 +345,7 @@ export default {
           <div class="mb-2">
             <router-link
               target="_blank"
-              to="//skote.vuejs-rtl.themesbrand.com/"
+              to="//Softwoods.vuejs-rtl.themesbrand.com/"
             >
               <img
                 src="@/assets/images/layouts/layout-3.jpg"

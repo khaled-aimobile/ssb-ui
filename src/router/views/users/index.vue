@@ -50,7 +50,7 @@ export default {
                     contact: '+919090909090',
                     department: 'Backend',
                     date: '10-10-2023',
-                    email: 'david@skote.com'
+                    email: 'david@Softwoods.com'
                 },
                 {
                     id: 2,
@@ -60,7 +60,7 @@ export default {
                     contact: '+919090909090',
                     department: 'Frontend',
                     date: '10-10-2023',
-                    email: 'frank@skote.com'
+                    email: 'frank@Softwoods.com'
                 },
                 {
                     id: 3,
@@ -70,7 +70,7 @@ export default {
                     contact: '+919090909090',
                     department: 'Backend',
                     date: '10-10-2023',
-                    email: 'Rafael@skote.com'
+                    email: 'Rafael@Softwoods.com'
                 },
                 {
                     id: 4,
@@ -79,7 +79,7 @@ export default {
                     contact: '+919090909090',
                     department: 'Backend',
                     date: '10-10-2023',
-                    email: 'mark@skote.com'
+                    email: 'mark@Softwoods.com'
                 },
                 {
                     id: 5,
@@ -89,7 +89,7 @@ export default {
                     contact: '+919090909090',
                     department: 'Backend',
                     date: '10-10-2023',
-                    email: 'minnie@skote.com'
+                    email: 'minnie@Softwoods.com'
                 },
                 {
                     id: 6,
@@ -99,7 +99,7 @@ export default {
                     contact: '+919090909090',
                     department: 'Frontend',
                     date: '10-10-2023',
-                    email: 'shirley@skote.com'
+                    email: 'shirley@Softwoods.com'
                 },
                 {
                     id: 7,
@@ -108,7 +108,7 @@ export default {
                     contact: '+919090909090',
                     department: 'Backend',
                     date: '10-10-2023',
-                    email: 'john@skote.com'
+                    email: 'john@Softwoods.com'
                 },
                 {
                     id: 8,
@@ -118,7 +118,7 @@ export default {
                     contact: '+919090909090',
                     department: 'Frontend',
                     date: '10-10-2023',
-                    email: 'colin@skote.com'
+                    email: 'colin@Softwoods.com'
                 },
             ],
             searchValue: '',

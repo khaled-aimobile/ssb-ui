@@ -9,6 +9,7 @@ const store = createStore({
     isAuthenticated: false,
     token: localStorage.getItem('access_token') || '',
     user: null,
+    registrationError: null,
   },
   mutations: {
     SET_AUTH(state, isAuthenticated) {
@@ -45,6 +46,9 @@ const store = createStore({
     },
     SET_STATE_DATA(state, stateData) {
       state.stateData = stateData; 
+    },
+    SET_REGISTRATION_ERROR(state, error) {
+      state.registrationError = error;
     },
   },
   actions: {
@@ -148,6 +152,21 @@ const store = createStore({
         .catch((error) => {
           console.error('Error fetching country data:', error);
         });
+    },
+    registerUser({ commit }, userData) {
+      // Replace this with your actual Axios registration request
+      // Make sure to handle success and errors appropriately
+      return new Promise((resolve, reject) => {
+        // Simulate a registration error for demonstration
+        if (userData.email === 'existing@example.com') {
+          commit('SET_REGISTRATION_ERROR', 'The email has already been taken.');
+          reject('Registration failed');
+        } else {
+          // Registration successful
+          commit('SET_REGISTRATION_ERROR', null);
+          resolve('Registration successful');
+        }
+      });
     },
   },
   getters: {
