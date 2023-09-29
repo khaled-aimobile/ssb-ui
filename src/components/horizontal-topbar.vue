@@ -539,6 +539,8 @@ export default {
     },
     logout() {
       this.$store.dispatch('logout');
+      localStorage.removeItem('email');
+    localStorage.removeItem('password');
       this.$router.push('/login');
       this.email = ''; // Clear the email input field
     },

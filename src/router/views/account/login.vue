@@ -105,20 +105,13 @@ export default {
           const userData = await response.json();
           this.$store.dispatch('login', userData);
           this.$router.push('/');
+
+          localStorage.setItem('email', this.email);
+          localStorage.setItem('password', this.password);
         } else {
           // Log the error response
           console.error('Login failed:', response.status, response.statusText);
           this.isAuthError = true;
-        }
-
-        //cookie
-        if (this.rememberMe) {
-          this.$cookies.set('email', this.email, '7d'); // Store email for 7 days
-          this.$cookies.set('password', this.password, '7d'); // Store password for 7 days
-        } else {
-          // Clear cookies if "Remember me" is not checked
-          this.$cookies.remove('email');
-          this.$cookies.remove('password');
         }
 
       } catch (error) {

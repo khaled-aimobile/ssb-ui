@@ -9,6 +9,8 @@ export default {
     methods: {
         logout() {
             this.$store.dispatch('logout');
+            localStorage.removeItem('email');
+    localStorage.removeItem('password');
             this.$router.push('/login');
             this.email = '';
         },

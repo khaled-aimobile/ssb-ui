@@ -22,6 +22,8 @@ export default {
   },
   mounted() {
     this.$store.dispatch('logout');
+    localStorage.removeItem('email');
+    localStorage.removeItem('password');
   },
 };
 </script>

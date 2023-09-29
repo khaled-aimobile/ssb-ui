@@ -5,35 +5,40 @@ import subMenu from '@/components/subMenu'
 export default {
     data() {
         return {
-            // Input field for email
+            email: '',
+            password: ''
         };
     },
-    components:{
+    components: {
         subMenu
     },
     methods: {
-        async sendDataToServer() {
+
+        async sendData() {
+            const email = localStorage.getItem('email');
+        const password = localStorage.getItem('password');
+        const encodedEmail = btoa(email);
+        const encodedPassword = btoa(password);
             try {
-                const currentUserData = {
-                    id: this.currentUser.id,
-                    name: this.currentUser.name,
-                    email: this.currentUser.email,
-                    token: this.$store.state.token
-                };
+                const response = await axios.post('https://54.254.141.79/ssb_users/public/api/login', {
+                    email: localStorage.getItem('email'),
+                    password: localStorage.getItem('password')
+                });
 
-                const response = await axios.post('https://54.254.141.79/login/auth.php', currentUserData);
-
-                // Handle the response here
-                console.log('Response:', response.data);
+                console.log(response);
+                if (response.status === 200) {
+                    window.location.href = `https://54.254.141.79/login?email=${encodedEmail}&password=${encodedPassword}`;
+                }
             } catch (error) {
-                // Handle errors here
-                console.error('Error:', error);
+                console.error(error);
             }
         },
         logout() {
             this.$store.dispatch('logout');
             this.$router.push('/login');
-            this.email = ''; 
+            localStorage.removeItem('email');
+            localStorage.removeItem('password');
+            this.email = '';
         },
     },
     computed: {
@@ -51,32 +56,21 @@ export default {
     <div class="landing-main">
         <div class="landing-content">
             <sub-menu />
-            
+
             <div class="landing-body">
                 <b-container>
                     <b-row>
-                         <b-col lg="12" class="text-center mb-5">
+                        <b-col lg="12" class="text-center mb-5">
                             <h1>Welcome</h1>
-                            <!-- <div v-if="isAuthenticated">
-                                <h2 v-if="currentUser">{{ currentUser.name }}</h2>
-                                <p v-if="currentUser">Email: {{ currentUser.email }}</p>
-                            </div> -->
                         </b-col>
                         <b-col lg="3" sm="6">
                             <div class="card">
-                                <a v-if="currentUser.email === 'kishan@gmail.com'" href="https://54.254.141.79/login"
-                                    target="_blank" @click="sendDataToServer">
+                                <a @click="sendData" class="cursor-pointer">
                                     <div class="card-body">
                                         <i class="mdi mdi-tree-outline"></i>
                                         <h4 class="card-title">HRM</h4>
                                     </div>
                                 </a>
-                                <router-link to="/" v-else>
-                                    <div class="card-body">
-                                        <i class="mdi mdi-tree-outline"></i>
-                                        <h4 class="card-title">HRM</h4>
-                                    </div>
-                                </router-link>
                             </div>
                         </b-col>
                         <b-col lg="3" sm="6">
