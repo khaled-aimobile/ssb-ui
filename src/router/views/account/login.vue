@@ -10,9 +10,9 @@ import { required, email, helpers } from "@vuelidate/validators";
  */
 export default {
   setup() {
-    return { 
+    return {
 
-     };
+    };
   },
   page: {
     title: "Login",
@@ -30,15 +30,17 @@ export default {
     return {
       email: "",
       staff_id: "", // Add staff_id field
-    password: "",
+      password: "",
       isAuthError: false,
-      rememberMe: false, 
+      rememberMe: false,
+      emailError: null,
+      passwordError: null,
     };
   },
   validations: {
     staff_id: {
-    required: helpers.withMessage("Staff ID is required", required), // Add validation for staff_id
-  },
+      required: helpers.withMessage("Staff ID is required", required), // Add validation for staff_id
+    },
     email: {
       required: helpers.withMessage("Email is required", required),
       email: helpers.withMessage("Please enter valid email", email),
@@ -61,40 +63,56 @@ export default {
     },
   },
   methods: {
-  //   login() {
-  //   const { user_details } = jsonData;
-  //   const { staff_id, password } = user_details;
+    //   login() {
+    //   const { user_details } = jsonData;
+    //   const { staff_id, password } = user_details;
 
-  //   if (this.staff_id === staff_id && this.password === password) {
-  //     this.$store.dispatch('login', jsonData);
-  //     this.$router.push('/');
-  //   } else {
-  //     console.error('Login failed: Invalid staff ID or password');
-  //   }
-  // },
-  async login() {
-  try {
-    const formData = new FormData();
-    formData.append('email', this.email);
-    formData.append('password', this.password);
+    //   if (this.staff_id === staff_id && this.password === password) {
+    //     this.$store.dispatch('login', jsonData);
+    //     this.$router.push('/');
+    //   } else {
+    //     console.error('Login failed: Invalid staff ID or password');
+    //   }
+    // },
+    async login() {
+      this.emailError = null;
+      this.passwordError = null;
 
-    const response = await fetch('http://54.169.164.7/ssb_users/public/api/login', {
-      method: 'POST',
-      body: formData, // Use the FormData object as the request body
-    });
+      // Validate email and password fields
+      if (!this.email) {
+        this.emailError = "Email is required";
+      }
 
-    if (response.ok) {
-      const userData = await response.json();
-      this.$store.dispatch('login', userData);
-      this.$router.push('/');
-    } else {
-      // Log the error response
-      console.error('Login failed:', response.status, response.statusText);
-      this.isAuthError = true;
-    }
-    
-//cookie
-if (this.rememberMe) {
+      if (!this.password) {
+        this.passwordError = "Password is required";
+      }
+
+      // If any validation error, do not proceed with login
+      if (this.emailError || this.passwordError) {
+        return;
+      }
+      try {
+        const formData = new FormData();
+        formData.append('email', this.email);
+        formData.append('password', this.password);
+
+        const response = await fetch('https://54.254.141.79/ssb_users/public/api/login', {
+          method: 'POST',
+          body: formData, // Use the FormData object as the request body
+        });
+
+        if (response.ok) {
+          const userData = await response.json();
+          this.$store.dispatch('login', userData);
+          this.$router.push('/');
+        } else {
+          // Log the error response
+          console.error('Login failed:', response.status, response.statusText);
+          this.isAuthError = true;
+        }
+
+        //cookie
+        if (this.rememberMe) {
           this.$cookies.set('email', this.email, '7d'); // Store email for 7 days
           this.$cookies.set('password', this.password, '7d'); // Store password for 7 days
         } else {
@@ -103,13 +121,13 @@ if (this.rememberMe) {
           this.$cookies.remove('password');
         }
 
-  } catch (error) {
-    console.error('An error occurred during login:', error);
-    this.isAuthError = true;
-  }
-}
+      } catch (error) {
+        console.error('An error occurred during login:', error);
+        this.isAuthError = true;
+      }
+    }
   },
-  mounted() { 
+  mounted() {
     this.email = this.$cookies.get('email') || '';
     this.password = this.$cookies.get('password') || '';
   },
@@ -145,17 +163,23 @@ if (this.rememberMe) {
               </router-link>
             </div>
 
-            <b-form class="p-2">
+            <b-form class="p-2" @submit="submit">
+              <div class="alert alert-danger mb-2" role="alert" v-if="isAuthError">
+                Login failed: Incorrect email or password
+              </div>
               <label for="input-1" class="form-label d-block">Email/staffID</label>
               <input class="form-control mb-3" v-model="email" id="input-1" type="text" placeholder="Email/staffID">
+              <div class="alert alert-danger mb-2" role="alert" v-if="emailError">{{ emailError }}</div>
               <label for="input-1" class="form-label d-block">Password</label>
               <input class="form-control mb-3" v-model="password" id="input-1" type="text" placeholder="Password">
+              <div class="alert alert-danger mb-2" role="alert" v-if="passwordError">{{ passwordError }}</div>
+
               <b-form-checkbox class="form-check me-2" id="customControlInline" name="checkbox-1" value="accepted"
                 unchecked-value="not_accepted">
                 Remember me
               </b-form-checkbox>
               <div class="mt-3 d-grid">
-                <b-button @click="login" variant="success" class="btn-block">Log In</b-button>
+                <b-button type="submit" @click="login" variant="success" class="btn-block">Log In</b-button>
               </div>
               <div class="mt-4 text-center">
                 <router-link to="/forgot-password" class="text-muted d-inline-block">
