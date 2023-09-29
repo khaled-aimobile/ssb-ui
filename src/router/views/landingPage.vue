@@ -16,9 +16,9 @@ export default {
 
         async sendData() {
             const email = localStorage.getItem('email');
-        const password = localStorage.getItem('password');
+        //const password = localStorage.getItem('password');
         const encodedEmail = btoa(email);
-        const encodedPassword = btoa(password);
+        //const encodedPassword = btoa(password);
             try {
                 const response = await axios.post('https://54.254.141.79/ssb_users/public/api/login', {
                     email: localStorage.getItem('email'),
@@ -27,7 +27,7 @@ export default {
 
                 console.log(response);
                 if (response.status === 200) {
-                    window.location.href = `https://54.254.141.79/login?email=${encodedEmail}&password=${encodedPassword}`;
+                    window.location.href = `https://54.254.141.79/login?email=${encodedEmail}`;
                 }
             } catch (error) {
                 console.error(error);
