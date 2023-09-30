@@ -19,7 +19,7 @@ export default {
             //const password = localStorage.getItem('password');
             const token = localStorage.getItem('access_token');
             //const encodedEmail = btoa(email);
-            const encodedToken = btoa(token);
+            //const encodedToken = btoa(token);
             //const encodedPassword = btoa(password);
             try {
                 const response = await axios.post(process.env.VUE_APP_API_URL + '/v1/token_verification', {
@@ -33,7 +33,7 @@ export default {
 
                 console.log(response);
                 if (response.status === 201) {
-                    window.location.href = `https://54.254.141.79/login?email=${encodedToken}`;
+                    window.location.href = `https://54.254.141.79/login?email=${token}`;
                 }
             } catch (error) {
                 console.error(error);
