@@ -35,6 +35,7 @@ export default {
       rememberMe: false,
       emailError: null,
       passwordError: null,
+      passwordVisible: false,
     };
   },
   validations: {
@@ -118,7 +119,11 @@ export default {
         console.error('An error occurred during login:', error);
         this.isAuthError = true;
       }
-    }
+    },
+    togglePasswordVisibility() {
+      // Toggle the password visibility
+      this.passwordVisible = !this.passwordVisible;
+    },
   },
   mounted() {
     this.email = this.$cookies.get('email') || '';
@@ -164,7 +169,13 @@ export default {
               <input class="form-control mb-3" v-model="email" id="input-1" type="text" placeholder="Email/staffID">
               <div class="alert alert-danger mb-2" role="alert" v-if="emailError">{{ emailError }}</div>
               <label for="input-1" class="form-label d-block">Password</label>
-              <input class="form-control mb-3" v-model="password" id="input-1" type="text" placeholder="Password">
+              <div class="input-group mb-3">
+                <input class="form-control" v-model="password" id="input-1" placeholder="Password"
+                  :type="passwordVisible ? 'text' : 'password'" />
+                <button class="btn btn-outline-success" type="button" @click="togglePasswordVisibility">
+                  <i class="mdi" :class="passwordVisible ? 'mdi-eye-off' : 'mdi-eye'"></i>
+                </button>
+              </div>
               <div class="alert alert-danger mb-2" role="alert" v-if="passwordError">{{ passwordError }}</div>
 
               <b-form-checkbox class="form-check me-2" id="customControlInline" name="checkbox-1" value="accepted"

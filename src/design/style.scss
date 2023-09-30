@@ -1387,3 +1387,12 @@ a {
 .footer{
     background-color: #f8f8fb;
 }
+.btn.btn-outline-success{
+    border-color: $primary;
+    color: $primary;
+    &:hover{
+        border-color: $primary;
+        background-color: $primary;
+        color: $white;
+    }
+}
