@@ -15,19 +15,25 @@ export default {
     methods: {
 
         async sendData() {
-            const email = localStorage.getItem('email');
-        //const password = localStorage.getItem('password');
-        const encodedEmail = btoa(email);
-        //const encodedPassword = btoa(password);
+            // const email = localStorage.getItem('email');
+            //const password = localStorage.getItem('password');
+            const token = localStorage.getItem('access_token');
+            //const encodedEmail = btoa(email);
+            const encodedToken = btoa(token);
+            //const encodedPassword = btoa(password);
             try {
-                const response = await axios.post('https://54.254.141.79/ssb_users/public/api/login', {
+                const response = await axios.post(process.env.VUE_APP_API_URL + '/v1/token_verification', {
                     email: localStorage.getItem('email'),
                     password: localStorage.getItem('password')
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 });
 
                 console.log(response);
-                if (response.status === 200) {
-                    window.location.href = `https://54.254.141.79/login?email=${encodedEmail}`;
+                if (response.status === 201) {
+                    window.location.href = `https://54.254.141.79/login?email=${encodedToken}`;
                 }
             } catch (error) {
                 console.error(error);
