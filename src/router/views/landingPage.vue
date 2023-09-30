@@ -33,7 +33,7 @@ export default {
 
                 console.log(response);
                 if (response.status === 201) {
-                    window.location.href = `https://54.254.141.79/login?email=${token}`;
+                    window.location.href = `https://54.254.141.79/login?token=${token}`;
                 }
             } catch (error) {
                 console.error(error);
